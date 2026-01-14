@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Colores Corporativos */
+:root {
+  --color-primary: #003399;
+  --color-secondary: #6e6e6e;
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
 * {
   margin: 0;
   padding: 0;
