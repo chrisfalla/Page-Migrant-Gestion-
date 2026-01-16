@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Paleta Corporativa MIGRANT GESTIÓN SAS */
+:root {
+  --color-corporate-blue: #003399;
+  --color-corporate-dark: #000000;
+  --color-corporate-gray: #6e6e6e;
+  --color-corporate-bg: #ffffff;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-corporate-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--color-corporate-dark);
+}

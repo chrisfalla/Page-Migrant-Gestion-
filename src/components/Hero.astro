@@ -1,0 +1,153 @@
+---
+import Button from './Button.astro';
+---
+
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50">
+  <!-- Grid decorativo de fondo -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, #003399 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </div>
+  
+  <div class="container mx-auto px-6 py-20 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- Columna Izquierda: Contenido -->
+      <div class="space-y-8 animate-fade-in">
+        <!-- Badge Superior -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#003399]/10 rounded-full border border-[#003399]/20">
+          <div class="w-2 h-2 bg-[#003399] rounded-full animate-pulse"></div>
+          <span class="text-sm font-semibold text-[#003399]">05 años de experiencia</span>
+        </div>
+        
+        <!-- Título Principal -->
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-[#000000] leading-tight">
+          Facilitamos tu
+          <span class="block text-[#003399] mt-2">destino,</span>
+          <span class="block mt-2">aseguramos</span>
+          <span class="block text-[#003399] mt-2">tu futuro</span>
+        </h1>
+        
+        <!-- Descripción -->
+        <p class="text-xl md:text-2xl text-[#6e6e6e] leading-relaxed max-w-2xl">
+          Asesoría y gestión integral para migrantes en Colombia. 
+          <strong class="text-[#000000]">Si no tiene tiempo ni conocimiento, déjelo en nuestras manos expertas.</strong>
+        </p>
+        
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <Button variant="primary" size="lg" href="#servicios">
+            Ver Servicios
+          </Button>
+          <Button variant="outline" size="lg" href="#contacto">
+            Contáctanos
+          </Button>
+        </div>
+        
+        <!-- Stats -->
+        <div class="flex flex-wrap gap-8 pt-8 border-t border-gray-200">
+          <div>
+            <div class="text-4xl font-bold text-[#003399]">30+</div>
+            <div class="text-sm text-[#6e6e6e]">Trámites disponibles</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-[#003399]">05</div>
+            <div class="text-sm text-[#6e6e6e]">Años de experiencia</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-[#003399]">100%</div>
+            <div class="text-sm text-[#6e6e6e]">Comprometidos</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Columna Derecha: Elemento Visual -->
+      <div class="relative lg:h-[600px] flex items-center justify-center">
+        <!-- Tarjeta Glassmorphism -->
+        <div class="relative w-full max-w-md">
+          <!-- Círculos decorativos de fondo -->
+          <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#003399] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          
+          <!-- Tarjeta principal -->
+          <div class="relative backdrop-blur-lg bg-white/70 rounded-3xl p-8 shadow-2xl border border-white/50">
+            <div class="space-y-6">
+              <!-- Icono central -->
+              <div class="w-20 h-20 bg-gradient-to-br from-[#003399] to-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              
+              <div class="text-center">
+                <h3 class="text-2xl font-bold text-[#000000] mb-2">Gestión Completa</h3>
+                <p class="text-[#6e6e6e]">Trámites migratorios, visas, documentación legal y más</p>
+              </div>
+              
+              <!-- Features compactos -->
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 bg-white/50 rounded-lg p-3">
+                  <div class="w-8 h-8 bg-[#003399]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-[#003399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="text-sm text-[#000000] font-medium">Asesoría personalizada</span>
+                </div>
+                
+                <div class="flex items-center gap-3 bg-white/50 rounded-lg p-3">
+                  <div class="w-8 h-8 bg-[#003399]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-[#003399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-sm text-[#000000] font-medium">Ahorra tiempo y esfuerzo</span>
+                </div>
+                
+                <div class="flex items-center gap-3 bg-white/50 rounded-lg p-3">
+                  <div class="w-8 h-8 bg-[#003399]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-[#003399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-sm text-[#000000] font-medium">Procesos seguros</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+  }
+  
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+</style>

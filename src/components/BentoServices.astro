@@ -1,0 +1,111 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import SectionTitle from './SectionTitle.astro';
+---
+
+<section id="servicios" class="py-24 bg-gradient-to-b from-white to-gray-50">
+  <div class="container mx-auto px-6">
+    
+    <!-- Título de la sección -->
+    <SectionTitle 
+      title="Servicios Especializados"
+      subtitle="Más de 30 trámites organizados para facilitar tu proceso migratorio y legal en Colombia"
+      class="mb-16"
+    />
+    
+    <!-- Bento Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      
+      <!-- Card 1: Movilidad y Visas (Grande) -->
+      <ServiceCard
+        title="Movilidad y Visas"
+        description="Gestión completa de procesos migratorios, permisos de permanencia y documentación para extranjeros en Colombia."
+        icon="🛂"
+        size="large"
+        services={[
+          'Visas (Todas las categorías)',
+          'Permiso Por Protección Temporal (PPT)',
+          'Salvoconductos SC-2',
+          'Registro SIRE (Empleadores)',
+          'Cédula de Extranjería',
+          'Renovaciones y cambios'
+        ]}
+      />
+      
+      <!-- Card 2: Corporativo y Empleo -->
+      <ServiceCard
+        title="Corporativo y Empleo"
+        description="Servicios empresariales, contratación de extranjeros y gestión legal para empresas."
+        icon="💼"
+        services={[
+          'Creación de empresas',
+          'Registro SIRE Empleadores',
+          'Elaboración de hojas de vida',
+          'Registro ante la DIAN',
+          'Consultoría laboral'
+        ]}
+      />
+      
+      <!-- Card 3: Legal y Documentación -->
+      <ServiceCard
+        title="Legal y Documentación"
+        description="Trámites notariales, apostillas y gestión de antecedentes judiciales."
+        icon="⚖️"
+        services={[
+          'Apostillas internacionales',
+          'Antecedentes judiciales',
+          'Trámites de notaría',
+          'Tutelas y derechos de petición',
+          'Asesoría jurídica'
+        ]}
+      />
+      
+      <!-- Card 4: Educación e Integración (Grande) -->
+      <ServiceCard
+        title="Educación e Integración"
+        description="Convalidación de títulos, homologación académica y procesos educativos para migrantes."
+        icon="🎓"
+        size="large"
+        services={[
+          'Convalidación de títulos',
+          'Homologación académica',
+          'Bachiller por validación',
+          'Registro RUMV (Migrantes Venezolanos)',
+          'Cursos de integración',
+          'Orientación educativa'
+        ]}
+      />
+      
+      <!-- Card 5: Trámites Especiales -->
+      <ServiceCard
+        title="Trámites Especiales"
+        description="Servicios adicionales para necesidades específicas de la comunidad migrante."
+        icon="✨"
+        services={[
+          'Tarjeta de Movilidad Fronteriza',
+          'Permiso de Ingreso y Permanencia',
+          'Certificados y constancias',
+          'Asesoría integral'
+        ]}
+      />
+      
+    </div>
+    
+    <!-- CTA adicional -->
+    <div class="mt-16 text-center">
+      <p class="text-lg text-[#6e6e6e] mb-6">
+        ¿No encuentras el trámite que necesitas?
+      </p>
+      <a 
+        href="#contacto" 
+        class="inline-flex items-center gap-2 text-[#003399] font-semibold hover:gap-4 transition-all"
+      >
+        Contáctanos para consultar
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+    </div>
+    
+  </div>
+</section>
