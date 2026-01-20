@@ -3,14 +3,14 @@ import ServiceCard from './ServiceCard.astro';
 import SectionTitle from './SectionTitle.astro';
 ---
 
-<section id="servicios" class="py-24 bg-gradient-to-b from-white to-gray-50">
+<section id="servicios" class="py-24 bg-white reveal">
   <div class="container mx-auto px-6">
     
     <!-- Título de la sección -->
     <SectionTitle 
       title="Servicios Especializados"
       subtitle="Más de 30 trámites organizados para facilitar tu proceso migratorio y legal en Colombia"
-      class="mb-16"
+      class="mb-16 reveal"
     />
     
     <!-- Bento Grid -->
@@ -20,7 +20,7 @@ import SectionTitle from './SectionTitle.astro';
       <ServiceCard
         title="Movilidad y Visas"
         description="Gestión completa de procesos migratorios, permisos de permanencia y documentación para extranjeros en Colombia."
-        icon="🛂"
+        icon="passport"
         size="large"
         services={[
           'Visas (Todas las categorías)',
@@ -36,7 +36,7 @@ import SectionTitle from './SectionTitle.astro';
       <ServiceCard
         title="Corporativo y Empleo"
         description="Servicios empresariales, contratación de extranjeros y gestión legal para empresas."
-        icon="💼"
+        icon="briefcase"
         services={[
           'Creación de empresas',
           'Registro SIRE Empleadores',
@@ -50,7 +50,7 @@ import SectionTitle from './SectionTitle.astro';
       <ServiceCard
         title="Legal y Documentación"
         description="Trámites notariales, apostillas y gestión de antecedentes judiciales."
-        icon="⚖️"
+        icon="scale"
         services={[
           'Apostillas internacionales',
           'Antecedentes judiciales',
@@ -64,7 +64,7 @@ import SectionTitle from './SectionTitle.astro';
       <ServiceCard
         title="Educación e Integración"
         description="Convalidación de títulos, homologación académica y procesos educativos para migrantes."
-        icon="🎓"
+        icon="academic"
         size="large"
         services={[
           'Convalidación de títulos',
@@ -80,7 +80,7 @@ import SectionTitle from './SectionTitle.astro';
       <ServiceCard
         title="Trámites Especiales"
         description="Servicios adicionales para necesidades específicas de la comunidad migrante."
-        icon="✨"
+        icon="sparkles"
         services={[
           'Tarjeta de Movilidad Fronteriza',
           'Permiso de Ingreso y Permanencia',
@@ -93,12 +93,12 @@ import SectionTitle from './SectionTitle.astro';
     
     <!-- CTA adicional -->
     <div class="mt-16 text-center">
-      <p class="text-lg text-[#6e6e6e] mb-6">
+      <p class="text-lg text-[#8E8E8E] mb-6">
         ¿No encuentras el trámite que necesitas?
       </p>
       <a 
         href="#contacto" 
-        class="inline-flex items-center gap-2 text-[#003399] font-semibold hover:gap-4 transition-all"
+        class="inline-flex items-center gap-2 text-[#001B48] font-semibold hover:gap-4 transition-all"
       >
         Contáctanos para consultar
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import BentoServices from '../components/BentoServices.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
 import ValueSection from '../components/ValueSection.astro';
 import Footer from '../components/Footer.astro';
 ---
@@ -12,6 +14,7 @@ import Footer from '../components/Footer.astro';
 	description="Consultoría especializada en gestión migratoria en Colombia. Visas, PPT, SIRE, apostillas, convalidación de títulos y más de 30 trámites. 05 años de experiencia desde Neiva, Huila."
 >
 	<!-- Hero Section -->
+	<Header />
 	<Hero />
 	
 	<!-- Trust Bar -->
@@ -19,6 +22,9 @@ import Footer from '../components/Footer.astro';
 	
 	<!-- Bento Grid de Servicios -->
 	<BentoServices />
+
+	<!-- Testimonios -->
+	<TestimonialCarousel />
 	
 	<!-- Value Section -->
 	<ValueSection />

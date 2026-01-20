@@ -2,20 +2,35 @@
 
 /* Paleta Corporativa MIGRANT GESTIÓN SAS */
 :root {
-  --color-corporate-blue: #003399;
-  --color-corporate-dark: #000000;
-  --color-corporate-gray: #6e6e6e;
-  --color-corporate-bg: #ffffff;
+  --color-brand-blue: #001b48;
+  --color-brand-black: #000000;
+  --color-brand-gray: #8e8e8e;
+  --color-brand-bg: #ffffff;
+  --color-text: #1f1f1f;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--color-corporate-dark);
+  color: var(--color-text);
+  background: var(--color-brand-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  color: var(--color-corporate-dark);
+  color: var(--color-brand-black);
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
