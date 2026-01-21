@@ -1,94 +1,144 @@
 ---
-import Button from './Button.astro';
+import { Image } from 'astro:assets';
+import backgroundImage from '../assets/background.svg';
 ---
 
-<section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-white">
-  <div class="absolute inset-0 bg-gradient-to-r from-white via-white to-transparent pointer-events-none"></div>
-
-  <div class="container mx-auto px-6 py-24 relative z-10">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      
-      <!-- Columna Izquierda: Contenido -->
-      <div class="space-y-8 reveal">
-        <!-- Badge Superior -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#001B48]/10 rounded-full border border-[#001B48]/20">
-          <div class="w-2 h-2 bg-[#001B48] rounded-full animate-pulse"></div>
-          <span class="text-sm font-semibold text-[#001B48]">05 años de experiencia</span>
-        </div>
-        
-        <!-- Título Principal -->
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-[#000000] leading-tight">
-          Autoridad legal
-          <span class="block mt-2">para tu</span>
-          <span class="block text-[#001B48] mt-2">proceso migratorio</span>
-        </h1>
-        
-        <!-- Descripción -->
-        <p class="text-xl md:text-2xl text-[#8E8E8E] leading-relaxed max-w-2xl">
-          Asesoría y gestión integral para migrantes en Colombia.
-          <strong class="text-[#000000]">Si no tiene tiempo ni conocimiento, déjelo en nuestras manos expertas.</strong>
-        </p>
-        
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4 pt-4">
-          <Button variant="primary" size="lg" href="#contacto">
-            Iniciar Trámite
-          </Button>
-          <Button variant="outline" size="lg" href="#servicios">
-            Ver Servicios
-          </Button>
-        </div>
-        
-        <!-- Stats -->
-        <div class="flex flex-wrap gap-10 pt-8 border-t border-gray-200">
-          <div>
-            <div class="text-4xl font-bold text-[#001B48]">30+</div>
-            <div class="text-sm text-[#8E8E8E]">Trámites disponibles</div>
-          </div>
-          <div>
-            <div class="text-4xl font-bold text-[#001B48]">05</div>
-            <div class="text-sm text-[#8E8E8E]">Años de experiencia</div>
-          </div>
-          <div>
-            <div class="text-4xl font-bold text-[#001B48]">100%</div>
-            <div class="text-sm text-[#8E8E8E]">Comprometidos</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Columna Derecha: Imagen Hero -->
-      <div class="relative reveal">
-        <div class="absolute -top-6 -right-6 w-24 h-24 border border-[#8E8E8E]/40 rounded-2xl"></div>
-        <div class="absolute -bottom-6 -left-6 w-24 h-24 border border-[#8E8E8E]/40 rounded-2xl"></div>
-
-        <div class="relative rounded-[20px] overflow-hidden shadow-2xl border border-[#8E8E8E]/30">
-          <img
-            src="/hero-passport-placeholder.svg"
-            alt="Entrega de pasaporte con visa en oficina moderna"
-            class="w-full h-[520px] object-cover"
-            loading="eager"
-          />
-          <div class="absolute inset-0 bg-gradient-to-r from-white/85 via-white/25 to-transparent"></div>
-        </div>
-      </div>
-      
-    </div>
+<div class="hero" id="hero">
+  <!-- Background Image with Parallax -->
+  <div class="hero-background">
+    <Image
+      src={backgroundImage}
+      alt="Background"
+      class="hero-image"
+      loading="eager"
+      width={1920}
+      height={1080}
+    />
+    <div class="hero-overlay"></div>
   </div>
-</section>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1 class="hero-title">Autoridad legal para tu proceso migratorio</h1>
+    <p class="hero-subtitle">Asesoría y gestión integral para migrantes en Colombia</p>
+  </div>
+</div>
 
 <style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
   }
-  
-  .animate-fade-in {
-    animation: fade-in 0.8s ease-out;
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 27, 72, 0.6);
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    line-height: 1.6;
+    max-width: 700px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
 </style>
+
+<script>
+  // Parallax and Fade Out Effect
+  document.addEventListener('DOMContentLoaded', () => {
+    const hero = document.getElementById('hero');
+    const heroBackground = hero?.querySelector('.hero-background') as HTMLElement;
+    
+    if (!hero || !heroBackground) return;
+    
+    let ticking = false;
+    let isScrolling = false;
+    
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      const heroHeight = hero.offsetHeight;
+      
+      // Only update if hero is in viewport
+      if (scrollY <= heroHeight) {
+        // Add will-change property during scroll
+        if (!isScrolling) {
+          heroBackground.style.willChange = 'transform, opacity';
+          isScrolling = true;
+        }
+        
+        // Parallax effect: background moves slower than scroll
+        const parallaxOffset = scrollY * 0.5;
+        
+        // Fade out effect: opacity decreases as user scrolls
+        const opacity = Math.max(0, 1 - (scrollY / heroHeight));
+        
+        heroBackground.style.transform = `translate3d(0, ${parallaxOffset}px, 0)`;
+        heroBackground.style.opacity = opacity.toString();
+      } else if (isScrolling) {
+        // Remove will-change when hero is out of view
+        heroBackground.style.willChange = 'auto';
+        isScrolling = false;
+      }
+      
+      ticking = false;
+    }
+    
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+    
+    // Use passive event listener for better scroll performance
+    window.addEventListener('scroll', requestTick, { passive: true });
+    
+    // Initial call
+    updateParallax();
+  });
+</script>
