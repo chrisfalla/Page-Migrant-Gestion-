@@ -1,0 +1,891 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const isLegalPage = true;
+
+const sections = [
+  { id: 'aceptacion', title: 'Aceptación de los Términos' },
+  { id: 'servicios', title: 'Descripción de Servicios' },
+  { id: 'no-garantia', title: 'No Garantía de Resultado' },
+  { id: 'veracidad', title: 'Veracidad de la Información' },
+  { id: 'responsabilidades', title: 'Responsabilidades del Cliente' },
+  { id: 'obligaciones', title: 'Obligaciones de MIGRANT GESTIÓN' },
+  { id: 'pagos', title: 'Pagos y Honorarios' },
+  { id: 'confidencialidad', title: 'Confidencialidad' },
+  { id: 'propiedad', title: 'Propiedad Intelectual' },
+  { id: 'limitacion', title: 'Limitación de Responsabilidad' },
+  { id: 'modificaciones', title: 'Modificaciones' },
+  { id: 'legislacion', title: 'Legislación Aplicable' },
+  { id: 'contacto', title: 'Contacto' },
+];
+---
+
+<Layout title="Términos y Condiciones | MIGRANT GESTIÓN SAS">
+  <Header isLegalPage={true} />
+  
+  <main class="legal-page">
+    <div class="legal-container">
+      
+      <!-- Sidebar TOC -->
+      <aside class="legal-toc">
+        <div class="toc-sticky">
+          <h2 class="toc-title">Contenido</h2>
+          <nav aria-label="Índice de contenidos">
+            <ul class="toc-list">
+              {sections.map(section => (
+                <li>
+                  <a href={`#${section.id}`} class="toc-link">
+                    {section.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div class="toc-divider"></div>
+          <a href="/" class="toc-back">← Volver al inicio</a>
+          
+          <div class="toc-divider"></div>
+          
+          <!-- Información de contacto -->
+          <div class="toc-card">
+            <h3 class="toc-card-title">¿Dudas sobre estos términos?</h3>
+            <p class="toc-card-text">Nuestro equipo está disponible para aclarar cualquier inquietud.</p>
+            <a href="https://wa.me/573028077187" target="_blank" rel="noopener" class="toc-card-button">
+              <svg class="toc-card-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Contactar vía WhatsApp
+            </a>
+          </div>
+          
+          <div class="toc-divider"></div>
+          
+          <!-- Documentos relacionados -->
+          <div class="toc-links">
+            <h3 class="toc-links-title">Documentos relacionados</h3>
+            <a href="/privacidad" class="toc-link-item">
+              <svg class="toc-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              Política de Privacidad
+            </a>
+          </div>
+          
+          <div class="toc-divider"></div>
+          
+          <!-- Info adicional -->
+          <div class="toc-note">
+            <svg class="toc-note-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <p class="toc-note-text">Última actualización: 21 de enero de 2026</p>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Main Content -->
+      <article class="legal-content">
+        
+        <header class="legal-header">
+          <p class="legal-date">Última actualización: 21 de enero de 2026</p>
+          <h1 class="legal-title">Términos y Condiciones</h1>
+          <p class="legal-intro">
+            Los presentes Términos y Condiciones regulan el uso de los servicios de consultoría 
+            y gestión documental ofrecidos por <strong>MIGRANT GESTIÓN SAS</strong>, 
+            sociedad legalmente constituida en Colombia.
+          </p>
+        </header>
+        
+        <section id="aceptacion" class="legal-section">
+          <h2>1. Aceptación de los Términos</h2>
+          <p>
+            Al contratar nuestros servicios, ya sea de forma presencial, telefónica, por correo electrónico 
+            o a través de nuestra página web, usted acepta expresamente estos Términos y Condiciones en su totalidad. 
+            Si no está de acuerdo con alguna de estas disposiciones, debe abstenerse de utilizar nuestros servicios.
+          </p>
+          <p>
+            La contratación implica que ha leído, entendido y aceptado todas las cláusulas aquí contenidas, 
+            especialmente aquellas referidas a la <strong>No Garantía de Resultado</strong> y la 
+            <strong>Veracidad de la Información</strong>.
+          </p>
+        </section>
+        
+        <section id="servicios" class="legal-section">
+          <h2>2. Descripción de Servicios</h2>
+          <p>
+            MIGRANT GESTIÓN SAS ofrece servicios de consultoría, asesoría y gestión documental en materia migratoria, 
+            que incluyen, entre otros:
+          </p>
+          <ul>
+            <li>Asesoría para trámites de visas, permisos de permanencia y salvoconductos.</li>
+            <li>Gestión de registros ante el Sistema de Información del Registro de Extranjeros (SIRE).</li>
+            <li>Apostillas y legalizaciones de documentos.</li>
+            <li>Convalidación de títulos académicos.</li>
+            <li>Creación y constitución de empresas para extranjeros.</li>
+            <li>Acompañamiento en procesos ante Migración Colombia y otras entidades competentes.</li>
+          </ul>
+          <p class="highlight-box">
+            <strong>Nota importante:</strong> MIGRANT GESTIÓN SAS <u>no es una firma de abogados</u>. 
+            Somos una consultora especializada en gestión documental y trámites migratorios. 
+            Para asuntos que requieran representación legal formal, recomendamos contactar con un abogado titulado.
+          </p>
+        </section>
+        
+        <section id="no-garantia" class="legal-section critical">
+          <h2>3. No Garantía de Resultado</h2>
+          <p class="critical-text">
+            <strong>CLÁUSULA FUNDAMENTAL:</strong> MIGRANT GESTIÓN SAS se compromete a realizar todas las 
+            gestiones con la mayor diligencia profesional, siguiendo los procedimientos establecidos por 
+            las autoridades competentes. Sin embargo, <strong>NO GARANTIZA</strong> que las solicitudes 
+            presentadas ante Migración Colombia u otras entidades serán aprobadas.
+          </p>
+          <div class="warning-box">
+            <svg class="warning-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+            <div>
+              <h3>Importante</h3>
+              <p>
+                La aprobación de visas, permisos u otros trámites migratorios es una decisión exclusiva 
+                de las autoridades colombianas (Migración Colombia, Ministerio de Relaciones Exteriores, etc.). 
+                MIGRANT GESTIÓN SAS actúa como gestor y consultor, pero no tiene poder de decisión sobre el resultado final.
+              </p>
+            </div>
+          </div>
+          <p>
+            En caso de negación o rechazo de un trámite por parte de las autoridades, el cliente comprende que:
+          </p>
+          <ul>
+            <li>Los honorarios pagados por los servicios de gestión <strong>NO son reembolsables</strong>.</li>
+            <li>Los costos de tasas gubernamentales, apostillas, traducciones u otros gastos externos <strong>NO son reembolsables</strong>.</li>
+            <li>MIGRANT GESTIÓN SAS no asume responsabilidad por decisiones de rechazo tomadas por las autoridades.</li>
+          </ul>
+        </section>
+        
+        <section id="veracidad" class="legal-section critical">
+          <h2>4. Veracidad de la Información y Documentos</h2>
+          <p class="critical-text">
+            El cliente se compromete y declara bajo gravedad de juramento que <strong>TODA LA INFORMACIÓN 
+            Y DOCUMENTACIÓN SUMINISTRADA A MIGRANT GESTIÓN SAS ES VERAZ, COMPLETA Y AUTÉNTICA</strong>.
+          </p>
+          <div class="warning-box">
+            <svg class="warning-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            <div>
+              <h3>Declaración de Autenticidad</h3>
+              <p>
+                El suministro de información falsa, adulterada o documentos fraudulentos constituye 
+                un delito en Colombia (arts. 286-289 Código Penal) y puede resultar en:
+              </p>
+              <ul>
+                <li>Rechazo inmediato del trámite migratorio.</li>
+                <li>Prohibición de entrada al territorio colombiano.</li>
+                <li>Sanciones penales y administrativas.</li>
+                <li>Terminación inmediata del contrato sin derecho a reembolso.</li>
+              </ul>
+            </div>
+          </div>
+          <p>
+            MIGRANT GESTIÓN SAS no verifica la autenticidad de documentos extranjeros presentados por el cliente. 
+            Es responsabilidad exclusiva del cliente garantizar que:
+          </p>
+          <ul>
+            <li>Los pasaportes sean legítimos y estén vigentes.</li>
+            <li>Los antecedentes penales sean expedidos por autoridades competentes.</li>
+            <li>Los títulos académicos sean originales y debidamente apostillados.</li>
+            <li>Los estados civiles, certificados laborales y demás documentos sean auténticos.</li>
+          </ul>
+          <p class="highlight-box">
+            <strong>En caso de detectarse falsedad o fraude:</strong> MIGRANT GESTIÓN SAS se reserva el derecho 
+            de terminar el contrato de forma inmediata, retener los honorarios pagados, y denunciar los hechos 
+            ante las autoridades competentes si así lo considera necesario.
+          </p>
+        </section>
+        
+        <section id="responsabilidades" class="legal-section">
+          <h2>5. Responsabilidades del Cliente</h2>
+          <p>El cliente se obliga a:</p>
+          <ul>
+            <li>Suministrar toda la documentación requerida en los plazos indicados.</li>
+            <li>Pagar los honorarios y gastos acordados en los términos establecidos.</li>
+            <li>Responder de manera oportuna a las solicitudes de información adicional.</li>
+            <li>Asistir a citas programadas con entidades gubernamentales (si aplica).</li>
+            <li>Informar de inmediato cualquier cambio en su situación personal que pueda afectar el trámite.</li>
+            <li>Mantener actualizados sus datos de contacto (teléfono, correo electrónico, dirección).</li>
+          </ul>
+          <p>
+            El incumplimiento de estas obligaciones puede generar retrasos o imposibilidad de continuar con el trámite, 
+            sin que ello genere derecho a reembolso de honorarios.
+          </p>
+        </section>
+        
+        <section id="obligaciones" class="legal-section">
+          <h2>6. Obligaciones de MIGRANT GESTIÓN SAS</h2>
+          <p>Nos comprometemos a:</p>
+          <ul>
+            <li>Realizar las gestiones con profesionalismo y diligencia.</li>
+            <li>Mantener al cliente informado sobre el estado de su trámite.</li>
+            <li>Cumplir con los plazos estimados, salvo causas de fuerza mayor o retrasos de las entidades gubernamentales.</li>
+            <li>Proteger la confidencialidad de la información del cliente conforme a la normativa vigente.</li>
+            <li>Entregar al cliente copia de los documentos presentados y resoluciones obtenidas.</li>
+            <li>Asesorar sobre alternativas legales en caso de negación de un trámite.</li>
+          </ul>
+          <p>
+            Los tiempos de respuesta de las autoridades migratorias <strong>no están bajo nuestro control</strong>. 
+            Los plazos que informamos son estimados según nuestra experiencia, pero pueden variar según el caso.
+          </p>
+        </section>
+        
+        <section id="pagos" class="legal-section">
+          <h2>7. Pagos y Honorarios</h2>
+          <p>
+            Los honorarios por nuestros servicios se acuerdan previamente con el cliente y se detallan en la 
+            cotización o contrato específico. Los pagos se realizan de la siguiente manera:
+          </p>
+          <ul>
+            <li><strong>Anticipo:</strong> Generalmente 50% al inicio del trámite.</li>
+            <li><strong>Saldo:</strong> El restante antes de la presentación oficial del trámite ante la autoridad competente.</li>
+          </ul>
+          <p class="highlight-box">
+            <strong>Importante:</strong> Los honorarios de MIGRANT GESTIÓN SAS <u>no incluyen</u> tasas gubernamentales, 
+            apostillas, traducciones oficiales, envíos, ni otros gastos externos, salvo que se indique expresamente 
+            en la cotización.
+          </p>
+          <p>
+            Los pagos realizados <strong>NO son reembolsables</strong> una vez iniciadas las gestiones, independientemente 
+            del resultado del trámite. Si el cliente decide cancelar el servicio, se cobrará proporcionalmente por 
+            el trabajo realizado hasta el momento de la cancelación.
+          </p>
+        </section>
+        
+        <section id="confidencialidad" class="legal-section">
+          <h2>8. Confidencialidad</h2>
+          <p>
+            MIGRANT GESTIÓN SAS se compromete a tratar toda la información del cliente como confidencial y a no 
+            compartirla con terceros, excepto cuando sea necesario para la ejecución del trámite (presentación 
+            ante autoridades, traductores oficiales, etc.) o cuando la ley lo exija.
+          </p>
+          <p>
+            Para más detalles sobre el tratamiento de datos personales, consulte nuestra 
+            <a href="/privacidad">Política de Privacidad</a>.
+          </p>
+        </section>
+        
+        <section id="propiedad" class="legal-section">
+          <h2>9. Propiedad Intelectual</h2>
+          <p>
+            Todo el contenido de nuestro sitio web, incluyendo textos, diseños, logotipos, gráficos y materiales, 
+            es propiedad de MIGRANT GESTIÓN SAS o de sus licenciantes y está protegido por las leyes de propiedad 
+            intelectual de Colombia.
+          </p>
+          <p>
+            Queda prohibida la reproducción, distribución o modificación de cualquier contenido sin autorización 
+            escrita previa.
+          </p>
+        </section>
+        
+        <section id="limitacion" class="legal-section">
+          <h2>10. Limitación de Responsabilidad</h2>
+          <p>
+            MIGRANT GESTIÓN SAS no será responsable por:
+          </p>
+          <ul>
+            <li>Decisiones de rechazo o negación tomadas por autoridades gubernamentales.</li>
+            <li>Retrasos causados por el cliente (falta de documentación, pagos atrasados, etc.).</li>
+            <li>Retrasos causados por entidades externas (apostillas, traducciones, Migración Colombia, etc.).</li>
+            <li>Cambios en la legislación migratoria que afecten el trámite en curso.</li>
+            <li>Situaciones de fuerza mayor o caso fortuito (desastres naturales, pandemias, huelgas, etc.).</li>
+            <li>Daños indirectos, lucro cesante o perjuicios derivados del resultado del trámite.</li>
+          </ul>
+        </section>
+        
+        <section id="modificaciones" class="legal-section">
+          <h2>11. Modificaciones a los Términos</h2>
+          <p>
+            MIGRANT GESTIÓN SAS se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. 
+            Las modificaciones entrarán en vigor desde su publicación en nuestro sitio web.
+          </p>
+          <p>
+            Es responsabilidad del cliente revisar periódicamente estos términos. El uso continuado de nuestros 
+            servicios después de cambios implica la aceptación de los nuevos términos.
+          </p>
+        </section>
+        
+        <section id="legislacion" class="legal-section">
+          <h2>12. Legislación Aplicable y Jurisdicción</h2>
+          <p>
+            Estos Términos y Condiciones se rigen por las leyes de la República de Colombia. Cualquier controversia 
+            derivada de la interpretación o ejecución de estos términos será sometida a la jurisdicción de los 
+            tribunales competentes de Neiva, Huila, Colombia.
+          </p>
+        </section>
+        
+        <section id="contacto" class="legal-section">
+          <h2>13. Información de Contacto</h2>
+          <p>
+            Para consultas, aclaraciones o reclamaciones relacionadas con estos Términos y Condiciones, 
+            puede contactarnos a través de:
+          </p>
+          <div class="contact-box">
+            <div class="contact-item">
+              <strong>Director:</strong>
+              <span>Alexis Jose Cedeño</span>
+            </div>
+            <div class="contact-item">
+              <strong>WhatsApp:</strong>
+              <a href="https://wa.me/573028077187">+57 302 807 7187</a>
+            </div>
+            <div class="contact-item">
+              <strong>Email:</strong>
+              <a href="mailto:migrantgestion@gmail.com">migrantgestion@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>Ubicación:</strong>
+              <span>Neiva, Huila, Colombia</span>
+            </div>
+          </div>
+        </section>
+        
+        <footer class="legal-footer">
+          <p>
+            Al utilizar nuestros servicios, usted reconoce haber leído, comprendido y aceptado estos 
+            Términos y Condiciones en su totalidad.
+          </p>
+          <p class="footer-signature">
+            <strong>MIGRANT GESTIÓN SAS</strong><br>
+            Neiva, Huila, Colombia
+          </p>
+        </footer>
+        
+      </article>
+      
+    </div>
+  </main>
+  
+  <Footer isLegalPage={true} />
+</Layout>
+
+<style>
+  .legal-page {
+    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    min-height: 100vh;
+    padding: 4rem 0 6rem;
+  }
+  
+  .legal-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  
+  /* Table of Contents */
+  .legal-toc {
+    position: relative;
+  }
+  
+  .toc-sticky {
+    position: sticky;
+    top: 6rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+  
+  .toc-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #001B48;
+    margin-bottom: 1.25rem;
+  }
+  
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .toc-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .toc-link {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    line-height: 1.4;
+  }
+  
+  .toc-link:hover {
+    color: #001B48;
+    background: #f3f4f6;
+    transform: translateX(4px);
+  }
+  
+  .toc-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1.5rem 0;
+  }
+  
+  .toc-back {
+    display: block;
+    font-size: 0.875rem;
+    color: #001B48;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  
+  .toc-back:hover {
+    transform: translateX(-4px);
+  }
+  
+  /* Tarjetas del TOC */
+  .toc-card {
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    border: 1px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+  
+  .toc-card-accent {
+    background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+    border-color: #fde68a;
+  }
+  
+  .toc-card-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #001B48;
+    margin-bottom: 0.5rem;
+  }
+  
+  .toc-card-text {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  
+  .toc-card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem;
+    background: #001B48;
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .toc-card-button:hover {
+    background: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 27, 72, 0.25);
+  }
+  
+  .toc-card-button-outline {
+    background: transparent;
+    color: #001B48;
+    border: 1.5px solid #001B48;
+  }
+  
+  .toc-card-button-outline:hover {
+    background: #001B48;
+    color: #ffffff;
+  }
+  
+  .toc-card-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  
+  .toc-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 27, 72, 0.05);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #001B48;
+  }
+  
+  .toc-badge-icon {
+    width: 16px;
+    height: 16px;
+    color: #10b981;
+  }
+  
+  /* Enlaces adicionales */
+  .toc-links {
+    margin-top: 1rem;
+  }
+  
+  .toc-links-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8E8E8E;
+    margin-bottom: 0.75rem;
+  }
+  
+  .toc-link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem;
+    font-size: 0.875rem;
+    color: #001B48;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  
+  .toc-link-item:hover {
+    background: #f3f4f6;
+    transform: translateX(4px);
+  }
+  
+  .toc-link-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  
+  /* Nota informativa */
+  .toc-note {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  .toc-note-icon {
+    width: 20px;
+    height: 20px;
+    color: #8E8E8E;
+    flex-shrink: 0;
+  }
+  
+  .toc-note-text {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin: 0;
+  }
+  
+  .toc-note-text strong {
+    color: #001B48;
+    font-weight: 600;
+  }
+  
+  /* Main Content */
+  .legal-content {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 3.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+  
+  .legal-header {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  
+  .legal-date {
+    font-size: 0.875rem;
+    color: #8E8E8E;
+    margin-bottom: 0.75rem;
+  }
+  
+  .legal-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  
+  .legal-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #4b5563;
+  }
+  
+  /* Sections */
+  .legal-section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 6rem;
+  }
+  
+  .legal-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #001B48;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+  }
+  
+  .legal-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: 1.25rem;
+  }
+  
+  .legal-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+  }
+  
+  .legal-section ul li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.7;
+    color: #374151;
+  }
+  
+  .legal-section ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #001B48;
+    font-weight: 600;
+  }
+  
+  /* Critical Sections */
+  .legal-section.critical {
+    border: 2px solid #001B48;
+    border-radius: 12px;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+  }
+  
+  .critical-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #001B48;
+    line-height: 1.7;
+  }
+  
+  /* Boxes */
+  .highlight-box {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  
+  .warning-box {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  
+  .warning-icon {
+    width: 28px;
+    height: 28px;
+    color: #dc2626;
+    flex-shrink: 0;
+  }
+  
+  .warning-box h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #991b1b;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .warning-box p,
+  .warning-box ul {
+    margin: 0;
+  }
+  
+  .warning-box ul {
+    margin-top: 0.75rem;
+  }
+  
+  .contact-box {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .contact-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .contact-item strong {
+    color: #001B48;
+    font-weight: 600;
+  }
+  
+  .contact-item a {
+    color: #001B48;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer */
+  .legal-footer {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 2px solid #e5e7eb;
+    text-align: center;
+  }
+  
+  .footer-signature {
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    color: #001B48;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .legal-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .legal-toc {
+      display: none;
+    }
+    
+    .legal-content {
+      padding: 2.5rem 2rem;
+    }
+    
+    .legal-title {
+      font-size: 2.25rem;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .legal-page {
+      padding: 2rem 0 3rem;
+    }
+    
+    .legal-container {
+      padding: 0 1.25rem;
+    }
+    
+    .legal-content {
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+    }
+    
+    .legal-title {
+      font-size: 1.875rem;
+    }
+    
+    .legal-section h2 {
+      font-size: 1.5rem;
+    }
+    
+    .contact-item {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>
+
+<script>
+  // Smooth scroll para los enlaces del TOC
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+
+  tocLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href')?.slice(1);
+      const targetElement = document.getElementById(targetId || '');
+      
+      if (targetElement) {
+        const offset = 100;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Highlight activo
+        tocLinks.forEach(l => l.style.background = '');
+        link.style.background = '#f3f4f6';
+      }
+    });
+  });
+  
+  // Highlight del link activo al hacer scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '-100px 0px -66%',
+    threshold: 0
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        tocLinks.forEach(link => {
+          link.style.background = '';
+          if (link.getAttribute('href') === `#${id}`) {
+            link.style.background = '#f3f4f6';
+          }
+        });
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.legal-section').forEach(section => {
+    observer.observe(section);
+  });
+</script>

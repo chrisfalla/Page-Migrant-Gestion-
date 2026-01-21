@@ -1,0 +1,1097 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const isLegalPage = true;
+
+const sections = [
+  { id: 'introduccion', title: 'Introducción' },
+  { id: 'responsable', title: 'Responsable del Tratamiento' },
+  { id: 'datos-recopilados', title: 'Datos Recopilados' },
+  { id: 'finalidad', title: 'Finalidad del Tratamiento' },
+  { id: 'datos-sensibles', title: 'Datos Sensibles' },
+  { id: 'autorizacion', title: 'Autorización' },
+  { id: 'derechos', title: 'Derechos del Titular' },
+  { id: 'seguridad', title: 'Medidas de Seguridad' },
+  { id: 'transferencia', title: 'Transferencia de Datos' },
+  { id: 'conservacion', title: 'Conservación de Datos' },
+  { id: 'menores', title: 'Datos de Menores' },
+  { id: 'cookies', title: 'Cookies y Tecnologías' },
+  { id: 'modificaciones', title: 'Modificaciones a la Política' },
+  { id: 'contacto', title: 'Contacto y Ejercicio de Derechos' },
+];
+---
+
+<Layout title="Política de Privacidad | MIGRANT GESTIÓN SAS">
+  <Header isLegalPage={true} />
+  
+  <main class="legal-page">
+    <div class="legal-container">
+      
+      <!-- Sidebar TOC -->
+      <aside class="legal-toc">
+        <div class="toc-sticky">
+          <h2 class="toc-title">Contenido</h2>
+          <nav aria-label="Índice de contenidos">
+            <ul class="toc-list">
+              {sections.map(section => (
+                <li>
+                  <a href={`#${section.id}`} class="toc-link">
+                    {section.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div class="toc-divider"></div>
+          <a href="/" class="toc-back">← Volver al inicio</a>
+          
+          <div class="toc-divider"></div>
+          
+          <!-- Información de protección de datos -->
+          <div class="toc-card">
+            <h3 class="toc-card-title">Protección de tus datos</h3>
+            <p class="toc-card-text">Cumplimos con la Ley 1581 de 2012 de Colombia. Tus datos están seguros.</p>
+            <div class="toc-badge">
+              <svg class="toc-badge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+              <span>Certificado Ley 1581/2012</span>
+            </div>
+          </div>
+          
+          <div class="toc-divider"></div>
+          
+          <!-- Ejercer derechos -->
+          <div class="toc-card toc-card-accent">
+            <h3 class="toc-card-title">Ejercer tus derechos</h3>
+            <p class="toc-card-text">Accede, rectifica o elimina tus datos personales cuando lo desees.</p>
+            <a href="mailto:migrantgestion@gmail.com" class="toc-card-button toc-card-button-outline">
+              <svg class="toc-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              Enviar solicitud
+            </a>
+          </div>
+          
+          <div class="toc-divider"></div>
+          
+          <!-- Documentos relacionados -->
+          <div class="toc-links">
+            <h3 class="toc-links-title">Documentos relacionados</h3>
+            <a href="/terminos" class="toc-link-item">
+              <svg class="toc-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              Términos y Condiciones
+            </a>
+          </div>
+          
+          <div class="toc-divider"></div>
+          
+          <!-- Contacto SIC -->
+          <div class="toc-note">
+            <svg class="toc-note-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+            <p class="toc-note-text">Para quejas sobre tratamiento de datos, contacta a la <strong>Superintendencia de Industria y Comercio (SIC)</strong>.</p>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Main Content -->
+      <article class="legal-content">
+        
+        <header class="legal-header">
+          <p class="legal-date">Última actualización: 21 de enero de 2026</p>
+          <h1 class="legal-title">Política de Privacidad y Tratamiento de Datos Personales</h1>
+          <p class="legal-intro">
+            En cumplimiento de la <strong>Ley 1581 de 2012</strong> y el <strong>Decreto 1377 de 2013</strong> 
+            de la República de Colombia, <strong>MIGRANT GESTIÓN SAS</strong> establece la presente Política de 
+            Privacidad y Tratamiento de Datos Personales para informar a nuestros clientes sobre la recolección, 
+            uso, almacenamiento y protección de su información personal.
+          </p>
+        </header>
+        
+        <section id="introduccion" class="legal-section">
+          <h2>1. Introducción</h2>
+          <p>
+            MIGRANT GESTIÓN SAS reconoce la importancia de proteger la privacidad y los datos personales de 
+            nuestros clientes. Esta política describe cómo tratamos la información que usted nos proporciona 
+            al contratar nuestros servicios de consultoría y gestión migratoria.
+          </p>
+          <p>
+            Al suministrarnos su información personal, usted acepta las prácticas descritas en esta política 
+            y otorga su <strong>autorización expresa</strong> para el tratamiento de sus datos conforme a la 
+            legislación colombiana.
+          </p>
+        </section>
+        
+        <section id="responsable" class="legal-section">
+          <h2>2. Responsable del Tratamiento</h2>
+          <div class="contact-box">
+            <div class="contact-item">
+              <strong>Razón Social:</strong>
+              <span>MIGRANT GESTIÓN SAS</span>
+            </div>
+            <div class="contact-item">
+              <strong>Director:</strong>
+              <span>Alexis Jose Cedeño</span>
+            </div>
+            <div class="contact-item">
+              <strong>Domicilio:</strong>
+              <span>Neiva, Huila, Colombia</span>
+            </div>
+            <div class="contact-item">
+              <strong>WhatsApp:</strong>
+              <a href="https://wa.me/573028077187">+57 302 807 7187</a>
+            </div>
+            <div class="contact-item">
+              <strong>Correo Electrónico:</strong>
+              <a href="mailto:migrantgestion@gmail.com">migrantgestion@gmail.com</a>
+            </div>
+          </div>
+          <p>
+            MIGRANT GESTIÓN SAS actúa como <strong>Responsable del Tratamiento</strong> de los datos personales 
+            de sus clientes y se compromete a garantizar su protección conforme a la normativa vigente.
+          </p>
+        </section>
+        
+        <section id="datos-recopilados" class="legal-section">
+          <h2>3. Datos Personales Recopilados</h2>
+          <p>
+            Para la prestación de nuestros servicios de gestión migratoria, recopilamos diferentes tipos de 
+            datos personales, que incluyen:
+          </p>
+          
+          <h3 class="subsection-title">Datos de Identificación</h3>
+          <ul>
+            <li>Nombres y apellidos completos</li>
+            <li>Número de pasaporte y país de expedición</li>
+            <li>Número de identificación nacional (cédula, DNI, etc.)</li>
+            <li>Fecha y lugar de nacimiento</li>
+            <li>Nacionalidad y país de residencia</li>
+            <li>Estado civil</li>
+            <li>Fotografía reciente</li>
+          </ul>
+          
+          <h3 class="subsection-title">Datos de Contacto</h3>
+          <ul>
+            <li>Dirección de residencia actual</li>
+            <li>Número de teléfono y/o celular</li>
+            <li>Correo electrónico</li>
+            <li>Datos de contacto de emergencia</li>
+          </ul>
+          
+          <h3 class="subsection-title">Datos Académicos y Laborales</h3>
+          <ul>
+            <li>Títulos académicos y certificados de estudio</li>
+            <li>Experiencia laboral y certificaciones profesionales</li>
+            <li>Cartas laborales y comprobantes de ingresos</li>
+          </ul>
+          
+          <h3 class="subsection-title">Datos Financieros</h3>
+          <ul>
+            <li>Información de cuentas bancarias (para transferencias de honorarios)</li>
+            <li>Comprobantes de solvencia económica</li>
+            <li>Declaraciones de renta o estados financieros (si aplica)</li>
+          </ul>
+        </section>
+        
+        <section id="finalidad" class="legal-section">
+          <h2>4. Finalidad del Tratamiento de Datos</h2>
+          <p>
+            Los datos personales recopilados serán utilizados exclusivamente para las siguientes finalidades:
+          </p>
+          <ul>
+            <li>
+              <strong>Gestión de trámites migratorios:</strong> Presentación de solicitudes de visas, permisos 
+              de permanencia, salvoconductos y otros trámites ante Migración Colombia y entidades competentes.
+            </li>
+            <li>
+              <strong>Registro ante autoridades:</strong> Inscripción en el Sistema de Información del Registro 
+              de Extranjeros (SIRE) y otras bases de datos oficiales.
+            </li>
+            <li>
+              <strong>Apostillas y legalizaciones:</strong> Gestión de documentos ante el Ministerio de Relaciones 
+              Exteriores y entidades extranjeras.
+            </li>
+            <li>
+              <strong>Convalidación de títulos:</strong> Tramitación ante el Ministerio de Educación Nacional.
+            </li>
+            <li>
+              <strong>Constitución de empresas:</strong> Registro ante Cámara de Comercio, DIAN y Secretarías 
+              de Hacienda Municipal.
+            </li>
+            <li>
+              <strong>Comunicación con el cliente:</strong> Envío de actualizaciones sobre el estado del trámite, 
+              solicitudes de documentación adicional y notificaciones importantes.
+            </li>
+            <li>
+              <strong>Cumplimiento de obligaciones legales:</strong> Conservación de registros conforme a la 
+              normativa contable, tributaria y migratoria.
+            </li>
+            <li>
+              <strong>Mejora de servicios:</strong> Análisis interno para optimizar la calidad de nuestros servicios 
+              (datos anonimizados).
+            </li>
+          </ul>
+        </section>
+        
+        <section id="datos-sensibles" class="legal-section critical">
+          <h2>5. Tratamiento de Datos Sensibles</h2>
+          <p class="critical-text">
+            En el marco de nuestros servicios, es necesario el tratamiento de <strong>DATOS SENSIBLES</strong> 
+            según lo define el artículo 5 de la Ley 1581 de 2012. Estos incluyen:
+          </p>
+          
+          <div class="warning-box">
+            <svg class="warning-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+            <div>
+              <h3>Categorías de Datos Sensibles</h3>
+              <ul>
+                <li>
+                  <strong>Antecedentes judiciales y policiales:</strong> Certificados de antecedentes penales, 
+                  judiciales y de policía del país de origen y de Colombia.
+                </li>
+                <li>
+                  <strong>Datos biométricos:</strong> Fotografías, huellas dactilares y firma digitalizada 
+                  (cuando sean requeridas por las autoridades).
+                </li>
+                <li>
+                  <strong>Información sobre salud:</strong> Certificados médicos, exámenes de laboratorio o 
+                  pruebas de salud exigidas para ciertos tipos de visa (si aplica).
+                </li>
+                <li>
+                  <strong>Origen racial o étnico:</strong> Cuando sea requerido por formularios oficiales de 
+                  las autoridades migratorias.
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <p class="highlight-box">
+            <strong>Autorización expresa:</strong> El tratamiento de datos sensibles requiere su 
+            <u>autorización expresa, previa e informada</u>. Al contratar nuestros servicios y suministrar 
+            estos datos, usted otorga dicha autorización. Usted tiene derecho a no autorizar el tratamiento 
+            de datos sensibles, pero esto puede impedir que completemos su trámite migratorio.
+          </p>
+          
+          <p>
+            <strong>Medidas especiales de protección:</strong> Los datos sensibles son almacenados con 
+            medidas de seguridad reforzadas, acceso restringido y cifrado, conforme a los estándares 
+            más altos de protección de datos.
+          </p>
+        </section>
+        
+        <section id="autorizacion" class="legal-section">
+          <h2>6. Autorización para el Tratamiento de Datos</h2>
+          <p>
+            Al contratar nuestros servicios, usted otorga su <strong>autorización libre, previa, expresa 
+            e informada</strong> para que MIGRANT GESTIÓN SAS:
+          </p>
+          <ul>
+            <li>Recopile, almacene, use, circule, suprima, procese, compile, intercambie, actualice y 
+            transmita sus datos personales y sensibles.</li>
+            <li>Comparta su información con terceros necesarios para la ejecución del trámite 
+            (autoridades migratorias, traductores oficiales, notarías, etc.).</li>
+            <li>Conserve sus datos durante el tiempo legalmente establecido y necesario para cumplir 
+            con obligaciones contractuales y legales.</li>
+          </ul>
+          <p>
+            Esta autorización puede ser revocada en cualquier momento, salvo cuando exista una obligación 
+            legal o contractual que impida la supresión de los datos.
+          </p>
+        </section>
+        
+        <section id="derechos" class="legal-section">
+          <h2>7. Derechos del Titular de los Datos</h2>
+          <p>
+            Conforme al artículo 8 de la Ley 1581 de 2012, como titular de sus datos personales, 
+            usted tiene derecho a:
+          </p>
+          <ul>
+            <li>
+              <strong>Conocer, actualizar y rectificar</strong> sus datos personales frente a MIGRANT GESTIÓN SAS 
+              en su condición de Responsable del Tratamiento.
+            </li>
+            <li>
+              <strong>Solicitar prueba de la autorización</strong> otorgada para el tratamiento de sus datos.
+            </li>
+            <li>
+              <strong>Ser informado</strong> sobre el uso que se ha dado a sus datos personales.
+            </li>
+            <li>
+              <strong>Presentar quejas</strong> ante la Superintendencia de Industria y Comercio por infracciones 
+              a la normativa de protección de datos.
+            </li>
+            <li>
+              <strong>Revocar la autorización</strong> y solicitar la supresión de sus datos cuando no exista 
+              un deber legal o contractual que impida hacerlo.
+            </li>
+            <li>
+              <strong>Acceder de forma gratuita</strong> a sus datos personales que hayan sido objeto de tratamiento.
+            </li>
+          </ul>
+          <p>
+            Para ejercer estos derechos, puede contactarnos a través de los medios indicados en la sección 
+            <a href="#contacto">Contacto y Ejercicio de Derechos</a>.
+          </p>
+        </section>
+        
+        <section id="seguridad" class="legal-section">
+          <h2>8. Medidas de Seguridad</h2>
+          <p>
+            MIGRANT GESTIÓN SAS implementa medidas técnicas, humanas y administrativas para proteger sus 
+            datos personales contra pérdida, robo, uso indebido, acceso no autorizado, divulgación, 
+            alteración o destrucción, que incluyen:
+          </p>
+          <ul>
+            <li>
+              <strong>Cifrado de datos sensibles:</strong> Los documentos digitales que contienen datos sensibles 
+              (pasaportes, antecedentes penales) se almacenan cifrados.
+            </li>
+            <li>
+              <strong>Control de acceso:</strong> Solo el personal autorizado tiene acceso a los datos personales, 
+              bajo obligaciones de confidencialidad.
+            </li>
+            <li>
+              <strong>Copias de seguridad:</strong> Respaldos periódicos en servidores seguros con acceso restringido.
+            </li>
+            <li>
+              <strong>Documentos físicos:</strong> Los documentos impresos se almacenan en archivadores con llave 
+              y acceso limitado.
+            </li>
+            <li>
+              <strong>Destrucción segura:</strong> Los documentos que ya no son necesarios se destruyen mediante 
+              trituración o borrado seguro digital.
+            </li>
+            <li>
+              <strong>Capacitación del personal:</strong> Nuestro equipo recibe formación continua sobre protección 
+              de datos y confidencialidad.
+            </li>
+          </ul>
+        </section>
+        
+        <section id="transferencia" class="legal-section">
+          <h2>9. Transferencia y Transmisión de Datos</h2>
+          <p>
+            Para cumplir con las finalidades descritas, sus datos personales pueden ser compartidos con:
+          </p>
+          
+          <h3 class="subsection-title">Entidades Gubernamentales</h3>
+          <ul>
+            <li>Migración Colombia (Unidad Administrativa Especial Migración Colombia)</li>
+            <li>Ministerio de Relaciones Exteriores</li>
+            <li>Ministerio de Educación Nacional</li>
+            <li>Cámara de Comercio</li>
+            <li>DIAN (Dirección de Impuestos y Aduanas Nacionales)</li>
+            <li>Secretarías de Hacienda Municipal</li>
+            <li>Autoridades consulares y migratorias extranjeras (cuando aplique)</li>
+          </ul>
+          
+          <h3 class="subsection-title">Terceros Prestadores de Servicios</h3>
+          <ul>
+            <li>Traductores oficiales certificados</li>
+            <li>Notarías públicas</li>
+            <li>Servicios de mensajería y correo</li>
+            <li>Proveedores de servicios tecnológicos (almacenamiento en la nube, correo electrónico)</li>
+          </ul>
+          
+          <p class="highlight-box">
+            <strong>Garantía:</strong> Todos los terceros con los que compartimos datos están obligados a 
+            cumplir con la normativa de protección de datos personales y a mantener la confidencialidad 
+            de la información.
+          </p>
+          
+          <p>
+            <strong>Transferencias internacionales:</strong> En algunos casos, sus datos pueden ser transferidos 
+            fuera de Colombia (por ejemplo, a autoridades consulares de su país de origen). Estas transferencias 
+            se realizan únicamente cuando son necesarias para el trámite y con las garantías adecuadas.
+          </p>
+        </section>
+        
+        <section id="conservacion" class="legal-section">
+          <h2>10. Conservación de Datos</h2>
+          <p>
+            MIGRANT GESTIÓN SAS conservará sus datos personales durante el tiempo necesario para cumplir con 
+            las finalidades para las que fueron recopilados y conforme a las obligaciones legales:
+          </p>
+          <ul>
+            <li>
+              <strong>Durante la prestación del servicio:</strong> Mientras dure el trámite migratorio y 
+              hasta su conclusión.
+            </li>
+            <li>
+              <strong>Obligaciones tributarias y contables:</strong> Los datos relacionados con facturación 
+              y contratos se conservarán durante 10 años conforme al Código de Comercio colombiano.
+            </li>
+            <li>
+              <strong>Tras la finalización del servicio:</strong> Sus datos se conservarán durante 5 años 
+              adicionales para atender posibles consultas, reclamaciones o requerimientos legales.
+            </li>
+            <li>
+              <strong>Datos sensibles:</strong> Una vez cumplida la finalidad y vencido el plazo de conservación, 
+              los datos sensibles serán eliminados de forma segura e irreversible.
+            </li>
+          </ul>
+          <p>
+            Transcurridos estos plazos, procederemos a la supresión, anonimización o archivo de los datos, 
+            salvo que exista una obligación legal que requiera su conservación.
+          </p>
+        </section>
+        
+        <section id="menores" class="legal-section">
+          <h2>11. Datos de Menores de Edad</h2>
+          <p>
+            En el caso de trámites migratorios que involucren a menores de edad, el tratamiento de sus datos 
+            personales se realiza con el consentimiento expreso de los padres o representantes legales.
+          </p>
+          <p>
+            Conforme al artículo 7 de la Ley 1581 de 2012, el tratamiento de datos de menores se fundamenta en 
+            el <strong>interés superior del niño</strong> y se garantiza el respeto a sus derechos fundamentales.
+          </p>
+          <p class="highlight-box">
+            <strong>Documentación requerida:</strong> Para tramitar documentos de menores, solicitamos copia del 
+            registro civil de nacimiento, pasaportes, y autorización firmada por ambos padres o representantes 
+            legales con documento de identidad.
+          </p>
+        </section>
+        
+        <section id="cookies" class="legal-section">
+          <h2>12. Cookies y Tecnologías de Rastreo</h2>
+          <p>
+            Nuestro sitio web puede utilizar cookies y tecnologías similares para mejorar la experiencia 
+            del usuario y analizar el tráfico. Las cookies son pequeños archivos de texto que se almacenan 
+            en su dispositivo.
+          </p>
+          
+          <h3 class="subsection-title">Tipos de Cookies Utilizadas</h3>
+          <ul>
+            <li>
+              <strong>Cookies técnicas:</strong> Necesarias para el funcionamiento básico del sitio web.
+            </li>
+            <li>
+              <strong>Cookies analíticas:</strong> Para entender cómo los visitantes interactúan con el sitio 
+              (Google Analytics u otras herramientas).
+            </li>
+            <li>
+              <strong>Cookies de funcionalidad:</strong> Para recordar preferencias del usuario 
+              (idioma, región, etc.).
+            </li>
+          </ul>
+          
+          <p>
+            Usted puede configurar su navegador para rechazar cookies o ser notificado cuando se envíen. 
+            Sin embargo, algunas funcionalidades del sitio pueden no operar correctamente sin cookies.
+          </p>
+        </section>
+        
+        <section id="modificaciones" class="legal-section">
+          <h2>13. Modificaciones a esta Política</h2>
+          <p>
+            MIGRANT GESTIÓN SAS se reserva el derecho de modificar esta Política de Privacidad en cualquier 
+            momento para adaptarla a cambios legislativos, nuevos servicios o mejoras en la protección de datos.
+          </p>
+          <p>
+            Las modificaciones serán publicadas en nuestro sitio web y entrarán en vigor desde su publicación. 
+            Se recomienda revisar periódicamente esta política para estar informado de cómo protegemos sus datos.
+          </p>
+          <p>
+            Si realizamos cambios sustanciales que afecten el tratamiento de datos sensibles, le notificaremos 
+            por correo electrónico o WhatsApp para solicitar su consentimiento expreso.
+          </p>
+        </section>
+        
+        <section id="contacto" class="legal-section">
+          <h2>14. Contacto y Ejercicio de Derechos</h2>
+          <p>
+            Para ejercer sus derechos de acceso, rectificación, actualización, supresión, revocación de 
+            autorización o cualquier consulta relacionada con el tratamiento de sus datos personales, 
+            puede contactarnos a través de:
+          </p>
+          
+          <div class="contact-box">
+            <div class="contact-item">
+              <strong>Director:</strong>
+              <span>Alexis Jose Cedeño</span>
+            </div>
+            <div class="contact-item">
+              <strong>WhatsApp:</strong>
+              <a href="https://wa.me/573028077187">+57 302 807 7187</a>
+            </div>
+            <div class="contact-item">
+              <strong>Email:</strong>
+              <a href="mailto:migrantgestion@gmail.com">migrantgestion@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>Ubicación:</strong>
+              <span>Neiva, Huila, Colombia</span>
+            </div>
+          </div>
+          
+          <p>
+            <strong>Plazo de respuesta:</strong> Atenderemos su solicitud en un plazo máximo de 
+            <strong>15 días hábiles</strong> contados desde la fecha de recepción. Si su solicitud 
+            requiere información adicional, podríamos solicitar una prórroga de hasta 8 días hábiles adicionales.
+          </p>
+          
+          <p class="highlight-box">
+            <strong>Superintendencia de Industria y Comercio:</strong> Si considera que sus derechos han sido 
+            vulnerados, puede presentar una queja ante la Delegatura de Protección de Datos Personales de la 
+            Superintendencia de Industria y Comercio (SIC) a través de su sitio web: 
+            <a href="https://www.sic.gov.co" target="_blank" rel="noopener">www.sic.gov.co</a>
+          </p>
+        </section>
+        
+        <footer class="legal-footer">
+          <p>
+            Al utilizar nuestros servicios y suministrarnos su información personal, usted reconoce haber 
+            leído, comprendido y aceptado esta Política de Privacidad y Tratamiento de Datos Personales 
+            en su totalidad.
+          </p>
+          <p class="footer-signature">
+            <strong>MIGRANT GESTIÓN SAS</strong><br>
+            Neiva, Huila, Colombia<br>
+            En cumplimiento de la Ley 1581 de 2012 y normativa concordante
+          </p>
+        </footer>
+        
+      </article>
+      
+    </div>
+  </main>
+  
+  <Footer isLegalPage={true} />
+</Layout>
+
+<style>
+  .legal-page {
+    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    min-height: 100vh;
+    padding: 4rem 0 6rem;
+  }
+  
+  .legal-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  
+  /* Table of Contents */
+  .legal-toc {
+    position: relative;
+  }
+  
+  .toc-sticky {
+    position: sticky;
+    top: 6rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+  
+  .toc-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #001B48;
+    margin-bottom: 1.25rem;
+  }
+  
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .toc-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .toc-link {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    line-height: 1.4;
+  }
+  
+  .toc-link:hover {
+    color: #001B48;
+    background: #f3f4f6;
+    transform: translateX(4px);
+  }
+  
+  .toc-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1.5rem 0;
+  }
+  
+  .toc-back {
+    display: block;
+    font-size: 0.875rem;
+    color: #001B48;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  
+  .toc-back:hover {
+    transform: translateX(-4px);
+  }
+  
+  /* Tarjetas del TOC */
+  .toc-card {
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    border: 1px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+  
+  .toc-card-accent {
+    background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+    border-color: #fde68a;
+  }
+  
+  .toc-card-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #001B48;
+    margin-bottom: 0.5rem;
+  }
+  
+  .toc-card-text {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  
+  .toc-card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem;
+    background: #001B48;
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .toc-card-button:hover {
+    background: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 27, 72, 0.25);
+  }
+  
+  .toc-card-button-outline {
+    background: transparent;
+    color: #001B48;
+    border: 1.5px solid #001B48;
+  }
+  
+  .toc-card-button-outline:hover {
+    background: #001B48;
+    color: #ffffff;
+  }
+  
+  .toc-card-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  
+  .toc-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 27, 72, 0.05);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #001B48;
+  }
+  
+  .toc-badge-icon {
+    width: 16px;
+    height: 16px;
+    color: #10b981;
+  }
+  
+  /* Enlaces adicionales */
+  .toc-links {
+    margin-top: 1rem;
+  }
+  
+  .toc-links-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8E8E8E;
+    margin-bottom: 0.75rem;
+  }
+  
+  .toc-link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem;
+    font-size: 0.875rem;
+    color: #001B48;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  
+  .toc-link-item:hover {
+    background: #f3f4f6;
+    transform: translateX(4px);
+  }
+  
+  .toc-link-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  
+  /* Nota informativa */
+  .toc-note {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  .toc-note-icon {
+    width: 20px;
+    height: 20px;
+    color: #8E8E8E;
+    flex-shrink: 0;
+  }
+  
+  .toc-note-text {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin: 0;
+  }
+  
+  .toc-note-text strong {
+    color: #001B48;
+    font-weight: 600;
+  }
+  
+  /* Main Content */
+  .legal-content {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 3.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+  
+  .legal-header {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  
+  .legal-date {
+    font-size: 0.875rem;
+    color: #8E8E8E;
+    margin-bottom: 0.75rem;
+  }
+  
+  .legal-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  
+  .legal-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #4b5563;
+  }
+  
+  /* Sections */
+  .legal-section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 6rem;
+  }
+  
+  .legal-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #001B48;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+  }
+  
+  .subsection-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #001B48;
+    margin: 1.75rem 0 1rem;
+  }
+  
+  .legal-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: 1.25rem;
+  }
+  
+  .legal-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+  }
+  
+  .legal-section ul li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.7;
+    color: #374151;
+  }
+  
+  .legal-section ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #001B48;
+    font-weight: 600;
+  }
+  
+  /* Critical Sections */
+  .legal-section.critical {
+    border: 2px solid #001B48;
+    border-radius: 12px;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+  }
+  
+  .critical-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #001B48;
+    line-height: 1.7;
+  }
+  
+  /* Boxes */
+  .highlight-box {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  
+  .warning-box {
+    background: #f0f9ff;
+    border-left: 4px solid #001B48;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  
+  .warning-icon {
+    width: 28px;
+    height: 28px;
+    color: #001B48;
+    flex-shrink: 0;
+  }
+  
+  .warning-box h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #001B48;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .warning-box p,
+  .warning-box ul {
+    margin: 0;
+  }
+  
+  .warning-box ul {
+    margin-top: 0.75rem;
+  }
+  
+  .contact-box {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .contact-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .contact-item strong {
+    color: #001B48;
+    font-weight: 600;
+  }
+  
+  .contact-item a {
+    color: #001B48;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer */
+  .legal-footer {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 2px solid #e5e7eb;
+    text-align: center;
+  }
+  
+  .footer-signature {
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    color: #001B48;
+    line-height: 1.6;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .legal-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .legal-toc {
+      display: none;
+    }
+    
+    .legal-content {
+      padding: 2.5rem 2rem;
+    }
+    
+    .legal-title {
+      font-size: 2.25rem;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .legal-page {
+      padding: 2rem 0 3rem;
+    }
+    
+    .legal-container {
+      padding: 0 1.25rem;
+    }
+    
+    .legal-content {
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+    }
+    
+    .legal-title {
+      font-size: 1.875rem;
+    }
+    
+    .legal-section h2 {
+      font-size: 1.5rem;
+    }
+    
+    .contact-item {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>
+
+<script>
+  // Smooth scroll para los enlaces del TOC
+  document.querySelectorAll<HTMLElement>('.toc-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href')?.slice(1);
+      const targetElement = document.getElementById(targetId || '');
+      
+      if (targetElement) {
+        const offset = 100;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Highlight activo
+        document.querySelectorAll<HTMLElement>('.toc-link').forEach(l => (l.style.background = ''));
+        link.style.background = '#f3f4f6';
+      }
+    });
+  });
+  
+  // Highlight del link activo al hacer scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '-100px 0px -66%',
+    threshold: 0
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        document.querySelectorAll<HTMLElement>('.toc-link').forEach(link => {
+          link.style.background = '';
+          if (link.getAttribute('href') === `#${id}`) {
+            link.style.background = '#f3f4f6';
+          }
+        });
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.legal-section').forEach(section => {
+    observer.observe(section);
+  });
+</script>

@@ -1,0 +1,63 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mainBg" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#001B48"/>
+      <stop offset="0.4" stop-color="#002856"/>
+      <stop offset="1" stop-color="#003A73"/>
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563EB" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#1E40AF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="subtleLight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.03"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="gridPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.06"/>
+    </pattern>
+    <pattern id="dotsPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="#FFFFFF" fill-opacity="0.08"/>
+    </pattern>
+  </defs>
+  
+  <!-- Fondo base -->
+  <rect width="1920" height="1080" fill="url(#mainBg)"/>
+  
+  <!-- Grid sutil -->
+  <rect width="1920" height="1080" fill="url(#gridPattern)" opacity="0.4"/>
+  
+  <!-- Formas geométricas corporativas -->
+  <g opacity="0.08">
+    <rect x="1200" y="-100" width="800" height="800" fill="#FFFFFF" transform="rotate(15 1600 300)"/>
+    <rect x="-200" y="500" width="700" height="700" fill="#FFFFFF" transform="rotate(-12 150 850)"/>
+  </g>
+  
+  <!-- Acentos luminosos sutiles -->
+  <ellipse cx="1600" cy="200" rx="450" ry="350" fill="url(#accentGlow)" opacity="0.6"/>
+  <ellipse cx="300" cy="800" rx="400" ry="300" fill="url(#accentGlow)" opacity="0.5"/>
+  
+  <!-- Líneas diagonales elegantes -->
+  <g opacity="0.12" stroke="#FFFFFF" stroke-width="1.5" fill="none">
+    <line x1="400" y1="0" x2="800" y2="1080"/>
+    <line x1="600" y1="0" x2="1000" y2="1080"/>
+    <line x1="1300" y1="0" x2="1700" y2="1080"/>
+  </g>
+  
+  <!-- Elementos de confianza: marcos/documentos abstractos -->
+  <g opacity="0.1">
+    <rect x="100" y="150" width="280" height="200" rx="8" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    <rect x="1500" y="700" width="320" height="240" rx="8" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    <rect x="800" y="100" width="220" height="160" rx="6" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+  </g>
+  
+  <!-- Puntos decorativos -->
+  <rect width="1920" height="1080" fill="url(#dotsPattern)" opacity="0.3"/>
+  
+  <!-- Luz sutil superior -->
+  <rect x="0" y="0" width="1920" height="400" fill="url(#subtleLight)" opacity="0.5"/>
+  
+  <!-- Viñeta sutil en bordes -->
+  <rect width="1920" height="1080" fill="url(#mainBg)" opacity="0.3" style="mix-blend-mode: multiply"/>
+</svg>
