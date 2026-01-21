@@ -39,7 +39,6 @@ import backgroundImage from '../assets/background.svg';
     width: 100%;
     height: 100%;
     z-index: 1;
-    will-change: transform, opacity;
   }
 
   .hero-image {
@@ -91,41 +90,55 @@ import backgroundImage from '../assets/background.svg';
 
 <script>
   // Parallax and Fade Out Effect
-  const hero = document.getElementById('hero');
-  const heroBackground = hero?.querySelector('.hero-background') as HTMLElement;
-  
-  let ticking = false;
-  
-  function updateParallax() {
-    const scrollY = window.scrollY;
-    const heroHeight = hero?.offsetHeight || 0;
+  document.addEventListener('DOMContentLoaded', () => {
+    const hero = document.getElementById('hero');
+    const heroBackground = hero?.querySelector('.hero-background') as HTMLElement;
     
-    if (scrollY <= heroHeight) {
-      // Parallax effect: background moves slower than scroll
-      const parallaxOffset = scrollY * 0.5;
+    if (!hero || !heroBackground) return;
+    
+    let ticking = false;
+    let isScrolling = false;
+    
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      const heroHeight = hero.offsetHeight;
       
-      // Fade out effect: opacity decreases as user scrolls
-      const opacity = 1 - (scrollY / heroHeight);
-      
-      if (heroBackground) {
+      // Only update if hero is in viewport
+      if (scrollY <= heroHeight) {
+        // Add will-change property during scroll
+        if (!isScrolling) {
+          heroBackground.style.willChange = 'transform, opacity';
+          isScrolling = true;
+        }
+        
+        // Parallax effect: background moves slower than scroll
+        const parallaxOffset = scrollY * 0.5;
+        
+        // Fade out effect: opacity decreases as user scrolls
+        const opacity = Math.max(0, 1 - (scrollY / heroHeight));
+        
         heroBackground.style.transform = `translate3d(0, ${parallaxOffset}px, 0)`;
         heroBackground.style.opacity = opacity.toString();
+      } else if (isScrolling) {
+        // Remove will-change when hero is out of view
+        heroBackground.style.willChange = 'auto';
+        isScrolling = false;
+      }
+      
+      ticking = false;
+    }
+    
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
       }
     }
     
-    ticking = false;
-  }
-  
-  function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  }
-  
-  // Use passive event listener for better scroll performance
-  window.addEventListener('scroll', requestTick, { passive: true });
-  
-  // Initial call
-  updateParallax();
+    // Use passive event listener for better scroll performance
+    window.addEventListener('scroll', requestTick, { passive: true });
+    
+    // Initial call
+    updateParallax();
+  });
 </script>
