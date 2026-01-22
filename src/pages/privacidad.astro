@@ -582,7 +582,7 @@ const sections = [
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 4rem;
-    align-items: start;
+    /* align-items: start; - Eliminado para permitir sticky en todo el recorrido */
   }
   
   /* Table of Contents */
@@ -593,11 +593,25 @@ const sections = [
   .toc-sticky {
     position: sticky;
     top: 6rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
     background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     padding: 1.75rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+  
+  /* Scrollbar bonita para el TOC */
+  .toc-sticky::-webkit-scrollbar {
+    width: 4px;
+  }
+  .toc-sticky::-webkit-scrollbar-thumb {
+    background-color: #e5e7eb;
+    border-radius: 4px;
+  }
+  .toc-sticky::-webkit-scrollbar-track {
+    background: transparent;
   }
   
   .toc-title {
