@@ -1,11 +1,10 @@
 ---
-import { Image } from 'astro:assets';
-import heroBg from '../assets/img/hero-bg.svg';
+// SVG no requiere optimización, usar img directamente
 ---
 
 <section id="hero" class="hero">
   <div class="hero__media" aria-hidden="true">
-    <Image src={heroBg} alt="" class="hero__image" loading="eager" decoding="async" />
+    <img src="/hero-bg.svg" alt="" class="hero__image" loading="eager" decoding="async" />
     <div class="hero__overlay"></div>
   </div>
 
@@ -34,9 +33,9 @@ import heroBg from '../assets/img/hero-bg.svg';
 </section>
 
 <script>
-  const media = document.querySelector('.hero__media');
-  const image = media?.querySelector('.hero__image');
-  const overlay = media?.querySelector('.hero__overlay');
+  const media = document.querySelector('.hero__media') as HTMLElement | null;
+  const image = media?.querySelector('.hero__image') as HTMLElement | null;
+  const overlay = media?.querySelector('.hero__overlay') as HTMLElement | null;
   const baseScale = 1.05;
 
   // Valores interpolados para suavizar la animación
