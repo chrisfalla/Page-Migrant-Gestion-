@@ -1,5 +1,6 @@
 ---
-import Button from './Button.astro';
+import { Image } from 'astro:assets';
+import logoImage from '../assets/img/logoMigran.png';
 
 interface Props {
   isLegalPage?: boolean;
@@ -9,25 +10,50 @@ const { isLegalPage = false } = Astro.props;
 const baseUrl = isLegalPage ? '/' : '';
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-[#8E8E8E]/30">
-  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="text-lg font-bold text-[#000000] tracking-wide">
-      MIGRANT <span class="text-[#001B48]">GESTIÓN</span>
+<header class="sticky top-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-100 shadow-sm transition-all duration-300">
+  <div class="container mx-auto px-2 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 transition-transform hover:scale-105 duration-300">
+      <Image 
+        src={logoImage} 
+        alt="Migrant Gestión Logo" 
+        class="h-12 w-auto object-contain" 
+        loading="eager"
+      />
     </a>
 
-    <nav class="hidden md:flex items-center gap-8 text-sm text-[#8E8E8E]">
-      <a href={`${baseUrl}#servicios`} class="hover:text-[#000000] transition-colors">Servicios</a>
-      <a href={`${baseUrl}#testimonios`} class="hover:text-[#000000] transition-colors">Testimonios</a>
-      <a href={`${baseUrl}#propuesta`} class="hover:text-[#000000] transition-colors">Propuesta</a>
-      <a href={`${baseUrl}#contacto`} class="hover:text-[#000000] transition-colors">Contacto</a>
+    <nav class="hidden md:flex items-center gap-1">
+      <a href={`${baseUrl}#servicios`} class="nav-link">Servicios</a>
+      <a href={`${baseUrl}#testimonios`} class="nav-link">Testimonios</a>
+      <a href={`${baseUrl}#propuesta`} class="nav-link">Propuesta</a>
+      <a href={`${baseUrl}#contacto`} class="nav-link nav-link--highlight">Contacto</a>
     </nav>
-
-    <div class="hidden md:block">
-      <Button variant="primary" size="sm" href={`${baseUrl}#contacto`}>
-        Iniciar Trámite
-      </Button>
-    </div>
-
-    <a href={`${baseUrl}#contacto`} class="md:hidden text-sm font-semibold text-[#001B48]">Iniciar</a>
+    
+    <!-- Mobile menu button placeholder (optional for future) -->
   </div>
 </header>
+
+<style>
+  .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4b5563;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .nav-link:hover {
+    color: #001B48;
+    background-color: #f3f4f6;
+  }
+
+  .nav-link--highlight {
+    color: #001B48;
+    font-weight: 600;
+  }
+  
+  .nav-link--highlight:hover {
+    background-color: #e0e7ff;
+    color: #001B48;
+  }
+</style>
