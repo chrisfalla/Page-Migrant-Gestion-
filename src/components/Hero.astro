@@ -1,14 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import heroImage from "../assets/img/1.jpg";
+import heroBgImage from "../assets/img/1.jpg";
+import AlexImage from "../assets/img/Alex.png";
 ---
 
 <section id="hero" class="hero">
   <div class="hero__media" aria-hidden="true">
     <Image
-      src={heroImage}
+      src={heroBgImage}
       alt=""
-      class="hero__image"
+      class="hero__bg-image"
       loading="eager"
       decoding="async"
     />
@@ -16,25 +17,41 @@ import heroImage from "../assets/img/1.jpg";
   </div>
 
   <div class="hero__content">
-    <h1 class="hero__title">Legaliza tu camino y construye tu futuro</h1>
-    <p class="hero__subtitle">
-      Asesoría estratégica, ejecución ágil y acompañamiento cercano para que tu
-      trámite avance sin tropiezos.
-    </p>
-    
-    <!-- Trust indicators -->
-    <div class="hero__stats">
-      <div class="hero__stat">
-        <div class="hero__stat-number">05+</div>
-        <div class="hero__stat-label">Años de experiencia</div>
+    <div class="hero__copy">
+      <h1 class="hero__title">Legaliza tu camino y construye tu futuro</h1>
+      <p class="hero__subtitle">
+        Asesoría estratégica, ejecución ágil y acompañamiento cercano para que tu
+        trámite avance sin tropiezos.
+      </p>
+
+      <!-- Trust indicators -->
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <div class="hero__stat-number">05+</div>
+          <div class="hero__stat-label">Años de experiencia</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-number">30+</div>
+          <div class="hero__stat-label">Trámites migratorios</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-number">100%</div>
+          <div class="hero__stat-label">Compromiso profesional</div>
+        </div>
       </div>
-      <div class="hero__stat">
-        <div class="hero__stat-number">30+</div>
-        <div class="hero__stat-label">Trámites migratorios</div>
-      </div>
-      <div class="hero__stat">
-        <div class="hero__stat-number">100%</div>
-        <div class="hero__stat-label">Compromiso profesional</div>
+    </div>
+
+    <div class="hero__portrait" aria-label="Foto del asesor">
+      <div class="hero__portrait-frame">
+        <Image
+          src={AlexImage}
+          alt="Foto del asesor en traje formal"
+          class="hero__portrait-image"
+          loading="eager"
+          decoding="async"
+          widths={[320, 420, 520]}
+          sizes="(max-width: 900px) 70vw, 380px"
+        />
       </div>
     </div>
   </div>
@@ -42,7 +59,7 @@ import heroImage from "../assets/img/1.jpg";
 
 <script>
   const media = document.querySelector(".hero__media") as HTMLElement | null;
-  const image = media?.querySelector(".hero__image") as HTMLElement | null;
+  const image = media?.querySelector(".hero__bg-image") as HTMLElement | null;
   const overlay = media?.querySelector(".hero__overlay") as HTMLElement | null;
   const initialScale = 1.0;
   const finalScale = 1.5;
@@ -148,7 +165,7 @@ import heroImage from "../assets/img/1.jpg";
     will-change: opacity;
   }
 
-  .hero__image {
+  .hero__bg-image {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -178,10 +195,57 @@ import heroImage from "../assets/img/1.jpg";
   .hero__content {
     position: relative;
     z-index: 1;
-    max-width: 760px;
+    width: min(1100px, 100%);
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: clamp(1.75rem, 4vw, 3.5rem);
+    text-align: left;
+  }
+
+  .hero__copy {
     display: grid;
     gap: 1.25rem;
-    text-align: left;
+    max-width: 760px;
+  }
+
+  .hero__portrait {
+    display: grid;
+    justify-items: end;
+  }
+
+  .hero__portrait-frame {
+    width: min(420px, 78vw);
+    aspect-ratio: 4 / 5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    position: relative;
+  }
+
+  .hero__portrait-frame::before {
+    content: "";
+    position: absolute;
+    inset: -40% -40% auto -40%;
+    height: 80%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0) 60%
+    );
+    pointer-events: none;
+  }
+
+  .hero__portrait-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: contrast(1.03) saturate(1.02);
   }
 
   .hero__eyebrow {
@@ -306,6 +370,15 @@ import heroImage from "../assets/img/1.jpg";
 
     .hero__subtitle {
       font-size: 1.05rem;
+    }
+
+    .hero__content {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+
+    .hero__portrait {
+      justify-items: start;
     }
   }
 </style>
