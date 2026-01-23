@@ -17,6 +17,20 @@ import AlexImage from "../assets/img/Alex.png";
   </div>
 
   <div class="hero__content">
+    <div class="hero__portrait" aria-label="Foto del asesor">
+      <div class="hero__portrait-frame">
+        <Image
+          src={AlexImage}
+          alt="Foto del asesor en traje formal"
+          class="hero__portrait-image"
+          loading="eager"
+          decoding="async"
+          widths={[320, 420, 520]}
+          sizes="(max-width: 900px) 70vw, 380px"
+        />
+      </div>
+    </div>
+
     <div class="hero__copy">
       <h1 class="hero__title">Legaliza tu camino y construye tu futuro</h1>
       <p class="hero__subtitle">
@@ -38,20 +52,6 @@ import AlexImage from "../assets/img/Alex.png";
           <div class="hero__stat-number">100%</div>
           <div class="hero__stat-label">Compromiso profesional</div>
         </div>
-      </div>
-    </div>
-
-    <div class="hero__portrait" aria-label="Foto del asesor">
-      <div class="hero__portrait-frame">
-        <Image
-          src={AlexImage}
-          alt="Foto del asesor en traje formal"
-          class="hero__portrait-image"
-          loading="eager"
-          decoding="async"
-          widths={[320, 420, 520]}
-          sizes="(max-width: 900px) 70vw, 380px"
-        />
       </div>
     </div>
   </div>
@@ -197,7 +197,7 @@ import AlexImage from "../assets/img/Alex.png";
     z-index: 1;
     width: min(1100px, 100%);
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 0.85fr 1.15fr;
     align-items: center;
     gap: clamp(1.75rem, 4vw, 3.5rem);
     text-align: left;
@@ -211,33 +211,40 @@ import AlexImage from "../assets/img/Alex.png";
 
   .hero__portrait {
     display: grid;
-    justify-items: end;
+    justify-items: start;
   }
 
   .hero__portrait-frame {
-    width: min(420px, 78vw);
+    height: min(62vh, 500px);
+    width: auto;
+    max-width: min(400px, 72vw);
     aspect-ratio: 4 / 5;
     border-radius: 24px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow:
-      0 16px 40px rgba(0, 0, 0, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
     position: relative;
   }
 
   .hero__portrait-frame::before {
     content: "";
     position: absolute;
-    inset: -40% -40% auto -40%;
-    height: 80%;
+    left: 50%;
+    bottom: -18px;
+    transform: translateX(-50%);
+    width: 112%;
+    height: 34%;
     background: radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.16) 0%,
-      rgba(255, 255, 255, 0) 60%
+      60% 70% at 50% 35%,
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.22) 42%,
+      rgba(0, 0, 0, 0.0) 78%
     );
+    filter: blur(26px);
     pointer-events: none;
+    z-index: 0;
+    opacity: 0.95;
   }
 
   .hero__portrait-image {
@@ -245,7 +252,16 @@ import AlexImage from "../assets/img/Alex.png";
     height: 100%;
     object-fit: cover;
     object-position: center 20%;
-    filter: contrast(1.03) saturate(1.02);
+    position: relative;
+    z-index: 1;
+    transform: translateY(-3px);
+    will-change: transform, filter;
+    filter:
+      contrast(1.03)
+      saturate(1.02)
+      drop-shadow(0 44px 54px rgba(0, 0, 0, 0.55))
+      drop-shadow(0 22px 24px rgba(0, 0, 0, 0.33))
+      drop-shadow(0 10px 10px rgba(0, 0, 0, 0.20));
   }
 
   .hero__eyebrow {
@@ -279,10 +295,11 @@ import AlexImage from "../assets/img/Alex.png";
   }
 
   .hero__stats {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+    margin-top: clamp(1.25rem, 2.6vw, 1.75rem);
+    max-width: 620px;
   }
 
   .hero__stat {
@@ -292,7 +309,7 @@ import AlexImage from "../assets/img/Alex.png";
   }
 
   .hero__stat-number {
-    font-size: 2.5rem;
+    font-size: clamp(1.85rem, 2.2vw, 2.3rem);
     font-weight: 800;
     color: #ffffff;
     line-height: 1;
@@ -379,6 +396,16 @@ import AlexImage from "../assets/img/Alex.png";
 
     .hero__portrait {
       justify-items: start;
+    }
+
+    .hero__portrait-frame {
+      height: min(48vh, 420px);
+      max-width: min(400px, 88vw);
+    }
+
+    .hero__stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 520px;
     }
   }
 </style>
