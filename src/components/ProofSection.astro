@@ -1,0 +1,463 @@
+---
+// Sección de Pruebas/Casos de Éxito de nuestros servicios
+import { Image } from 'astro:assets';
+import visaImage from '../assets/img/visa-application-composition-with-europe-america-flag.jpg';
+import travelersImage from '../assets/img/two-travelers-holding-passports-airport.jpg';
+import handshakeImage from '../assets/img/business-people-shaking-hands-together.jpg';
+---
+
+<section id="casos-exito" class="proof-section reveal">
+  <div class="proof-container">
+    
+    <!-- Header -->
+    <div class="proof-header">
+      <span class="proof-badge">Casos de Éxito</span>
+      <h2 class="proof-title">
+        Resultados que <span class="text-accent">hablan por sí solos</span>
+      </h2>
+      <p class="proof-subtitle">
+        Cada número representa una familia que logró su objetivo migratorio con nuestra ayuda.
+      </p>
+    </div>
+
+    <!-- Estadísticas grandes -->
+    <div class="proof-stats">
+      <div class="stat-item">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Visas aprobadas</div>
+        <div class="stat-bar">
+          <div class="stat-bar-fill" style="--fill-width: 95%;"></div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">PPT tramitados</div>
+        <div class="stat-bar">
+          <div class="stat-bar-fill" style="--fill-width: 88%;"></div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Empresas creadas</div>
+        <div class="stat-bar">
+          <div class="stat-bar-fill" style="--fill-width: 75%;"></div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Tasa de éxito</div>
+        <div class="stat-bar">
+          <div class="stat-bar-fill stat-bar-fill--accent" style="--fill-width: 98%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid de casos -->
+    <div class="proof-grid">
+      
+      <div class="case-card">
+        <div class="case-image-wrapper">
+          <Image 
+            src={visaImage} 
+            alt="Visa aprobada" 
+            class="case-image"
+            loading="lazy"
+          />
+          <div class="case-badge case-badge--success">Exitoso</div>
+        </div>
+        <div class="case-content">
+          <div class="case-type">Visa de Trabajo</div>
+          <h3 class="case-title">Familia Pérez - Venezuela</h3>
+          <p class="case-desc">
+            Tramitamos visa de trabajo para el padre y visa de beneficiario para 
+            esposa e hijos. Proceso completado en 45 días.
+          </p>
+          <div class="case-meta">
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              45 días
+            </span>
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              4 personas
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-image-wrapper">
+          <Image 
+            src={travelersImage} 
+            alt="Pasaportes y documentos" 
+            class="case-image"
+            loading="lazy"
+          />
+          <div class="case-badge case-badge--success">Exitoso</div>
+        </div>
+        <div class="case-content">
+          <div class="case-type">PPT + SIRE</div>
+          <h3 class="case-title">María González - Venezuela</h3>
+          <p class="case-desc">
+            Regularización completa: PPT, registro SIRE y afiliación a seguridad social. 
+            Ahora trabaja legalmente en Neiva.
+          </p>
+          <div class="case-meta">
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              30 días
+            </span>
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m9 12 2 2 4-4" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              3 trámites
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-image-wrapper">
+          <Image 
+            src={handshakeImage} 
+            alt="Negocio exitoso" 
+            class="case-image"
+            loading="lazy"
+          />
+          <div class="case-badge case-badge--success">Exitoso</div>
+        </div>
+        <div class="case-content">
+          <div class="case-type">Creación de Empresa + Visa M</div>
+          <h3 class="case-title">Carlos Mendoza - Cuba</h3>
+          <p class="case-desc">
+            Creación de SAS, visa de migrante empresario y apertura de cuenta bancaria. 
+            Hoy tiene su restaurante en Bogotá.
+          </p>
+          <div class="case-meta">
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              60 días
+            </span>
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+              Negocio activo
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="proof-cta">
+      <p class="cta-text">
+        <strong>¿Quieres ser nuestro próximo caso de éxito?</strong><br/>
+        Agenda tu consulta gratuita y cuéntanos tu situación.
+      </p>
+      <a href="#contacto" class="cta-button">
+        Agenda tu Consulta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .proof-section {
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+    background: #001b48;
+    color: #ffffff;
+  }
+
+  .proof-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .proof-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  .proof-badge {
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+  }
+
+  .proof-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .text-accent {
+    color: #60a5fa;
+  }
+
+  .proof-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+  }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+  }
+
+  .stat-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .stat-bar-fill {
+    height: 100%;
+    width: var(--fill-width);
+    background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 100%);
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+
+  .stat-bar-fill--accent {
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .case-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    color: #000000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .case-image-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .case-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .case-card:hover .case-image {
+    transform: scale(1.05);
+  }
+
+  .case-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .case-badge--success {
+    background: #10b981;
+    color: #ffffff;
+  }
+
+  .case-content {
+    padding: 1.5rem;
+  }
+
+  .case-type {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #001b48;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.75rem;
+  }
+
+  .case-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .case-meta {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: #8e8e8e;
+  }
+
+  .meta-item svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .proof-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem 2.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+  }
+
+  .cta-text strong {
+    color: #ffffff;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.75rem;
+    background: #ffffff;
+    color: #001b48;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .cta-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    .proof-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proof-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proof-grid > :nth-child(3) {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .proof-cta {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .proof-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .proof-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .proof-grid > :nth-child(3) {
+      grid-column: span 1;
+    }
+  }
+</style>

@@ -1,0 +1,397 @@
+---
+import { Image } from 'astro:assets';
+import teamImage from '../assets/img/business-people-shaking-hands-together.jpg';
+---
+
+<section id="nosotros" class="about-section reveal">
+  <div class="about-container">
+    
+    <!-- Header de sección -->
+    <div class="about-header">
+      <span class="about-badge">Nuestra Historia</span>
+      <h2 class="about-title">
+        Más de <span class="text-highlight">5 años</span> transformando
+        <br />vidas de migrantes
+      </h2>
+      <p class="about-lead">
+        Conoce quiénes somos, por qué hacemos lo que hacemos, y cómo hemos ayudado 
+        a cientos de personas a legalizar su situación migratoria en Colombia.
+      </p>
+    </div>
+
+    <!-- Grid principal -->
+    <div class="about-grid">
+      
+      <!-- Columna izquierda: Historia -->
+      <div class="about-story">
+        <div class="story-card">
+          <div class="story-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <h3 class="story-title">¿Cómo comenzó todo?</h3>
+          <div class="story-content">
+            <p>
+              <strong>MIGRANT GESTIÓN SAS</strong> nació en <strong>2020</strong> en Neiva, Huila, 
+              en medio de una de las mayores crisis migratorias de la región. Vimos cómo miles de 
+              personas llegaban a Colombia buscando un futuro mejor, pero se encontraban perdidos 
+              ante la complejidad de los trámites migratorios.
+            </p>
+            <p>
+              Fundada por <strong>Alexis Jose Cedeño</strong>, nuestra empresa surgió de una 
+              motivación personal: haber vivido en carne propia los desafíos de ser migrante 
+              y entender que muchas personas necesitaban una mano experta que los guiara.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-icon story-icon--accent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+          </div>
+          <h3 class="story-title">Nuestra motivación</h3>
+          <div class="story-content">
+            <p>
+              Creemos firmemente que <strong>migrar no debería ser un obstáculo, sino una oportunidad</strong>. 
+              Cada persona que llega a Colombia con sueños merece tener acceso a un proceso 
+              migratorio justo, transparente y sin complicaciones innecesarias.
+            </p>
+            <p>
+              Nos motiva ver cómo nuestros clientes logran establecerse legalmente, 
+              abrir sus negocios, reunirse con sus familias y construir una nueva vida 
+              con tranquilidad y seguridad jurídica.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Imagen + Timeline -->
+      <div class="about-visual">
+        <div class="about-image-wrapper">
+          <Image 
+            src={teamImage} 
+            alt="Equipo de Migrant Gestión brindando asesoría" 
+            class="about-image"
+            loading="lazy"
+          />
+          <div class="image-overlay"></div>
+          <div class="image-badge">
+            <span class="badge-number">05+</span>
+            <span class="badge-text">Años de<br/>experiencia</span>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-content">
+              <strong>Fundación</strong> — Comenzamos operaciones en Neiva, Huila
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-content">
+              <strong>Expansión</strong> — Ampliamos servicios a todo el Huila
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-content">
+              <strong>Alcance Nacional</strong> — Atención remota para toda Colombia
+            </div>
+          </div>
+          <div class="timeline-item timeline-item--current">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-content">
+              <strong>Hoy</strong> — +30 tipos de trámites y cientos de casos exitosos
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    position: relative;
+  }
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 4rem;
+  }
+
+  .about-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #001b48;
+    color: #ffffff;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .text-highlight {
+    color: #001b48;
+    position: relative;
+  }
+
+  .text-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    right: 0;
+    height: 0.35em;
+    background: rgba(0, 27, 72, 0.12);
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  .about-lead {
+    font-size: 1.1rem;
+    color: #8e8e8e;
+    line-height: 1.7;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-story {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .story-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .story-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .story-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #001b48 0%, #003366 100%);
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .story-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+  }
+
+  .story-icon--accent {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .story-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1rem;
+  }
+
+  .story-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .story-content p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+  .story-content strong {
+    color: #001b48;
+  }
+
+  .about-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 27, 72, 0) 50%,
+      rgba(0, 27, 72, 0.7) 100%
+    );
+  }
+
+  .image-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.25rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .badge-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #001b48;
+    line-height: 1;
+  }
+
+  .badge-text {
+    font-size: 0.75rem;
+    color: #8e8e8e;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(180deg, #001b48 0%, rgba(0, 27, 72, 0.2) 100%);
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 1.1rem;
+    width: 10px;
+    height: 10px;
+    background: #001b48;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 27, 72, 0.15);
+  }
+
+  .timeline-item--current::before {
+    background: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  }
+
+  .timeline-year {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #001b48;
+  }
+
+  .timeline-content {
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  .timeline-content strong {
+    color: #000000;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-visual {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .story-card {
+      padding: 1.5rem;
+    }
+
+    .timeline-item {
+      grid-template-columns: 50px 1fr;
+    }
+  }
+</style>
