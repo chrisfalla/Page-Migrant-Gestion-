@@ -32,13 +32,20 @@ import AlexImage from "../assets/img/Alex.png";
     </div>
 
     <div class="hero__copy">
+      <span class="hero__eyebrow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Expertos en migración
+      </span>
+      
       <h1 class="hero__title">Legaliza tu camino y construye tu futuro</h1>
+      
       <p class="hero__subtitle">
         Asesoría estratégica, ejecución ágil y acompañamiento cercano para que tu
         trámite avance sin tropiezos.
       </p>
 
-      <!-- Trust indicators -->
       <div class="hero__stats">
         <div class="hero__stat">
           <div class="hero__stat-number">05+</div>
@@ -53,6 +60,18 @@ import AlexImage from "../assets/img/Alex.png";
           <div class="hero__stat-label">Compromiso profesional</div>
         </div>
       </div>
+
+      <div class="hero__actions">
+        <a href="#contacto" class="hero__button hero__button--primary">
+          Agenda tu consulta
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#servicios" class="hero__button hero__button--secondary">
+          Ver servicios
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -62,9 +81,8 @@ import AlexImage from "../assets/img/Alex.png";
   const image = media?.querySelector(".hero__bg-image") as HTMLElement | null;
   const overlay = media?.querySelector(".hero__overlay") as HTMLElement | null;
   const initialScale = 1.0;
-  const finalScale = 1.5;
+  const finalScale = 1.4;
 
-  // Valores interpolados para suavizar la animación
   let currentTranslateY = 0;
   let currentScale = initialScale;
   let currentOpacity = 1;
@@ -74,12 +92,7 @@ import AlexImage from "../assets/img/Alex.png";
   let targetOpacity = 1;
   let targetOverlayOpacity = 0.65;
 
-  // Función de easing para suavizar interpolación
-  const ease = (
-    current: number,
-    target: number,
-    factor: number = 0.08,
-  ): number => {
+  const ease = (current: number, target: number, factor: number = 0.08): number => {
     return current + (target - current) * factor;
   };
 
@@ -87,7 +100,6 @@ import AlexImage from "../assets/img/Alex.png";
     const scrollY = window.scrollY || window.pageYOffset;
     targetTranslateY = scrollY * 0.28;
     
-    // Zoom IN effect: starts at initialScale and grows to finalScale
     const scaleProgress = Math.min(scrollY / (window.innerHeight * 0.8), 1);
     targetScale = initialScale + (scaleProgress * (finalScale - initialScale));
 
@@ -97,17 +109,11 @@ import AlexImage from "../assets/img/Alex.png";
   };
 
   const animate = () => {
-    // Interpolar valores para movimiento ultra suave
     currentTranslateY = ease(currentTranslateY, targetTranslateY, 0.08);
     currentScale = ease(currentScale, targetScale, 0.08);
     currentOpacity = ease(currentOpacity, targetOpacity, 0.1);
-    currentOverlayOpacity = ease(
-      currentOverlayOpacity,
-      targetOverlayOpacity,
-      0.1,
-    );
+    currentOverlayOpacity = ease(currentOverlayOpacity, targetOverlayOpacity, 0.1);
 
-    // Aplicar transformaciones solo si hay cambios significativos
     if (
       Math.abs(currentTranslateY - targetTranslateY) > 0.01 ||
       Math.abs(currentOpacity - targetOpacity) > 0.001 ||
@@ -127,22 +133,13 @@ import AlexImage from "../assets/img/Alex.png";
     requestAnimationFrame(animate);
   };
 
-  const handleScroll = () => {
-    calculateTargets();
-  };
+  const handleScroll = () => calculateTargets();
 
-  // Inicializar
   calculateTargets();
   animate();
 
   window.addEventListener("scroll", handleScroll, { passive: true });
-  window.addEventListener(
-    "resize",
-    () => {
-      calculateTargets();
-    },
-    { passive: true },
-  );
+  window.addEventListener("resize", () => calculateTargets(), { passive: true });
 </script>
 
 <style>
@@ -151,10 +148,22 @@ import AlexImage from "../assets/img/Alex.png";
     min-height: 100vh;
     display: grid;
     place-items: center;
-    padding: clamp(4rem, 6vw, 6rem) clamp(1.5rem, 5vw, 4rem);
-    color: #f7f9fc;
-    background: #0c1e3e;
+    padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-4);
+    color: var(--color-white);
+    background: var(--color-primary-dark);
     overflow: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .hero {
+      padding-inline: var(--space-6);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      padding-inline: var(--space-8);
+    }
   }
 
   .hero__media {
@@ -171,11 +180,9 @@ import AlexImage from "../assets/img/Alex.png";
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.0);
     filter: saturate(1.05) contrast(1.05);
     will-change: transform;
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     transform-style: preserve-3d;
   }
 
@@ -184,46 +191,97 @@ import AlexImage from "../assets/img/Alex.png";
     inset: 0;
     background: linear-gradient(
       180deg,
-      rgba(9, 17, 33, 0.72) 0%,
-      rgba(9, 17, 33, 0.82) 45%,
-      rgba(9, 17, 33, 0.85) 100%
+      rgba(0, 12, 36, 0.7) 0%,
+      rgba(0, 18, 47, 0.8) 50%,
+      rgba(0, 18, 47, 0.88) 100%
     );
-    mix-blend-mode: multiply;
     will-change: opacity;
   }
 
   .hero__content {
     position: relative;
     z-index: 1;
-    width: min(1100px, 100%);
+    width: 100%;
+    max-width: var(--container-xl);
     display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: 1fr;
     align-items: center;
-    gap: clamp(1.75rem, 4vw, 3.5rem);
-    text-align: left;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 900px) {
+    .hero__content {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: var(--space-12);
+    }
   }
 
   .hero__copy {
-    display: grid;
-    gap: 1.25rem;
-    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    order: 1;
+  }
+
+  @media (min-width: 900px) {
+    .hero__copy {
+      order: 2;
+    }
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    width: fit-content;
+  }
+
+  .hero__title {
+    font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+    line-height: var(--leading-none);
+    font-weight: var(--font-extrabold);
+    color: var(--color-white);
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(var(--text-lg), 1.8vw, var(--text-xl));
+    line-height: var(--leading-relaxed);
+    max-width: 48ch;
+    color: rgba(235, 242, 255, 0.85);
   }
 
   .hero__portrait {
     display: grid;
-    justify-items: start;
+    justify-items: center;
+    order: 2;
+  }
+
+  @media (min-width: 900px) {
+    .hero__portrait {
+      justify-items: start;
+      order: 1;
+    }
   }
 
   .hero__portrait-frame {
-    height: min(62vh, 500px);
+    height: min(52vh, 440px);
     width: auto;
-    max-width: min(400px, 72vw);
+    max-width: min(360px, 70vw);
     aspect-ratio: 4 / 5;
-    border-radius: 24px;
+    border-radius: var(--radius-3xl);
     overflow: visible;
     background: transparent;
-    border: 0;
-    box-shadow: none;
     position: relative;
   }
 
@@ -231,20 +289,19 @@ import AlexImage from "../assets/img/Alex.png";
     content: "";
     position: absolute;
     left: 50%;
-    bottom: -18px;
+    bottom: -16px;
     transform: translateX(-50%);
-    width: 112%;
-    height: 34%;
+    width: 110%;
+    height: 30%;
     background: radial-gradient(
       60% 70% at 50% 35%,
-      rgba(0, 0, 0, 0.62) 0%,
-      rgba(0, 0, 0, 0.22) 42%,
-      rgba(0, 0, 0, 0.0) 78%
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.2) 45%,
+      transparent 80%
     );
-    filter: blur(26px);
+    filter: blur(24px);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.95;
   }
 
   .hero__portrait-image {
@@ -254,158 +311,133 @@ import AlexImage from "../assets/img/Alex.png";
     object-position: center 20%;
     position: relative;
     z-index: 1;
-    transform: translateY(-3px);
-    will-change: transform, filter;
+    transform: translateY(-2px);
     filter:
-      contrast(1.03)
+      contrast(1.02)
       saturate(1.02)
-      drop-shadow(0 44px 54px rgba(0, 0, 0, 0.55))
-      drop-shadow(0 22px 24px rgba(0, 0, 0, 0.33))
-      drop-shadow(0 10px 10px rgba(0, 0, 0, 0.20));
-  }
-
-  .hero__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.55rem 1.1rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #d7e6ff;
-    width: fit-content;
-  }
-
-  .hero__title {
-    font-size: clamp(2.8rem, 4vw, 4.5rem);
-    line-height: 1.05;
-    font-weight: 800;
-    color: #ffffff;
-    text-wrap: balance;
-  }
-
-  .hero__subtitle {
-    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-    line-height: 1.6;
-    max-width: 46ch;
-    color: rgba(235, 242, 255, 0.92);
+      drop-shadow(0 40px 50px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 20px 22px rgba(0, 0, 0, 0.3))
+      drop-shadow(0 8px 8px rgba(0, 0, 0, 0.18));
   }
 
   .hero__stats {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1rem, 3vw, 2rem);
-    margin-top: clamp(1.25rem, 2.6vw, 1.75rem);
-    max-width: 620px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    max-width: 480px;
   }
 
   .hero__stat {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: var(--space-1);
   }
 
   .hero__stat-number {
-    font-size: clamp(1.85rem, 2.2vw, 2.3rem);
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1;
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-2xl), 2.5vw, var(--text-3xl));
+    font-weight: var(--font-extrabold);
+    color: var(--color-white);
+    line-height: var(--leading-none);
   }
 
   .hero__stat-label {
-    font-size: 0.875rem;
-    color: rgba(235, 242, 255, 0.75);
+    font-size: var(--text-xs);
+    color: rgba(235, 242, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 500;
+    font-weight: var(--font-medium);
   }
 
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
   }
 
   .hero__button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.625rem;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
     text-decoration: none;
-    border-radius: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base) var(--ease-in-out);
     white-space: nowrap;
   }
 
   .hero__button--primary {
-    background: #ffffff;
-    color: #001b48;
-    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
+    background: var(--color-white);
+    color: var(--color-primary);
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
   }
 
   .hero__button--primary:hover {
-    background: #f0f4ff;
+    background: var(--color-gray-50);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
   }
 
   .hero__button--secondary {
     background: transparent;
-    color: #ffffff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-white);
+    border: 2px solid rgba(255, 255, 255, 0.25);
   }
 
   .hero__button--secondary:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
   }
 
-  .hero__button-icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 768px) {
+  @media (max-width: 899px) {
     .hero {
-      padding: 4.5rem 1.5rem 3rem;
       align-items: end;
-      text-align: left;
-    }
-
-    .hero__title {
-      font-size: clamp(2.4rem, 7vw, 3.2rem);
-    }
-
-    .hero__subtitle {
-      font-size: 1.05rem;
+      padding-bottom: var(--space-12);
     }
 
     .hero__content {
-      grid-template-columns: 1fr;
-      justify-items: start;
+      text-align: center;
     }
 
     .hero__portrait {
-      justify-items: start;
+      display: none;
     }
 
-    .hero__portrait-frame {
-      height: min(48vh, 420px);
-      max-width: min(400px, 88vw);
+    .hero__eyebrow {
+      margin-inline: auto;
+    }
+
+    .hero__subtitle {
+      margin-inline: auto;
     }
 
     .hero__stats {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      max-width: 520px;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 100%;
+      margin-inline: auto;
+    }
+
+    .hero__actions {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero__stats {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero__stat:last-child {
+      grid-column: span 2;
+      text-align: center;
     }
   }
 </style>
