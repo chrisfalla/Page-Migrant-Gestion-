@@ -18,7 +18,7 @@ const testimonials = [
 ];
 ---
 
-<section id="testimonios" class="py-24 bg-[#001B48] text-white reveal">
+<section id="testimonios" class="py-14 bg-[#001B48] text-white reveal">
   <div class="container mx-auto px-6">
     <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-12">
       <div>
@@ -59,7 +59,7 @@ const testimonials = [
       const prev = section.querySelector('.carousel-prev');
       if (!track || !next || !prev) return;
 
-      const scrollByCard = (direction) => {
+      const scrollByCard = (direction: number) => {
         const card = track.querySelector('article');
         if (!card) return;
         const offset = card.getBoundingClientRect().width + 24;

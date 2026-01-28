@@ -19,7 +19,8 @@ import AlexImage from "../assets/img/Alex.png";
   </div>
 
   <div class="hero__content">
-    <div class="hero__portrait" aria-label="Foto del asesor">
+    <!-- Portrait para desktop (izquierda) -->
+    <div class="hero__portrait hero__portrait--desktop" aria-label="Foto del asesor">
       <div class="hero__portrait-frame">
         <Image
           src={AlexImage}
@@ -60,6 +61,21 @@ import AlexImage from "../assets/img/Alex.png";
         <div class="hero__stat">
           <div class="hero__stat-number">100%</div>
           <div class="hero__stat-label">Compromiso profesional</div>
+        </div>
+      </div>
+
+      <!-- Portrait para móvil (entre textos y botones) -->
+      <div class="hero__portrait hero__portrait--mobile" aria-label="Foto del asesor">
+        <div class="hero__portrait-frame">
+          <Image
+            src={AlexImage}
+            alt="Foto del asesor en traje formal"
+            class="hero__portrait-image"
+            loading="eager"
+            decoding="async"
+            widths={[320, 420, 520]}
+            sizes="(max-width: 900px) 70vw, 380px"
+          />
         </div>
       </div>
 
@@ -268,15 +284,34 @@ import AlexImage from "../assets/img/Alex.png";
     display: grid;
     justify-items: center;
     align-items: center;
-    order: 2;
+  }
+
+  /* Portrait para desktop - visible solo en pantallas grandes */
+  .hero__portrait--desktop {
+    display: none;
   }
 
   @media (min-width: 900px) {
-    .hero__portrait {
+    .hero__portrait--desktop {
+      display: grid;
       justify-items: start;
       align-items: center;
       order: 1;
       margin-top: 0;
+    }
+  }
+
+  /* Portrait para móvil - visible solo en pantallas pequeñas */
+  .hero__portrait--mobile {
+    display: grid;
+    justify-items: center;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 900px) {
+    .hero__portrait--mobile {
+      display: none;
     }
   }
 
@@ -411,23 +446,17 @@ import AlexImage from "../assets/img/Alex.png";
 
   @media (max-width: 899px) {
     .hero {
-      align-items: end;
-      padding-bottom: var(--space-12);
+      align-items: center;
+      padding-bottom: var(--space-8);
     }
 
     .hero__content {
       text-align: center;
     }
 
-    .hero__portrait {
-      display: grid;
-      order: 1;
-      margin-bottom: var(--space-4);
-    }
-
     .hero__portrait-frame {
-      height: min(50vh, 380px);
-      max-width: min(280px, 70vw);
+      height: min(45vh, 340px);
+      max-width: min(260px, 65vw);
       margin-top: 0;
     }
 
