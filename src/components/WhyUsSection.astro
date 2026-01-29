@@ -33,10 +33,6 @@
           No eres un número más. Cada caso recibe atención individual, 
           con un asesor dedicado que conoce tu situación específica.
         </p>
-        <div class="card-highlight">
-          <span class="highlight-number">1:1</span>
-          <span class="highlight-text">Asesor dedicado</span>
-        </div>
       </div>
 
       <div class="why-card">
@@ -154,7 +150,7 @@
 
 <style>
   .why-section {
-    padding: clamp(var(--space-10), 5vw, var(--space-16)) var(--space-4);
+    padding: var(--space-8) var(--space-4);
     background: var(--color-gray-50);
   }
 
@@ -169,7 +165,7 @@
   .why-header {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto var(--space-12);
+    margin: 0 auto var(--space-6);
   }
 
   .why-badge {
@@ -203,14 +199,14 @@
   .why-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-5);
-    margin-bottom: var(--space-12);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
   }
 
   .why-card {
     background: var(--color-white);
-    border-radius: var(--radius-2xl);
-    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: var(--shadow-card);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
@@ -222,7 +218,6 @@
   }
 
   .why-card--featured {
-    grid-row: span 2;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     color: var(--color-white);
   }
@@ -231,20 +226,20 @@
   .why-card--featured .card-desc { color: rgba(255, 255, 255, 0.85); }
 
   .card-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius-xl);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
     background: rgba(0, 27, 72, 0.08);
     display: grid;
     place-items: center;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-3);
   }
 
   .why-card--featured .card-icon { background: rgba(255, 255, 255, 0.15); }
 
   .card-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     color: var(--color-primary);
   }
 
@@ -278,8 +273,8 @@
   }
 
   .card-highlight {
-    margin-top: var(--space-6);
-    padding-top: var(--space-5);
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
@@ -302,15 +297,15 @@
 
   .comparison-box {
     background: var(--color-white);
-    border-radius: var(--radius-3xl);
-    padding: var(--space-8);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-6);
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: var(--shadow-card);
   }
 
   .comparison-header {
     text-align: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
   }
 
   .comparison-header h3 {
@@ -321,12 +316,12 @@
   .comparison-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
 
   .comparison-col {
-    padding: var(--space-5);
-    border-radius: var(--radius-xl);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
   }
 
   .comparison-col--them {
@@ -387,12 +382,10 @@
 
   @media (max-width: 1024px) {
     .why-grid { grid-template-columns: repeat(2, 1fr); }
-    .why-card--featured { grid-column: span 2; grid-row: span 1; }
   }
 
   @media (max-width: 640px) {
     .why-grid { grid-template-columns: 1fr; }
-    .why-card--featured { grid-column: span 1; }
     .comparison-grid { grid-template-columns: 1fr; }
     .comparison-box { padding: var(--space-5); }
   }
