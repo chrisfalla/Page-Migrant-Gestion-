@@ -391,7 +391,7 @@ import heroBgImage from "../assets/img/1.jpg";
     font-weight: var(--font-semibold);
     text-decoration: none;
     border-radius: var(--radius-xl);
-    transition: all var(--transition-base) var(--ease-in-out);
+    transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
     white-space: nowrap;
   }
 
@@ -424,7 +424,7 @@ import heroBgImage from "../assets/img/1.jpg";
   }
 
   .hero__button--primary svg {
-    transition: transform var(--transition-base);
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
   }
 
   /* ─── Indicador de Scroll ─── */
@@ -436,7 +436,7 @@ import heroBgImage from "../assets/img/1.jpg";
     margin-top: var(--space-8);
     cursor: pointer;
     opacity: 0.7;
-    transition: opacity var(--transition-base);
+    transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1);
   }
 
   .hero__scroll-indicator:hover {

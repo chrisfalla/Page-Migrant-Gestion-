@@ -22,9 +22,9 @@ const sizeClasses = size === 'large'
   : '';
 ---
 
-<div class={`group relative bg-white rounded-2xl p-8 border border-[#8E8E8E]/40 transition-all duration-500 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,27,72,0.1)] reveal ${sizeClasses} ${className}`}>
+<div class={`group relative bg-white rounded-2xl p-8 border border-[#8E8E8E]/40 transition-all duration-700 ease-out hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,27,72,0.1)] reveal ${sizeClasses} ${className}`}>
   <!-- Icono decorativo -->
-  <div class="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
+  <div class="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity duration-700 ease-out">
     {icon === 'passport' && (
       <svg class="w-16 h-16 text-[#001B48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 3h8a2 2 0 012 2v14a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2zm0 5h8m-8 4h8m-8 4h5" />
@@ -63,7 +63,7 @@ const sizeClasses = size === 'large'
   <!-- Contenido -->
   <div class="relative z-10">
     <!-- Badge con efecto -->
-    <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[#001B48]/5 group-hover:bg-[#001B48] transition-colors duration-300 mb-6">
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[#001B48]/5 group-hover:bg-[#001B48] transition-colors duration-700 ease-out mb-6">
       {icon === 'passport' && (
         <svg class="w-6 h-6 text-[#001B48] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 3h8a2 2 0 012 2v14a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2zm0 5h8m-8 4h8m-8 4h5" />
