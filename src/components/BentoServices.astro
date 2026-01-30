@@ -180,7 +180,7 @@
 <style>
   .services-section {
     padding: var(--space-8) var(--space-4);
-    background: linear-gradient(180deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    background: #f8fafc;
     position: relative;
     overflow: hidden;
   }
@@ -289,17 +289,18 @@
   /* Service Cards */
   .service-card {
     position: relative;
-    background: var(--color-white);
+    background: #ffffff;
     border-radius: var(--radius-2xl);
-    border: 1px solid var(--color-gray-200);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     overflow: hidden;
     transition: all var(--transition-base) var(--ease-out);
   }
 
   .service-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
-    border-color: transparent;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 27, 72, 0.1);
   }
 
   .card-glow {
@@ -537,9 +538,10 @@
     align-items: center;
     gap: var(--space-4);
     padding: var(--space-5);
-    background: var(--color-white);
+    background: #ffffff;
     border-radius: var(--radius-xl);
-    border: 2px dashed var(--color-gray-300);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     text-align: center;
   }
 

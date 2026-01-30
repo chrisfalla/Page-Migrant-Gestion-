@@ -108,7 +108,7 @@
 <style>
   .values-section {
     padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
-    background: #ffffff;
+    background: #f8fafc;
   }
 
   .values-container {
@@ -152,18 +152,19 @@
   }
 
   .value-card {
-    background: #f8fafc;
+    background: #ffffff;
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 
   .value-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 27, 72, 0.1);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 27, 72, 0.15);
   }
 
   .value-icon {
