@@ -1,19 +1,54 @@
 ---
 const testimonials = [
   {
-    name: 'Mariana Pérez',
-    role: 'Migró a Colombia desde Perú',
-    quote: 'El equipo fue impecable: claridad legal, tiempos rápidos y un acompañamiento humano de principio a fin.'
+    name: 'María José González',
+    role: 'PPT aprobado - Venezuela',
+    quote: 'Gracias a ellos obtuve mi Permiso por Protección Temporal sin complicaciones. Me explicaron todo paso a paso y me ahorraron mucho tiempo.'
+  },
+  {
+    name: 'Carlos Méndez',
+    role: 'Cédula de Extranjería - Venezuela',
+    quote: 'Después de años en Colombia, finalmente tengo mi cédula. El equipo fue muy profesional y me mantuvieron informado todo el tiempo.'
+  },
+  {
+    name: 'Daniela Ramírez',
+    role: 'Visa de Trabajo - Venezuela',
+    quote: 'Conseguí mi visa de trabajo en tiempo récord. Su experiencia con migrantes venezolanos es invaluable.'
   },
   {
     name: 'Luis Andrade',
-    role: 'Visa de trabajo aprobada',
+    role: 'Convalidación de Título - Perú',
     quote: 'Sentí confianza desde la primera llamada. Todo el proceso estuvo documentado y sin sorpresas.'
   },
   {
+    name: 'Ana Belén Pérez',
+    role: 'Registro RUMV - Venezuela',
+    quote: 'Me ayudaron con el registro y toda la documentación necesaria. Ahora puedo trabajar legalmente sin preocupaciones.'
+  },
+  {
+    name: 'José Antonio Silva',
+    role: 'Renovación PPT - Venezuela',
+    quote: 'Renovar mi PPT fue muy fácil con su ayuda. No tuve que hacer filas ni perder tiempo, ellos se encargaron de todo.'
+  },
+  {
+    name: 'Mariana Pérez',
+    role: 'Visa de Residencia - Perú',
+    quote: 'El equipo fue impecable: claridad legal, tiempos rápidos y un acompañamiento humano de principio a fin.'
+  },
+  {
+    name: 'Roberto Fuentes',
+    role: 'Salvoconducto SC-2 - Venezuela',
+    quote: 'Necesitaba urgente el salvoconducto y lo obtuve a tiempo. Su conocimiento de los procesos migratorios es excepcional.'
+  },
+  {
     name: 'Camila Torres',
-    role: 'Regularización PPT',
-    quote: 'Resolvieron mi trámite con disciplina y atención al detalle. Totalmente recomendados.'
+    role: 'Regularización PPT - Venezuela',
+    quote: 'Resolvieron mi trámite con disciplina y atención al detalle. Totalmente recomendados para venezolanos en Colombia.'
+  },
+  {
+    name: 'Andrés Villalobos',
+    role: 'Visa M - Venezuela',
+    quote: 'Mi visa de migrante llegó más rápido de lo esperado. Excelente servicio y muy atentos a cada detalle del proceso.'
   }
 ];
 ---
@@ -39,35 +74,131 @@ const testimonials = [
       </div>
     </div>
 
-    <div class="carousel-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6">
-      {testimonials.map((item) => (
-        <article class="snap-start min-w-[85%] md:min-w-[48%] lg:min-w-[32%] bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
-          <p class="text-lg leading-relaxed mb-6">“{item.quote}”</p>
-          <div class="text-white font-semibold">{item.name}</div>
-          <div class="text-blue-200 text-sm">{item.role}</div>
-        </article>
-      ))}
+    <div class="carousel-container">
+      <div class="carousel-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth">
+        {testimonials.map((item) => (
+          <article class="testimonial-card snap-start min-w-[85%] md:min-w-[48%] lg:min-w-[32%]">
+            <p class="text-lg leading-relaxed mb-6 text-white/90">"{item.quote}"</p>
+            <div class="text-white font-semibold">{item.name}</div>
+            <div class="text-blue-200 text-sm">{item.role}</div>
+          </article>
+        ))}
+      </div>
     </div>
   </div>
+
+  <style>
+    .carousel-container {
+      padding: 1.5rem 0;
+      margin: -1.5rem 0;
+    }
+
+    .carousel-track {
+      padding: 0.5rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 
+        0 8px 32px 0 rgba(0, 27, 72, 0.2),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .testimonial-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 
+        0 12px 40px 0 rgba(0, 27, 72, 0.3),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+      transform: translateY(-4px);
+    }
+  </style>
 
   <script>
     const initCarousel = () => {
       const section = document.getElementById('testimonios');
       if (!section) return;
-      const track = section.querySelector('.carousel-track');
-      const next = section.querySelector('.carousel-next');
-      const prev = section.querySelector('.carousel-prev');
+      const track = section.querySelector('.carousel-track') as HTMLElement;
+      const next = section.querySelector('.carousel-next') as HTMLElement;
+      const prev = section.querySelector('.carousel-prev') as HTMLElement;
       if (!track || !next || !prev) return;
+
+      let autoplayInterval: number;
+      let isUserInteracting = false;
 
       const scrollByCard = (direction: number) => {
         const card = track.querySelector('article');
         if (!card) return;
         const offset = card.getBoundingClientRect().width + 24;
-        track.scrollBy({ left: direction * offset, behavior: 'smooth' });
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        
+        // Si llegamos al final, volvemos al inicio
+        if (direction > 0 && track.scrollLeft >= maxScroll - 10) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: direction * offset, behavior: 'smooth' });
+        }
       };
 
-      next.addEventListener('click', () => scrollByCard(1));
-      prev.addEventListener('click', () => scrollByCard(-1));
+      const startAutoplay = () => {
+        autoplayInterval = window.setInterval(() => {
+          if (!isUserInteracting) {
+            scrollByCard(1);
+          }
+        }, 4000); // Cambia cada 4 segundos
+      };
+
+      const stopAutoplay = () => {
+        clearInterval(autoplayInterval);
+      };
+
+      const resetAutoplay = () => {
+        stopAutoplay();
+        startAutoplay();
+      };
+
+      // Navegación manual
+      next.addEventListener('click', () => {
+        scrollByCard(1);
+        resetAutoplay();
+      });
+
+      prev.addEventListener('click', () => {
+        scrollByCard(-1);
+        resetAutoplay();
+      });
+
+      // Pausar autoplay al hacer hover
+      section.addEventListener('mouseenter', () => {
+        isUserInteracting = true;
+      });
+
+      section.addEventListener('mouseleave', () => {
+        isUserInteracting = false;
+      });
+
+      // Pausar autoplay al hacer scroll manual
+      track.addEventListener('scroll', () => {
+        isUserInteracting = true;
+        setTimeout(() => {
+          isUserInteracting = false;
+        }, 2000);
+      });
+
+      // Iniciar autoplay
+      startAutoplay();
     };
 
     if (document.readyState === 'loading') {
