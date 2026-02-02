@@ -4,6 +4,114 @@ import { Image } from 'astro:assets';
 import visaImage from '../assets/img/visa-application-composition-with-europe-america-flag.jpg';
 import travelersImage from '../assets/img/two-travelers-holding-passports-airport.jpg';
 import handshakeImage from '../assets/img/business-people-shaking-hands-together.jpg';
+import businessImage1 from '../assets/img/business-hand-writing-notes-car-seat-preparing-meeting.jpg';
+import businessImage2 from '../assets/img/josh-calabrese-Ca8r0PSWg9Q-unsplash.jpg';
+import businessImage3 from '../assets/img/nordwood-themes-EZSm8xRjnX0-unsplash.jpg';
+import businessImage4 from '../assets/img/charles-forerunner-3fPXt37X6UQ-unsplash.jpg';
+import businessImage5 from '../assets/img/samson-ZGjbiukp_-A-unsplash.jpg';
+import businessImage6 from '../assets/img/yibei-geng--UdYbiywGeg-unsplash.jpg';
+
+const cases = [
+  {
+    type: 'Visa de Trabajo (V)',
+    name: 'Ronny Hernández',
+    country: 'Venezuela',
+    desc: 'Obtuvo su visa de trabajo para desempeñarse como ingeniero de sistemas en una empresa multinacional en Bogotá.',
+    days: '35 días',
+    count: '1 trámite',
+    image: visaImage
+  },
+  {
+    type: 'PPT + Afiliación Salud',
+    name: 'Alejandra Rivas',
+    country: 'Venezuela',
+    desc: 'Regularizó su estatus migratorio con PPT y se afilió al sistema de salud para acceder a servicios médicos de calidad.',
+    days: '28 días',
+    count: '2 trámites',
+    image: travelersImage
+  },
+  {
+    type: 'Cédula de Extranjería',
+    name: 'Carlos Peña',
+    country: 'Venezuela',
+    desc: 'Después de 2 años en Colombia, logró obtener su cédula de extranjería para acceder a trámites y servicios sin restricciones.',
+    days: '22 días',
+    count: '1 trámite',
+    image: handshakeImage
+  },
+  {
+    type: 'Permiso Por Protección Temporal',
+    name: 'Dubraska González',
+    country: 'Venezuela',
+    desc: 'Consiguió su PPT aprobado permitiéndole trabajar legalmente en Colombia y contribuir al sostenimiento familiar.',
+    days: '32 días',
+    count: '1 trámite',
+    image: businessImage1
+  },
+  {
+    type: 'Convalidación de Título - Ingeniero',
+    name: 'Víctor Martínez',
+    country: 'Venezuela',
+    desc: 'Validó su título de ingeniero civil ante el Ministerio de Educación y pudo ejercer su profesión en Colombia.',
+    days: '60 días',
+    count: '1 trámite',
+    image: businessImage2
+  },
+  {
+    type: 'Salvoconducto SC-2',
+    name: 'Indira Flores',
+    country: 'Venezuela',
+    desc: 'Obtuvo su salvoconducto para viajar entre Colombia y países fronterizos sin complicaciones.',
+    days: '18 días',
+    count: '1 trámite',
+    image: businessImage3
+  },
+  {
+    type: 'Registro SIRE - Empleador',
+    name: 'Miguel Cartagena',
+    country: 'Venezuela',
+    desc: 'Se registró como empleador en SIRE y comenzó a contratar legalmente trabajadores extranjeros en su empresa.',
+    days: '25 días',
+    count: '1 trámite',
+    image: businessImage4
+  },
+  {
+    type: 'Antecedentes y Apostilla',
+    name: 'Karla Suárez',
+    country: 'Venezuela',
+    desc: 'Obtuvo sus antecedentes apostillados para trabajar en el exterior cumpliendo todos los requisitos necesarios.',
+    days: '14 días',
+    count: '2 trámites',
+    image: businessImage5
+  },
+  {
+    type: 'Visa de Migrante - Empresario',
+    name: 'Fernando Rojas',
+    country: 'Venezuela',
+    desc: 'Tramitó su visa de migrante empresario para crear su propia SAS y administrarla en Colombia.',
+    days: '45 días',
+    count: '1 trámite',
+    image: businessImage6
+  },
+  {
+    type: 'RUMV - Regularización Niño',
+    name: 'Ana Belén Peña',
+    country: 'Venezuela',
+    desc: 'Regularizó a su hijo en RUMV permitiéndole acceder a educación, salud y servicios públicos sin restricciones.',
+    days: '20 días',
+    count: '1 trámite',
+    image: visaImage
+  },
+  {
+    type: 'Cita Pasaporte Venezolano',
+    name: 'Javier Castillo',
+    country: 'Venezuela',
+    desc: 'Gestionó su cita para renovar pasaporte sin hacer filas y obtuvo documento vigente rápidamente.',
+    days: '10 días',
+    count: '1 trámite',
+    image: travelersImage
+  }
+];
 ---
 
 <section id="casos" class="proof-section reveal">
@@ -16,7 +124,7 @@ import handshakeImage from '../assets/img/business-people-shaking-hands-together
         Resultados que <span class="text-accent">hablan por sí solos</span>
       </h2>
       <p class="proof-subtitle">
-        Cada número representa una familia que logró su objetivo migratorio con nuestra ayuda.
+        Cada caso representa una persona que logró regularizar su estatus migratorio con nuestra ayuda.
       </p>
     </div>
 
@@ -53,124 +161,45 @@ import handshakeImage from '../assets/img/business-people-shaking-hands-together
     </div>
 
     <!-- Grid de casos -->
-    <div class="proof-grid">
-      
-      <div class="case-card">
-        <div class="case-image-wrapper">
-          <Image 
-            src={visaImage} 
-            alt="Visa aprobada" 
-            class="case-image"
-            loading="lazy"
-            width={450}
-            quality={60}
-          />
-          <div class="case-badge case-badge--success">Exitoso</div>
-        </div>
-        <div class="case-content">
-          <div class="case-type">Visa de Trabajo</div>
-          <h3 class="case-title">Familia Pérez - Venezuela</h3>
-          <p class="case-desc">
-            Tramitamos visa de trabajo para el padre y visa de beneficiario para 
-            esposa e hijos. Proceso completado en 45 días.
-          </p>
-          <div class="case-meta">
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
-              45 días
-            </span>
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-              4 personas
-            </span>
-          </div>
-        </div>
+    <div class="cases-carousel-container">
+      <div class="cases-carousel-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth">
+        {cases.map((item) => (
+          <article class="case-card snap-start min-w-[85%] md:min-w-[48%] lg:min-w-[32%]">
+            <div class="case-image-wrapper">
+              <Image 
+                src={item.image} 
+                alt={item.name} 
+                class="case-image"
+                loading="lazy"
+                width={450}
+                quality={60}
+              />
+              <div class="case-badge case-badge--success">Exitoso</div>
+            </div>
+            <div class="case-content">
+              <div class="case-type">{item.type}</div>
+              <h3 class="case-title">{item.name} - {item.country}</h3>
+              <p class="case-desc">{item.desc}</p>
+              <div class="case-meta">
+                <span class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  {item.days}
+                </span>
+                <span class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m9 12 2 2 4-4" />
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                  {item.count}
+                </span>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
-
-      <div class="case-card">
-        <div class="case-image-wrapper">
-          <Image 
-            src={travelersImage} 
-            alt="Pasaportes y documentos" 
-            class="case-image"
-            loading="lazy"
-            width={450}
-            quality={60}
-          />
-          <div class="case-badge case-badge--success">Exitoso</div>
-        </div>
-        <div class="case-content">
-          <div class="case-type">PPT + SIRE</div>
-          <h3 class="case-title">María González - Venezuela</h3>
-          <p class="case-desc">
-            Regularización completa: PPT, registro SIRE y afiliación a seguridad social. 
-            Ahora trabaja legalmente en Neiva.
-          </p>
-          <div class="case-meta">
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
-              30 días
-            </span>
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m9 12 2 2 4-4" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              3 trámites
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-image-wrapper">
-          <Image 
-            src={handshakeImage} 
-            alt="Negocio exitoso" 
-            class="case-image"
-            loading="lazy"
-            width={450}
-            quality={60}
-          />
-          <div class="case-badge case-badge--success">Exitoso</div>
-        </div>
-        <div class="case-content">
-          <div class="case-type">Creación de Empresa + Visa M</div>
-          <h3 class="case-title">Carlos Mendoza - Cuba</h3>
-          <p class="case-desc">
-            Creación de SAS, visa de migrante empresario y apertura de cuenta bancaria. 
-            Hoy tiene su restaurante en Bogotá.
-          </p>
-          <div class="case-meta">
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
-              60 días
-            </span>
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-              </svg>
-              Negocio activo
-            </span>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <!-- CTA -->
@@ -192,7 +221,7 @@ import handshakeImage from '../assets/img/business-people-shaking-hands-together
 
 <style>
   .proof-section {
-    padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
+    padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 4rem) 2rem;
     background: #001b48;
     color: #ffffff;
   }
@@ -295,17 +324,33 @@ import handshakeImage from '../assets/img/business-people-shaking-hands-together
     margin-bottom: 3rem;
   }
 
+  .cases-carousel-container {
+    padding: 1.5rem 0;
+    margin: -1.5rem 0 3rem 0;
+  }
+
+  .cases-carousel-track {
+    padding: 0.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cases-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
   .case-card {
     background: #ffffff;
     border-radius: 20px;
     overflow: hidden;
     color: #000000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
   }
 
   .case-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   }
 
   .case-image-wrapper {
@@ -319,6 +364,7 @@ import handshakeImage from '../assets/img/business-people-shaking-hands-together
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
   .case-card:hover .case-image {
@@ -432,6 +478,42 @@ import handshakeImage from '../assets/img/business-people-shaking-hands-together
     height: 20px;
   }
 
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 8rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-prev-btn,
+  .carousel-next-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .carousel-prev-btn:hover,
+  .carousel-next-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+  }
+
+  .carousel-prev-btn svg,
+  .carousel-next-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
   @media (max-width: 1024px) {
     .proof-stats {
       grid-template-columns: repeat(2, 1fr);
@@ -467,3 +549,87 @@ import handshakeImage from '../assets/img/business-people-shaking-hands-together
     }
   }
 </style>
+
+<script>
+  const initCasesCarousel = () => {
+    const section = document.getElementById('casos');
+    if (!section) return;
+    
+    const track = section.querySelector('.cases-carousel-track') as HTMLElement;
+    const prevBtn = section.querySelector('.carousel-prev-btn') as HTMLElement;
+    const nextBtn = section.querySelector('.carousel-next-btn') as HTMLElement;
+    
+    if (!track || !prevBtn || !nextBtn) return;
+
+    let autoplayInterval: number;
+    let isUserInteracting = false;
+
+    const scrollByCard = (direction: number) => {
+      const card = track.querySelector('article');
+      if (!card) return;
+      const cardWidth = card.getBoundingClientRect().width;
+      const gap = 24; // gap-6 = 1.5rem = 24px
+      const offset = cardWidth + gap;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      
+      if (direction > 0 && track.scrollLeft >= maxScroll - 10) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: direction * offset, behavior: 'smooth' });
+      }
+    };
+
+    const startAutoplay = () => {
+      autoplayInterval = window.setInterval(() => {
+        if (!isUserInteracting) {
+          scrollByCard(1);
+        }
+      }, 5000); // Cambia cada 5 segundos
+    };
+
+    const stopAutoplay = () => {
+      clearInterval(autoplayInterval);
+    };
+
+    const resetAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    nextBtn.addEventListener('click', () => {
+      scrollByCard(1);
+      resetAutoplay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      scrollByCard(-1);
+      resetAutoplay();
+    });
+
+    // Pausar autoplay al hacer hover
+    section.addEventListener('mouseenter', () => {
+      isUserInteracting = true;
+    });
+
+    section.addEventListener('mouseleave', () => {
+      isUserInteracting = false;
+    });
+
+    // Pausar autoplay al hacer scroll manual
+    track.addEventListener('scroll', () => {
+      isUserInteracting = true;
+      setTimeout(() => {
+        isUserInteracting = false;
+      }, 2000);
+    });
+
+    // Iniciar autoplay
+    startAutoplay();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCasesCarousel);
+  } else {
+    initCasesCarousel();
+  }
+</script>

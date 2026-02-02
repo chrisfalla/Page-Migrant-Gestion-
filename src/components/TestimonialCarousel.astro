@@ -1,59 +1,84 @@
 ---
 const testimonials = [
   {
-    name: 'María José González',
-    role: 'PPT aprobado - Venezuela',
-    quote: 'Gracias a ellos obtuve mi Permiso por Protección Temporal sin complicaciones. Me explicaron todo paso a paso y me ahorraron mucho tiempo.'
+    name: 'Mariana Oviedo',
+    role: 'Permiso Por Protección Temporal',
+    quote: 'Me ayudaron a conseguir mi PPT en menos de 3 meses. El equipo fue muy profesional y me explicó cada paso sin complicaciones.'
   },
   {
-    name: 'Carlos Méndez',
-    role: 'Cédula de Extranjería - Venezuela',
-    quote: 'Después de años en Colombia, finalmente tengo mi cédula. El equipo fue muy profesional y me mantuvieron informado todo el tiempo.'
+    name: 'Carlos Rivas',
+    role: 'Cédula de Extranjería',
+    quote: 'Después de años viviendo en Colombia, finalmente tengo mi cédula. Fue un proceso rápido y sin estrés.'
   },
   {
-    name: 'Daniela Ramírez',
-    role: 'Visa de Trabajo - Venezuela',
+    name: 'Daniela Sánchez',
+    role: 'Visa de Trabajo (V)',
     quote: 'Conseguí mi visa de trabajo en tiempo récord. Su experiencia con migrantes venezolanos es invaluable.'
   },
   {
-    name: 'Luis Andrade',
-    role: 'Convalidación de Título - Perú',
-    quote: 'Sentí confianza desde la primera llamada. Todo el proceso estuvo documentado y sin sorpresas.'
+    name: 'Jessica Montilla',
+    role: 'Convalidación de Título - Enfermería',
+    quote: 'Hoy trabajo como enfermera en un hospital de Bogotá gracias a que validaron mi título. Excelente asesoría.'
   },
   {
-    name: 'Ana Belén Pérez',
-    role: 'Registro RUMV - Venezuela',
-    quote: 'Me ayudaron con el registro y toda la documentación necesaria. Ahora puedo trabajar legalmente sin preocupaciones.'
+    name: 'Miguel Flores',
+    role: 'Afiliación al Sistema de Salud',
+    quote: 'Me afiliaron al sistema de salud en la primera cita. Ahora tengo cobertura médica completa sin problemas.'
   },
   {
-    name: 'José Antonio Silva',
-    role: 'Renovación PPT - Venezuela',
-    quote: 'Renovar mi PPT fue muy fácil con su ayuda. No tuve que hacer filas ni perder tiempo, ellos se encargaron de todo.'
+    name: 'Alejandra Gutiérrez',
+    role: 'Salvoconducto SC-2',
+    quote: 'Necesitaba urgente mi salvoconducto para viajar y lo obtuve en dos semanas. Su gestión es impecable.'
   },
   {
-    name: 'Mariana Pérez',
-    role: 'Visa de Residencia - Perú',
-    quote: 'El equipo fue impecable: claridad legal, tiempos rápidos y un acompañamiento humano de principio a fin.'
+    name: 'Ronny Torres',
+    role: 'Renovación de PPT',
+    quote: 'Renovar mi PPT fue muy fácil con su ayuda. No tuve que hacer filas ni perder tiempo.'
   },
   {
-    name: 'Roberto Fuentes',
-    role: 'Salvoconducto SC-2 - Venezuela',
-    quote: 'Necesitaba urgente el salvoconducto y lo obtuve a tiempo. Su conocimiento de los procesos migratorios es excepcional.'
+    name: 'Adriana Cabrera',
+    role: 'Inscripción Extemporánea de Hijo',
+    quote: 'Lograron inscribir a mi hijo en tiempo récord. Ahora tiene sus documentos en regla para estudiar.'
   },
   {
-    name: 'Camila Torres',
-    role: 'Regularización PPT - Venezuela',
-    quote: 'Resolvieron mi trámite con disciplina y atención al detalle. Totalmente recomendados para venezolanos en Colombia.'
+    name: 'Ricardo Delgado',
+    role: 'Licencia Temporal - Contador Público',
+    quote: 'Validé mi licencia profesional y ahora trabajo en una empresa multinacional. Fue muy rápido.'
   },
   {
-    name: 'Andrés Villalobos',
-    role: 'Visa M - Venezuela',
-    quote: 'Mi visa de migrante llegó más rápido de lo esperado. Excelente servicio y muy atentos a cada detalle del proceso.'
+    name: 'Valentina Martínez',
+    role: 'Antecedentes Penales y Apostilla',
+    quote: 'Obtuve mis antecedentes y apostilla para trabajar en el exterior. Todo en orden y sin complicaciones.'
+  },
+  {
+    name: 'Sergio Pacheco',
+    role: 'Cita de Pasaporte Venezolano',
+    quote: 'Me gestionaron mi cita para renovar el pasaporte sin hacer filas. Servicio impecable.'
+  },
+  {
+    name: 'Camila Ruiz',
+    role: 'Regularización Niño Venezolano (RUMV)',
+    quote: 'Mi hijo quedó registrado en RUMV y ahora puede acceder a servicios sin problemas en Colombia.'
+  },
+  {
+    name: 'Eduardo Castillo',
+    role: 'Asesoría de Visa Merconegro',
+    quote: 'Me explicaron todas las opciones de visas disponibles y elegimos la mejor para mi caso. Excelentes.'
+  },
+  {
+    name: 'Natalia Vázquez',
+    role: 'Diligenciamiento FUT',
+    quote: 'Completaron todo mi FUT para crear empresa sin errores. Ahora soy empresaria en Colombia.'
+  },
+  {
+    name: 'Andrés Morales',
+    role: 'Representación ante Migración',
+    quote: 'Me representaron ante Migración Colombia y resolvieron mi caso en la primera audiencia.'
   }
 ];
 ---
 
-<section id="testimonios" class="py-14 bg-[#001B48] text-white reveal">
+<section id="testimonios" class="py-8 bg-[#001B48] text-white reveal">
   <div class="container mx-auto px-6">
     <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-12">
       <div>
@@ -78,9 +103,35 @@ const testimonials = [
       <div class="carousel-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth">
         {testimonials.map((item) => (
           <article class="testimonial-card snap-start min-w-[85%] md:min-w-[48%] lg:min-w-[32%]">
-            <p class="text-lg leading-relaxed mb-6 text-white/90">"{item.quote}"</p>
-            <div class="text-white font-semibold">{item.name}</div>
-            <div class="text-blue-200 text-sm">{item.role}</div>
+            <!-- Top decorative bar -->
+            <div class="card-top-bar"></div>
+            
+            <!-- Stars rating -->
+            <div class="stars-container mb-4">
+              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+
+            <p class="testimonial-text text-lg leading-relaxed mb-6 text-white/90">"{item.quote}"</p>
+            
+            <!-- Author info -->
+            <div class="author-info">
+              <!-- Avatar circle -->
+              <div class="author-avatar">{item.name.charAt(0)}</div>
+              <div class="flex-1">
+                <div class="author-name text-white font-bold">{item.name}</div>
+                <div class="author-role text-blue-300 text-sm font-medium">{item.role}</div>
+              </div>
+              <!-- Check mark -->
+              <div class="verified-check">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                </svg>
+              </div>
+            </div>
           </article>
         ))}
       </div>
@@ -104,23 +155,141 @@ const testimonials = [
     }
 
     .testimonial-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 1rem;
-      padding: 2rem;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
       box-shadow: 
-        0 8px 32px 0 rgba(0, 27, 72, 0.2),
+        0 12px 40px 0 rgba(0, 27, 72, 0.3),
         inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
       transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+    }
+
+    .card-top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .testimonial-card:hover .card-top-bar {
+      transform: scaleX(1);
+    }
+
+    .stars-container {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .stars-container .star {
+      width: 18px;
+      height: 18px;
+      color: #fbbf24;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      animation: starPop 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+      opacity: 0;
+    }
+
+    .stars-container .star:nth-child(1) { animation-delay: 0.1s; }
+    .stars-container .star:nth-child(2) { animation-delay: 0.2s; }
+    .stars-container .star:nth-child(3) { animation-delay: 0.3s; }
+    .stars-container .star:nth-child(4) { animation-delay: 0.4s; }
+    .stars-container .star:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes starPop {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+
+
+    .testimonial-text {
+      flex: 1;
+      font-style: italic;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.75;
+    }
+
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: auto;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .author-role {
+      font-size: 0.8rem;
+      color: #93c5fd;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+
+    .verified-check {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .verified-check svg {
+      width: 14px;
+      height: 14px;
+      color: white;
     }
 
     .testimonial-card:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
       border-color: rgba(255, 255, 255, 0.25);
       box-shadow: 
-        0 12px 40px 0 rgba(0, 27, 72, 0.3),
+        0 16px 50px 0 rgba(0, 27, 72, 0.4),
         inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
       transform: translateY(-4px);
     }
