@@ -1,5 +1,7 @@
 ---
 // Sección "¿Por qué elegirnos?" con diferenciadores
+import { Image } from 'astro:assets';
+import travelAgentImage from '../assets/img/front-view-woman-working-as-travel-agent.jpg';
 ---
 
 <section id="porque-nosotros" class="why-section reveal">
@@ -108,7 +110,14 @@
     <div class="comparison-wrapper">
       <div class="comparison-image-container">
         <div class="image-decoration">
-          <img src="/src/assets/img/front-view-woman-working-as-travel-agent.jpg" alt="Profesionales asesorando" class="comparison-image" />
+          <Image 
+            src={travelAgentImage} 
+            alt="Profesionales asesorando" 
+            class="comparison-image"
+            loading="lazy"
+            width={600}
+            quality={70}
+          />
         </div>
       </div>
       <div class="comparison-box">
