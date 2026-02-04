@@ -156,3 +156,35 @@ import Button from './Button.astro';
     </div>
   </div>
 </section>
+
+<style>
+  /* Estilos para móvil - centrar contenido y espaciado */
+  @media (max-width: 767px) {
+    #propuesta .space-y-8 {
+      text-align: center;
+    }
+
+    #propuesta .space-y-8 > .inline-flex {
+      margin-inline: auto;
+    }
+
+    #propuesta .space-y-8 h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    #propuesta .space-y-8 .space-y-4 {
+      margin-bottom: 2rem;
+    }
+
+    #propuesta .grid.sm\:grid-cols-2 .flex.items-start {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    #propuesta .pt-4:has(a, button) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+</style>

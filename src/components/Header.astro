@@ -18,6 +18,9 @@ const baseUrl = isLegalPage ? '/' : '';
         alt="Migrant Gestión Logo" 
         class="header__logo-img" 
         loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        quality={100}
       />
     </a>
 
@@ -33,13 +36,29 @@ const baseUrl = isLegalPage ? '/' : '';
     </nav>
     
     <button class="header__mobile-btn" aria-label="Abrir menú" aria-expanded="false">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="header__mobile-icon header__mobile-icon--menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="6" x2="21" y2="6"></line>
         <line x1="3" y1="12" x2="21" y2="12"></line>
         <line x1="3" y1="18" x2="21" y2="18"></line>
       </svg>
+      <svg class="header__mobile-icon header__mobile-icon--close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
     </button>
   </div>
+
+  <!-- Menú móvil -->
+  <nav class="header__mobile-nav" aria-label="Navegación móvil">
+    <a href={`${baseUrl}#nosotros`} class="header__mobile-link">Nosotros</a>
+    <a href={`${baseUrl}#porque-nosotros`} class="header__mobile-link">Por qué elegirnos</a>
+    <a href={`${baseUrl}#servicios`} class="header__mobile-link">Servicios</a>
+    <a href={`${baseUrl}#casos`} class="header__mobile-link">Casos de éxito</a>
+    <a href={`${baseUrl}#testimonios`} class="header__mobile-link">Testimonios</a>
+    <a href={`${baseUrl}#contacto`} class="header__mobile-link header__mobile-link--cta">
+      Contacto
+    </a>
+  </nav>
 </header>
 
 <style>
@@ -175,16 +194,115 @@ const baseUrl = isLegalPage ? '/' : '';
       display: none;
     }
   }
+
+  .header__mobile-icon--close {
+    display: none;
+  }
+
+  .header__mobile-btn[aria-expanded="true"] .header__mobile-icon--menu {
+    display: none;
+  }
+
+  .header__mobile-btn[aria-expanded="true"] .header__mobile-icon--close {
+    display: block;
+  }
+
+  /* Menú móvil desplegable */
+  .header__mobile-nav {
+    display: none;
+    flex-direction: column;
+    padding: var(--space-6);
+    background: linear-gradient(180deg, var(--color-white) 0%, #f8fafc 100%);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    gap: var(--space-2);
+  }
+
+  .header__mobile-nav.is-open {
+    display: flex;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .header__mobile-nav {
+      display: none !important;
+    }
+  }
+
+  .header__mobile-link {
+    padding: var(--space-4);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--color-gray-700);
+    text-align: center;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+    background: var(--color-white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .header__mobile-link:hover,
+  .header__mobile-link:active {
+    color: var(--color-primary);
+    background: rgba(0, 27, 72, 0.04);
+    border-color: rgba(0, 27, 72, 0.1);
+    transform: scale(0.98);
+  }
+
+  .header__mobile-link--cta {
+    margin-top: var(--space-2);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 27, 72, 0.25);
+  }
+
+  .header__mobile-link--cta:hover,
+  .header__mobile-link--cta:active {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+    border: none;
+  }
 </style>
 
 <script>
   const header = document.querySelector('.header');
+  const mobileBtn = document.querySelector('.header__mobile-btn');
+  const mobileNav = document.querySelector('.header__mobile-nav');
+  const mobileLinks = document.querySelectorAll('.header__mobile-link');
   
+  // Scroll effect
   window.addEventListener('scroll', () => {
     if (window.scrollY > 10) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
     }
+  });
+
+  // Toggle menú móvil
+  mobileBtn?.addEventListener('click', () => {
+    const isOpen = mobileBtn.getAttribute('aria-expanded') === 'true';
+    mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+    mobileNav?.classList.toggle('is-open');
+  });
+
+  // Cerrar menú al hacer click en un enlace
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileBtn?.setAttribute('aria-expanded', 'false');
+      mobileNav?.classList.remove('is-open');
+    });
   });
 </script>

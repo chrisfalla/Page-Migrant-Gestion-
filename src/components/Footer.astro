@@ -117,21 +117,6 @@ const baseUrl = isLegalPage ? '/' : '';
         </ul>
       </div>
       
-      <!-- Columna 4: Newsletter -->
-      <div class="footer__col">
-        <h4 class="footer__col-title">Novedades</h4>
-        <p class="footer__col-desc">Recibe actualizaciones sobre trámites migratorios y alertas importantes.</p>
-        <form class="footer__form">
-          <input
-            type="email"
-            placeholder="Tu correo electrónico"
-            class="footer__input"
-            aria-label="Correo electrónico"
-          />
-          <button type="submit" class="footer__form-btn">Suscribirme</button>
-        </form>
-      </div>
-      
     </div>
     
     <!-- Separador -->
@@ -199,15 +184,88 @@ const baseUrl = isLegalPage ? '/' : '';
     margin-bottom: var(--space-12);
   }
 
-  @media (min-width: 768px) {
+  /* Móvil: 2 columnas donde sea posible */
+  @media (max-width: 767px) {
     .footer__grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8) var(--space-4);
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+      text-align: center;
+      align-items: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .footer__brand-desc {
+      max-width: 100%;
+    }
+
+    .footer__badge {
+      margin-inline: auto;
+    }
+
+    .footer__social {
+      justify-content: center;
+    }
+
+    /* Columnas de servicios y contacto */
+    .footer__col {
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer__col-title {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-4);
+      color: var(--color-white);
+    }
+
+    .footer__links {
+      gap: var(--space-3);
+    }
+
+    .footer__link {
+      font-size: var(--text-sm);
+    }
+
+    .footer__contact {
+      gap: var(--space-3);
+    }
+
+    .footer__contact-item {
+      gap: var(--space-2);
+    }
+
+    .footer__contact-item svg {
+      width: 16px;
+      height: 16px;
+      margin-top: 3px;
+    }
+
+    .footer__contact-label {
+      font-size: var(--text-xs);
+    }
+
+    .footer__contact-value {
+      font-size: var(--text-sm);
     }
   }
 
+  /* Tablet */
+  @media (min-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: var(--space-8);
+    }
+  }
+
+  /* Desktop */
   @media (min-width: 1024px) {
     .footer__grid {
-      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1.2fr;
+      gap: var(--space-12);
     }
   }
 
@@ -468,6 +526,9 @@ const baseUrl = isLegalPage ? '/' : '';
   }
 
   .footer__legal a {
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
     transition: color var(--transition-fast);
   }
 
