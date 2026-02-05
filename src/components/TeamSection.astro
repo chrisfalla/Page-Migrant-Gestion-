@@ -152,8 +152,8 @@
 
 <style>
   .team-section {
-    padding: 0rem clamp(1.25rem, 5vw, 4rem) clamp(2.5rem, 5vw, 4.5rem);
-    background: #f8fafc;
+    padding: 0rem clamp(1.25rem, 5vw, 4rem) clamp(1rem, 3vw, 1.5rem);
+    background: var(--color-gray-50);
   }
 
   .team-container {
@@ -169,33 +169,33 @@
 
   .team-badge {
     display: inline-flex;
-    padding: 0.5rem 1rem;
+    padding: var(--space-2) var(--space-4);
     background: rgba(0, 27, 72, 0.08);
-    color: #001b48;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    color: var(--color-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-5);
   }
 
   .team-title {
     font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 800;
-    color: #000000;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    font-weight: var(--font-extrabold);
+    color: var(--color-black);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-4);
   }
 
   .text-accent {
-    color: #001b48;
+    color: var(--color-primary);
   }
 
   .team-subtitle {
-    font-size: 1.1rem;
-    color: #8e8e8e;
-    line-height: 1.6;
+    font-size: var(--text-lg);
+    color: var(--color-gray-500);
+    line-height: var(--leading-relaxed);
   }
 
   .team-grid {
@@ -206,25 +206,27 @@
   }
 
   .team-card {
-    background: #ffffff;
-    border-radius: 20px;
+    background: var(--color-white);
+    border-radius: var(--radius-2xl);
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.06);
-    transition:
-      transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .member-image-wrapper:hover .member-image {
+    transform: scale(1.045);
+    transition: transform 0.35s var(--ease-in-out);
   }
 
-  .team-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  .member-image {
+    /* ...existing code... */
+    transition: transform 0.35s var(--ease-in-out);
   }
 
   .member-image-wrapper {
     position: relative;
     aspect-ratio: 1;
     overflow: hidden;
-    background: linear-gradient(135deg, #001b48 0%, #003366 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    box-shadow: 0 0 44px 8px var(--color-white);
   }
 
   .member-image {
@@ -232,11 +234,11 @@
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    filter: drop-shadow(0 0 0.7rem rgba(255,255,255,0.25)) drop-shadow(0 0 1.8rem rgba(255,255,255,0.18));
   }
 
-  /* Estilo específico para Juan Barrios - reducir tamaño sin recortar */
   img[alt="Juan Barrios"] {
-    filter: brightness(0.6);
+    filter: brightness(0.6) drop-shadow(0 0 0.7rem rgba(255,255,255,0.25)) drop-shadow(0 0 1.8rem rgba(255,255,255,0.18));
     transform: scale(1);
     object-fit: contain !important;
   }
@@ -260,14 +262,14 @@
 
   .member-badge {
     position: absolute;
-    bottom: 0.75rem;
-    left: 0.75rem;
-    padding: 0.35rem 0.75rem;
+    bottom: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
     background: rgba(255, 255, 255, 0.95);
-    color: #001b48;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-radius: 6px;
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-md);
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
@@ -277,17 +279,17 @@
   }
 
   .member-name {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 0.25rem;
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-black);
+    margin-bottom: var(--space-1);
   }
 
   .member-role {
-    font-size: 0.9rem;
-    color: #001b48;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-3);
   }
 
   .member-bio-short {
@@ -305,12 +307,12 @@
   .social-link {
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     display: grid;
     place-items: center;
     transition:
-      transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform var(--transition-slow) var(--ease-in-out),
+      background var(--transition-slow) var(--ease-in-out);
   }
 
   .social-link svg {
@@ -331,29 +333,29 @@
 
   .social-link--email {
     background: rgba(0, 27, 72, 0.08);
-    color: #001b48;
+    color: var(--color-primary);
   }
 
   .social-link--email:hover {
-    background: #001b48;
-    color: #ffffff;
+    background: var(--color-primary);
+    color: var(--color-white);
     transform: translateY(-2px);
   }
 
   .team-message {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, #001b48 0%, #003366 100%);
-    border-radius: 20px;
-    color: #ffffff;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border-radius: var(--radius-2xl);
+    color: var(--color-white);
   }
 
   .message-icon {
     width: 56px;
     height: 56px;
-    border-radius: 16px;
+    border-radius: var(--radius-xl);
     background: rgba(255, 255, 255, 0.15);
     display: grid;
     place-items: center;
