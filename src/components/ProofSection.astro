@@ -222,8 +222,8 @@ const cases = [
 <style>
   .proof-section {
     padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 4rem) 2rem;
-    background: #001b48;
-    color: #ffffff;
+    background: var(--color-primary);
+    color: var(--color-white);
   }
 
   .proof-container {
@@ -239,24 +239,24 @@ const cases = [
 
   .proof-badge {
     display: inline-flex;
-    padding: 0.5rem 1rem;
+    padding: var(--space-2) var(--space-4);
     background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    color: var(--color-white);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-5);
   }
 
   .proof-title {
     font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    font-weight: var(--font-extrabold);
+    color: var(--color-white);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-4);
   }
 
   .text-accent {
@@ -264,9 +264,9 @@ const cases = [
   }
 
   .proof-subtitle {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
     color: rgba(255, 255, 255, 0.75);
-    line-height: 1.6;
+    line-height: var(--leading-relaxed);
   }
 
   .proof-stats {
@@ -278,18 +278,18 @@ const cases = [
 
   .stat-item {
     text-align: center;
-    padding: 1.5rem;
+    padding: var(--space-6);
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .stat-number {
     font-size: 2.5rem;
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1;
-    margin-bottom: 0.5rem;
+    font-weight: var(--font-extrabold);
+    color: var(--color-white);
+    line-height: var(--leading-none);
+    margin-bottom: var(--space-2);
   }
 
   .stat-label {
@@ -301,20 +301,20 @@ const cases = [
   .stat-bar {
     height: 6px;
     background: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
   }
 
   .stat-bar-fill {
     height: 100%;
     width: var(--fill-width);
-    background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 100%);
-    border-radius: 3px;
+    background: linear-gradient(90deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+    border-radius: var(--radius-sm);
     transition: width 1s ease;
   }
 
   .stat-bar-fill--accent {
-    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(90deg, var(--color-success) 0%, #059669 100%);
   }
 
   .proof-grid {
@@ -340,17 +340,17 @@ const cases = [
   }
 
   .case-card {
-    background: #ffffff;
-    border-radius: 20px;
+    background: var(--color-white);
+    border-radius: var(--radius-2xl);
     overflow: hidden;
-    color: #000000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    color: var(--color-black);
+    transition: transform var(--transition-slow) ease, box-shadow var(--transition-slow) ease;
+    box-shadow: var(--shadow-xl);
   }
 
   .case-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-2xl);
   }
 
   .case-image-wrapper {
@@ -364,7 +364,7 @@ const cases = [
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-lg);
   }
 
   .case-card:hover .case-image {
@@ -373,39 +373,39 @@ const cases = [
 
   .case-badge {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    padding: 0.35rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-radius: 6px;
+    top: var(--space-3);
+    right: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-md);
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
 
   .case-badge--success {
-    background: #10b981;
-    color: #ffffff;
+    background: var(--color-success);
+    color: var(--color-white);
   }
 
   .case-content {
-    padding: 1.5rem;
+    padding: var(--space-6);
   }
 
   .case-type {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #001b48;
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
     text-transform: uppercase;
     letter-spacing: 0.03em;
     margin-bottom: 0.5rem;
   }
 
   .case-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 0.75rem;
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-black);
+    margin-bottom: var(--space-3);
   }
 
   .case-desc {
@@ -423,9 +423,9 @@ const cases = [
   .meta-item {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 0.85rem;
-    color: #8e8e8e;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
   }
 
   .meta-item svg {
@@ -437,10 +437,10 @@ const cases = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    padding: 2rem 2.5rem;
+    gap: var(--space-8);
+    padding: var(--space-8) var(--space-10);
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
+    border-radius: var(--radius-2xl);
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
@@ -457,14 +457,14 @@ const cases = [
   .cta-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.75rem;
-    background: #ffffff;
-    color: #001b48;
-    font-weight: 700;
-    border-radius: 12px;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-xl);
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform var(--transition-base) ease, box-shadow var(--transition-base) ease;
     white-space: nowrap;
   }
 
