@@ -27,8 +27,8 @@ import heroBgImage from "../assets/img/1.jpg";
       </span>
       
       <h1 class="hero__title">
-        <span class="hero__title-line">Legaliza tu camino,</span>
-        <span class="hero__title-line hero__title-line--accent">construye tu futuro</span>
+        <span class="hero__title-line">Legaliza tu Camino,</span>
+        <span class="hero__title-line hero__title-line--accent">Construye tu Futuro</span>
       </h1>
       
       <p class="hero__subtitle">
@@ -391,7 +391,7 @@ import heroBgImage from "../assets/img/1.jpg";
     font-weight: var(--font-semibold);
     text-decoration: none;
     border-radius: var(--radius-xl);
-    transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+    transition: all var(--transition-slower) var(--ease-in-out);
     white-space: nowrap;
   }
 
@@ -424,7 +424,7 @@ import heroBgImage from "../assets/img/1.jpg";
   }
 
   .hero__button--primary svg {
-    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    transition: transform var(--transition-slower) var(--ease-in-out);
   }
 
   /* ─── Indicador de Scroll ─── */

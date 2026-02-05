@@ -107,8 +107,8 @@
 
 <style>
   .values-section {
-    padding: 2rem clamp(1.25rem, 5vw, 4rem) 1rem;
-    background: #f8fafc;
+    padding: 0.5rem clamp(1.25rem, 5vw, 4rem) 1rem;
+    background: var(--color-gray-50);
   }
 
   .values-container {
@@ -123,26 +123,26 @@
 
   .values-badge {
     display: inline-flex;
-    padding: 0.5rem 1rem;
-    background: #001b48;
-    color: #ffffff;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-5);
   }
 
   .values-title {
     font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 800;
-    color: #000000;
-    line-height: 1.2;
+    font-weight: var(--font-extrabold);
+    color: var(--color-black);
+    line-height: var(--leading-tight);
   }
 
   .text-accent {
-    color: #001b48;
+    color: var(--color-primary);
   }
 
   .values-grid {
@@ -152,28 +152,28 @@
   }
 
   .value-card {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
     text-align: center;
-    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s cubic-bezier(0.4,0,0.2,1);
+    transition: transform var(--transition-slow) var(--ease-in-out), box-shadow var(--transition-slow) var(--ease-in-out);
     border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
   }
 
   .value-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-xl);
     border-color: rgba(0, 27, 72, 0.15);
   }
 
   .value-icon {
     width: 64px;
     height: 64px;
-    border-radius: 18px;
+    border-radius: var(--radius-xl);
     display: grid;
     place-items: center;
-    margin: 0 auto 1.25rem;
+    margin: 0 auto var(--space-5);
   }
 
   .value-icon svg {
@@ -184,12 +184,12 @@
   .value-icon--blue {
     background: linear-gradient(135deg, rgba(0, 27, 72, 0.1) 0%, rgba(0, 27, 72, 0.05) 100%);
   }
-  .value-icon--blue svg { color: #001b48; }
+  .value-icon--blue svg { color: var(--color-primary); }
 
   .value-icon--green {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
   }
-  .value-icon--green svg { color: #10b981; }
+  .value-icon--green svg { color: var(--color-success); }
 
   .value-icon--purple {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 100%);
@@ -212,10 +212,10 @@
   .value-icon--pink svg { color: #ec4899; }
 
   .value-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 0.75rem;
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-black);
+    margin-bottom: var(--space-2);
   }
 
   .value-desc {
