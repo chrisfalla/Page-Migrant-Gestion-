@@ -1,0 +1,161 @@
+---
+import type { Service } from '../data/services';
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<article 
+  class="service-card-small"
+  data-service-id={service.id}
+  role="button"
+  tabindex="0"
+  aria-label={`Ver detalles de ${service.title}`}
+>
+  <div class="card-icon">
+    {service.icon}
+  </div>
+  <h3 class="card-title">{service.title}</h3>
+  <div class="card-hover-indicator">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </div>
+</article>
+
+<style>
+  .service-card-small {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    min-height: 180px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-2xl, 1.25rem);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .service-card-small::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary, #001b48) 0%,
+      var(--color-accent, #2563eb) 100%
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+
+  .service-card-small:hover,
+  .service-card-small:focus-visible {
+    transform: translateY(-5px);
+    border-color: var(--color-accent, #2563eb);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+
+  .service-card-small:hover::before,
+  .service-card-small:focus-visible::before {
+    transform: scaleX(1);
+  }
+
+  .service-card-small:active {
+    transform: translateY(-3px);
+  }
+
+  .card-icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card-small:hover .card-icon,
+  .service-card-small:focus-visible .card-icon {
+    transform: scale(1.1);
+  }
+
+  .card-title {
+    font-family: var(--font-display, 'Montserrat', sans-serif);
+    font-size: 0.938rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-primary, #001b48);
+    margin: 0;
+    padding: 0 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .service-card-small:hover .card-title,
+  .service-card-small:focus-visible .card-title {
+    color: var(--color-accent, #2563eb);
+  }
+
+  .card-hover-indicator {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary, #001b48);
+    border-radius: 50%;
+    color: white;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+
+  .service-card-small:hover .card-hover-indicator,
+  .service-card-small:focus-visible .card-hover-indicator {
+    opacity: 1;
+    transform: scale(1);
+    background: var(--color-accent, #2563eb);
+  }
+
+  .card-hover-indicator svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Keyboard navigation focus */
+  .service-card-small:focus-visible {
+    outline: 2px solid var(--color-accent, #2563eb);
+    outline-offset: 2px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .service-card-small {
+      min-height: 160px;
+      padding: 1.25rem 0.75rem;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+    }
+
+    .card-title {
+      font-size: 0.875rem;
+    }
+  }
+</style>
