@@ -1,5 +1,9 @@
 ---
 // Sección del Equipo
+import { Image } from "astro:assets";
+import alexisImage from "../assets/img/AC.png";
+import juanNImage from "../assets/img/JN.png";
+import juanBImage from "../assets/img/JD.png";
 ---
 
 <section id="equipo" class="team-section reveal">
@@ -22,14 +26,26 @@
       <!-- Miembro principal (Fundador) -->
       <div class="team-card">
         <div class="member-image-wrapper">
-          <img src="/src/assets/img/AC.png" alt="Alexis Cedeño" class="member-image" />
+          <Image
+            src={alexisImage}
+            alt="Alexis Cedeño - Gerente General de Migrant Gestión"
+            class="member-image"
+            width={450}
+            height={550}
+            quality={95}
+            loading="lazy"
+            decoding="async"
+          />
           <div class="member-badge">CEO</div>
         </div>
         <div class="member-info">
           <h3 class="member-name">Alexis Cedeño</h3>
           <p class="member-role">Gerente General</p>
           <p class="member-bio-short">
-            Profesional con más de 5 años de experiencia en asesoría migratoria. Especializado en acompañar extranjeros en procesos de visas, residencias y regularización migratoria, ofreciendo un servicio confiable y enfocado en resultados.
+            Profesional con más de 5 años de experiencia en asesoría migratoria.
+            Especializado en acompañar extranjeros en procesos de visas,
+            residencias y regularización migratoria, ofreciendo un servicio
+            confiable y enfocado en resultados.
           </p>
           <div class="member-social">
             <a
@@ -67,12 +83,27 @@
       <!-- Otros miembros del equipo -->
       <div class="team-card">
         <div class="member-image-wrapper">
-          <img src="/src/assets/img/JN.png" alt="Juan Narvaez" class="member-image" />
+          <Image
+            src={juanNImage}
+            alt="Juan Narvaez - Asesor Migratorio"
+            class="member-image"
+            width={450}
+            height={550}
+            quality={95}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="member-info">
           <h3 class="member-name">Juan Narvaez</h3>
           <p class="member-role">Asesor Migratorio</p>
-          <p class="member-bio-short">Especialista en procesos de visas y regularización migratoria con amplia experiencia en casos complejos. Experto en acompañar a familias y profesionales en su proceso de establecimiento legal en Colombia, ofreciendo soluciones personalizadas y seguimiento integral.</p>
+          <p class="member-bio-short">
+            Especialista en procesos de visas y regularización migratoria con
+            amplia experiencia en casos complejos. Experto en acompañar a
+            familias y profesionales en su proceso de establecimiento legal en
+            Colombia, ofreciendo soluciones personalizadas y seguimiento
+            integral.
+          </p>
           <div class="member-social">
             <a
               href="https://wa.me/573028077187"
@@ -108,12 +139,27 @@
 
       <div class="team-card">
         <div class="member-image-wrapper">
-          <img src="/src/assets/img/JD.png" alt="Juan Barrios" class="member-image" />
+          <Image
+            src={juanBImage}
+            alt="Juan Barrios - Asesor Migratorio"
+            class="member-image"
+            width={450}
+            height={550}
+            quality={95}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="member-info">
           <h3 class="member-name">Juan Barrios</h3>
           <p class="member-role">Asesor Migratorio</p>
-          <p class="member-bio-short">Asesor especializado en trámites empresariales y visas de inversionista. Con sólido conocimiento en legislación migratoria colombiana, brinda asesoría estratégica a emprendedores y empresarios extranjeros que buscan establecer sus negocios en Colombia.</p>
+          <p class="member-bio-short">
+            Asesor especializado en trámites empresariales y visas de
+            inversionista. Con sólido conocimiento en legislación migratoria
+            colombiana, brinda asesoría estratégica a emprendedores y
+            empresarios extranjeros que buscan establecer sus negocios en
+            Colombia.
+          </p>
           <div class="member-social">
             <a
               href="https://wa.me/573028077187"
@@ -225,22 +271,30 @@
     position: relative;
     aspect-ratio: 1;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-light) 100%
+    );
     box-shadow: 0 0 44px 8px var(--color-white);
   }
 
   .member-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
-    filter: drop-shadow(0 0 0.7rem rgba(255,255,255,0.25)) drop-shadow(0 0 1.8rem rgba(255,255,255,0.18));
+    filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.25))
+      drop-shadow(0 0 1.8rem rgba(255, 255, 255, 0.1852));
   }
-
-  img[alt="Juan Barrios"] {
-    filter: brightness(0.6) drop-shadow(0 0 0.7rem rgba(255,255,255,0.25)) drop-shadow(0 0 1.8rem rgba(255,255,255,0.18));
-    transform: scale(1);
-    object-fit: contain !important;
+  img[alt="Juan Barrios - Asesor Migratorio"] {
+    object-fit: contain;
+    filter: brightness(0.) drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.25))
+      drop-shadow(0 0 1.8rem rgba(255, 255, 255, 0.1852));
+  }
+  
+  img[alt="Juan Narvaez - Asesor Migratorio"] {
+    object-fit: contain;
   }
 
   .member-image--placeholder {
@@ -347,7 +401,11 @@
     align-items: center;
     gap: var(--space-6);
     padding: var(--space-8);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-light) 100%
+    );
     border-radius: var(--radius-2xl);
     color: var(--color-white);
   }
