@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import ServiceCardSmall from '../components/ServiceCardSmall.astro';
 import ServiceModal from '../components/ServiceModal.astro';
 import { services } from '../data/services';
@@ -7,72 +9,48 @@ import type { Service } from '../data/services';
 ---
 
 <Layout title="Todos Nuestros Servicios | Migrant Gestión">
+  <Header />
   <main class="services-page">
-    <!-- Hero Section -->
-    <section class="services-hero">
+    <!-- Simple Header -->
+    <section class="services-header">
       <div class="container">
-        <div class="hero-content reveal">
-          <div class="hero-header">
-            <span class="hero-badge">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-              </svg>
-              Servicios Migratorios Completos
-            </span>
-            <h1 class="hero-title">
-              Encuentra el Servicio<br>
-              <span class="gradient-text">que Necesitas</span>
-            </h1>
-            <p class="hero-subtitle">
-              Ofrecemos más de <strong>45 trámites y servicios especializados</strong> para acompañarte en cada paso de tu proceso migratorio en Colombia.
-            </p>
-          </div>
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Navegación de ruta">
+          <a href="/" class="breadcrumb-link">Inicio</a>
+          <span class="breadcrumb-separator">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+          <span class="breadcrumb-current">Servicios</span>
+        </nav>
 
-          <!-- Stats -->
-          <div class="hero-stats">
-            <div class="stat-item">
-              <div class="stat-number">{services.length}</div>
-              <div class="stat-label">Servicios</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">Legal</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">Asesoría</div>
-            </div>
-          </div>
+        <!-- Page Title -->
+        <div class="page-title-wrapper reveal">
+          <h1 class="page-title">Catálogo de Servicios</h1>
+          <p class="page-description">
+            Explora nuestra oferta completa de trámites migratorios y legales. 
+            <strong>{services.length} servicios</strong> disponibles con asesoría personalizada.
+          </p>
+        </div>
 
-          <!-- Search Bar -->
-          <div class="search-container">
-            <div class="search-wrapper">
-              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.35-4.35"></path>
-              </svg>
-              <input 
-                type="text" 
-                id="search-input" 
-                class="search-input" 
-                placeholder="Buscar servicio... (ej: visa, pasaporte, refugio)"
-                autocomplete="off"
-              />
-              <button id="clear-search" class="clear-btn" style="display: none;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-            <div class="search-results-count" id="results-count" style="display: none;">
-              <span id="count-text"></span>
-            </div>
-          </div>
+        <!-- Category Pills -->
+        <div class="category-pills reveal">
+          <button class="pill pill-active" data-category="all">
+            Todos ({services.length})
+          </button>
+          <button class="pill" data-category="visas">
+            🛂 Visas
+          </button>
+          <button class="pill" data-category="documentos">
+            📄 Documentos
+          </button>
+          <button class="pill" data-category="legalizacion">
+            ✅ Legalizaciones
+          </button>
+          <button class="pill" data-category="otros">
+            📋 Otros trámites
+          </button>
         </div>
       </div>
     </section>
@@ -80,30 +58,12 @@ import type { Service } from '../data/services';
     <!-- Services Grid -->
     <section class="services-grid-section">
       <div class="container">
-        <!-- Grid Header -->
-        <div class="grid-header">
-          <h2 class="grid-title">Explora Nuestros Servicios</h2>
-          <p class="grid-description">Haz clic en cualquier servicio para ver información detallada</p>
-        </div>
-
         <div class="services-grid" id="services-grid">
           {services.map((service: Service) => (
-            <div class="reveal service-item" data-search-terms={`${service.title.toLowerCase()} ${service.description.toLowerCase()}`}>
+            <div class="reveal service-item">
               <ServiceCardSmall service={service} />
             </div>
           ))}
-        </div>
-
-        <!-- Empty State -->
-        <div class="empty-state" id="empty-state" style="display: none;">
-          <div class="empty-icon">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-          </div>
-          <h3 class="empty-title">No encontramos servicios</h3>
-          <p class="empty-description">Intenta con otros términos de búsqueda o <button id="clear-search-empty" class="link-button">limpia el filtro</button></p>
         </div>
       </div>
     </section>
@@ -132,302 +92,162 @@ import type { Service } from '../data/services';
 
   <!-- Modal Component -->
   <ServiceModal />
+  
+  <!-- Footer -->
+  <Footer />
 </Layout>
 
 <style>
+  /* ============================================
+     Main Layout - Using Global Variables
+     ============================================ */
   .services-page {
     min-height: 100vh;
-    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    background: var(--color-white);
   }
 
   .container {
-    max-width: 1320px;
+    max-width: var(--container-xl);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 var(--space-6);
   }
 
   /* ============================================
-     Hero Section - Enhanced
+     Simple Header
      ============================================ */
-  .services-hero {
-    padding: 7rem 0 5rem;
-    background: 
-      radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(0, 27, 72, 0.05) 0%, transparent 50%),
-      linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
-    position: relative;
-    overflow: hidden;
+  .services-header {
+    padding: var(--space-4) 0 var(--space-8);
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-200);
   }
 
-  .services-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--color-accent, #2563eb) 30%,
-      var(--color-primary, #001b48) 50%,
-      var(--color-accent, #2563eb) 70%,
-      transparent 100%
-    );
-    opacity: 0.6;
-  }
-
-  .services-hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(0, 27, 72, 0.1) 50%,
-      transparent 100%
-    );
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .hero-header {
-    margin-bottom: 3rem;
-  }
-
-  .hero-badge {
-    display: inline-flex;
+  /* Breadcrumb */
+  .breadcrumb {
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.5rem;
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    border: 1px solid #bfdbfe;
-    border-radius: 2rem;
-    color: var(--color-accent, #2563eb);
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.025em;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
-    transition: all 0.3s ease;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
   }
 
-  .hero-badge:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+  .breadcrumb-link {
+    color: var(--color-gray-600);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+    transition: color var(--transition-base);
   }
 
-  .hero-badge svg {
-    width: 16px;
-    height: 16px;
+  .breadcrumb-link:hover {
+    color: var(--color-primary);
   }
 
-  .hero-title {
-    font-family: var(--font-display, 'Montserrat', sans-serif);
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 800;
-    line-height: 1.15;
-    color: var(--color-primary, #001b48);
-    margin: 0 0 1.5rem 0;
+  .breadcrumb-separator {
+    color: var(--color-gray-400);
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-current {
+    color: var(--color-primary);
+    font-weight: var(--font-semibold);
+  }
+
+  /* Page Title */
+  .page-title-wrapper {
+    margin-bottom: var(--space-6);
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+    margin: 0 0 var(--space-3) 0;
+    line-height: var(--leading-tight);
     letter-spacing: -0.02em;
   }
 
-  .gradient-text {
-    background: linear-gradient(
-      135deg,
-      var(--color-accent, #2563eb) 0%,
-      var(--color-primary, #001b48) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-  }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
-    line-height: 1.7;
-    color: #4b5563;
+  .page-description {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-gray-600);
+    max-width: 700px;
     margin: 0;
-    max-width: 700px;
-    margin: 0 auto;
   }
 
-  .hero-subtitle strong {
-    color: var(--color-primary, #001b48);
-    font-weight: 700;
+  .page-description strong {
+    color: var(--color-accent);
+    font-weight: var(--font-bold);
   }
 
-  /* Hero Stats */
-  .hero-stats {
+  /* Category Pills */
+  .category-pills {
     display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .pill {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin: 3rem 0;
-    padding: 2rem;
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .stat-item {
-    text-align: center;
-  }
-
-  .stat-number {
-    font-family: var(--font-display, 'Montserrat', sans-serif);
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--color-accent, #2563eb);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #6b7280;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 3rem;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      #e5e7eb 50%,
-      transparent 100%
-    );
-  }
-
-  /* Search Container */
-  .search-container {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .search-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .search-icon {
-    position: absolute;
-    left: 1.25rem;
-    color: #9ca3af;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .search-input {
-    width: 100%;
-    padding: 1.125rem 3.5rem 1.125rem 3.5rem;
-    font-size: 1rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 1rem;
-    background: white;
-    color: var(--color-gray-800, #1f2937);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  }
-
-  .search-input:focus {
-    outline: none;
-    border-color: var(--color-accent, #2563eb);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15), 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-
-  .search-input::placeholder {
-    color: #9ca3af;
-  }
-
-  .clear-btn {
-    position: absolute;
-    right: 1rem;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f3f4f6;
-    border: none;
-    border-radius: 0.5rem;
-    color: #6b7280;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-full);
+    color: var(--color-gray-700);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-base);
+    white-space: nowrap;
   }
 
-  .clear-btn:hover {
-    background: #e5e7eb;
-    color: #374151;
+  .pill:hover {
+    background: var(--color-gray-50);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+    transform: translateY(-2px);
   }
 
-  .search-results-count {
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 0.938rem;
-    color: #6b7280;
-    font-weight: 500;
+  .pill-active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .pill-active:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
   }
 
   /* ============================================
-     Services Grid Section - Enhanced
+     Services Grid Section
      ============================================ */
   .services-grid-section {
-    padding: 5rem 0 7rem;
-  }
-
-  .grid-header {
-    text-align: center;
-    margin-bottom: 3.5rem;
-  }
-
-  .grid-title {
-    font-family: var(--font-display, 'Montserrat', sans-serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-primary, #001b48);
-    margin: 0 0 0.75rem 0;
-  }
-
-  .grid-description {
-    font-size: 1.125rem;
-    color: #6b7280;
-    margin: 0;
+    padding: var(--space-8) 0 var(--space-16);
+    background: var(--color-gray-50);
   }
 
   .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: var(--space-6);
   }
 
   @media (min-width: 768px) {
     .services-grid {
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
     }
   }
 
   @media (min-width: 1024px) {
     .services-grid {
       grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
+      gap: var(--space-8);
     }
   }
 
@@ -437,79 +257,24 @@ import type { Service } from '../data/services';
     }
   }
 
-  .service-item {
-    transition: all 0.3s ease;
-  }
-
-  .service-item.hidden {
-    display: none;
-  }
-
-  /* Empty State */
-  .empty-state {
-    text-align: center;
-    padding: 5rem 2rem;
-  }
-
-  .empty-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 5rem;
-    height: 5rem;
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-    border-radius: 1.5rem;
-    color: #9ca3af;
-    margin-bottom: 1.5rem;
-  }
-
-  .empty-title {
-    font-family: var(--font-display, 'Montserrat', sans-serif);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary, #001b48);
-    margin: 0 0 0.75rem 0;
-  }
-
-  .empty-description {
-    font-size: 1.063rem;
-    color: #6b7280;
-    margin: 0;
-  }
-
-  .link-button {
-    background: none;
-    border: none;
-    color: var(--color-accent, #2563eb);
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline;
-    padding: 0;
-    font-size: inherit;
-    font-family: inherit;
-  }
-
-  .link-button:hover {
-    color: var(--color-primary, #001b48);
-  }
-
   /* ============================================
-     CTA Section - Enhanced
+     CTA Section
      ============================================ */
   .services-cta {
-    padding: 0 0 6rem;
+    padding: var(--space-16) 0 var(--space-24);
+    background: var(--color-white);
   }
 
   .cta-card {
-    background: linear-gradient(135deg, var(--color-primary, #001b48) 0%, #1e3a5f 50%, #0a2a5a 100%);
-    border-radius: 1.5rem;
-    padding: 3.5rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1e3a5f 50%, #0a2a5a 100%);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-12) var(--space-10);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2rem;
-    box-shadow: 0 20px 40px -10px rgba(0, 27, 72, 0.3);
+    gap: var(--space-8);
+    box-shadow: var(--shadow-primary);
     position: relative;
     overflow: hidden;
   }
@@ -521,19 +286,14 @@ import type { Service } from '../data/services';
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(
-      90deg,
-      var(--color-accent, #2563eb) 0%,
-      #60a5fa 50%,
-      var(--color-accent, #2563eb) 100%
-    );
+    background: linear-gradient(90deg, var(--color-accent) 0%, #60a5fa 50%, var(--color-accent) 100%);
   }
 
   @media (min-width: 768px) {
     .cta-card {
       flex-direction: row;
       text-align: left;
-      padding: 3.5rem 4rem;
+      padding: var(--space-12) var(--space-16);
     }
   }
 
@@ -542,17 +302,17 @@ import type { Service } from '../data/services';
   }
 
   .cta-title {
-    font-family: var(--font-display, 'Montserrat', sans-serif);
-    font-size: 2rem;
-    font-weight: 800;
-    color: white;
-    margin: 0 0 1rem 0;
-    line-height: 1.2;
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-white);
+    margin: 0 0 var(--space-4) 0;
+    line-height: var(--leading-tight);
   }
 
   .cta-description {
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
     color: #cbd5e1;
     margin: 0;
   }
@@ -560,30 +320,30 @@ import type { Service } from '../data/services';
   .cta-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1.125rem 2.5rem;
-    background: white;
-    color: var(--color-primary, #001b48);
-    font-family: var(--font-display, 'Montserrat', sans-serif);
-    font-weight: 700;
-    font-size: 1.063rem;
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-10);
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
     text-decoration: none;
-    border-radius: 0.875rem;
-    transition: all 0.3s ease;
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-slow);
     white-space: nowrap;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-md);
   }
 
   .cta-button:hover {
-    background: var(--color-accent, #2563eb);
-    color: white;
+    background: var(--color-accent);
+    color: var(--color-white);
     transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4);
+    box-shadow: var(--shadow-xl);
   }
 
   .cta-button svg {
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-slow);
   }
 
   .cta-button:hover svg {
@@ -596,7 +356,7 @@ import type { Service } from '../data/services';
   .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+    transition: all var(--transition-slower) var(--ease-out-expo);
   }
 
   .reveal.active {
@@ -604,137 +364,85 @@ import type { Service } from '../data/services';
     transform: translateY(0);
   }
 
+  /* Staggered animation delays */
+  .service-item:nth-child(n+1):nth-child(-n+5) { transition-delay: calc(var(--transition-fast) * var(--nth)); }
+  .service-item:nth-child(1) { --nth: 1; }
+  .service-item:nth-child(2) { --nth: 2; }
+  .service-item:nth-child(3) { --nth: 3; }
+  .service-item:nth-child(4) { --nth: 4; }
+  .service-item:nth-child(5) { --nth: 5; }
+
   /* ============================================
-     Responsive Styles
+     Responsive
      ============================================ */
   @media (max-width: 768px) {
-    .services-hero {
-      padding: 5rem 0 3rem;
+    .services-header {
+      padding: var(--space-3) 0 var(--space-6);
     }
 
-    .hero-badge {
-      font-size: 0.813rem;
-      padding: 0.5rem 1.25rem;
-      gap: 0.375rem;
+    .breadcrumb {
+      margin-bottom: var(--space-3);
+      font-size: var(--text-xs);
     }
 
-    .hero-badge svg {
-      width: 14px;
-      height: 14px;
+    .page-title-wrapper {
+      margin-bottom: var(--space-4);
     }
 
-    .hero-title {
-      font-size: clamp(2rem, 8vw, 2.5rem);
-      margin-bottom: 1rem;
+    .page-title {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-2);
     }
 
-    .hero-subtitle {
-      font-size: 1.063rem;
+    .page-description {
+      font-size: var(--text-sm);
     }
 
-    .hero-stats {
-      flex-direction: row;
-      gap: 1.5rem;
-      padding: 1.5rem;
-      margin: 2rem 0;
+    .category-pills {
+      gap: var(--space-2);
     }
 
-    .stat-number {
-      font-size: 1.5rem;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-    }
-
-    .stat-divider {
-      height: 2.5rem;
-    }
-
-    .search-input {
-      padding: 1rem 3rem 1rem 3rem;
-      font-size: 0.938rem;
+    .pill {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-xs);
     }
 
     .services-grid-section {
-      padding: 3rem 0 4rem;
-    }
-
-    .grid-header {
-      margin-bottom: 2.5rem;
-    }
-
-    .grid-title {
-      font-size: 1.5rem;
-    }
-
-    .grid-description {
-      font-size: 1rem;
+      padding: var(--space-6) 0 var(--space-12);
     }
 
     .services-grid {
-      gap: 1.25rem;
+      gap: var(--space-5);
     }
 
     .services-cta {
-      padding: 0 0 4rem;
+      padding: var(--space-10) 0 var(--space-16);
     }
 
     .cta-card {
-      padding: 2.5rem 1.75rem;
+      padding: var(--space-10) var(--space-6);
     }
 
     .cta-title {
-      font-size: 1.5rem;
+      font-size: var(--text-2xl);
     }
 
     .cta-description {
-      font-size: 1rem;
+      font-size: var(--text-base);
     }
 
     .cta-button {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-    }
-
-    .empty-state {
-      padding: 3rem 1.5rem;
-    }
-
-    .empty-icon {
-      width: 4rem;
-      height: 4rem;
-    }
-
-    .empty-icon svg {
-      width: 48px;
-      height: 48px;
-    }
-
-    .empty-title {
-      font-size: 1.25rem;
-    }
-
-    .empty-description {
-      font-size: 0.938rem;
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--text-base);
     }
   }
-
-  /* Animation delays for staggered reveal effect */
-  .service-item:nth-child(1) { transition-delay: 0.05s; }
-  .service-item:nth-child(2) { transition-delay: 0.1s; }
-  .service-item:nth-child(3) { transition-delay: 0.15s; }
-  .service-item:nth-child(4) { transition-delay: 0.2s; }
-  .service-item:nth-child(5) { transition-delay: 0.25s; }
 </style>
 
 <script>
   import type { Service } from '../data/services';
   import { services } from '../data/services';
 
-  // ============================================
   // Intersection Observer for reveal animations
-  // ============================================
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
@@ -753,81 +461,66 @@ import type { Service } from '../data/services';
     observer.observe(el);
   });
 
-  // ============================================
-  // Search Functionality
-  // ============================================
-  const searchInput = document.getElementById('search-input') as HTMLInputElement;
-  const clearBtn = document.getElementById('clear-search') as HTMLButtonElement;
-  const clearBtnEmpty = document.getElementById('clear-search-empty') as HTMLButtonElement;
-  const resultsCount = document.getElementById('results-count') as HTMLElement;
-  const countText = document.getElementById('count-text') as HTMLElement;
-  const emptyState = document.getElementById('empty-state') as HTMLElement;
+  // Category filtering
+  const categoryPills = document.querySelectorAll('.pill');
   const serviceItems = document.querySelectorAll('.service-item');
 
-  function performSearch(query: string) {
-    const searchTerm = query.toLowerCase().trim();
-    let visibleCount = 0;
+  // Category mappings (simplificado - puedes ajustar según tus necesidades)
+  const categoryKeywords: Record<string, string[]> = {
+    visas: ['visa', 'migratoria', 'residencia', 'temporal', 'extranjería'],
+    documentos: ['pasaporte', 'cédula', 'documento', 'apostilla', 'certificado', 'antecedentes'],
+    legalizacion: ['legalización', 'convalidación', 'homologación', 'reconocimiento', 'título'],
+  };
 
-    serviceItems.forEach((item) => {
-      const searchTerms = item.getAttribute('data-search-terms') || '';
-      const matches = searchTerms.includes(searchTerm);
+  function matchesCategory(serviceTitle: string, category: string): boolean {
+    if (category === 'all') return true;
+    
+    const keywords = categoryKeywords[category];
+    if (!keywords) return false;
+    
+    const titleLower = serviceTitle.toLowerCase();
+    return keywords.some(keyword => titleLower.includes(keyword));
+  }
 
-      if (searchTerm === '' || matches) {
-        item.classList.remove('hidden');
-        visibleCount++;
-      } else {
-        item.classList.add('hidden');
-      }
+  categoryPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      // Update active state
+      categoryPills.forEach(p => p.classList.remove('pill-active'));
+      pill.classList.add('pill-active');
+
+      // Get category
+      const category = pill.getAttribute('data-category') || 'all';
+
+      // Filter services with animation
+      serviceItems.forEach((item, index) => {
+        const card = item.querySelector('[data-service-id]');
+        const serviceId = card?.getAttribute('data-service-id');
+        const service = services.find((s: Service) => s.id === serviceId);
+        
+        if (!service) return;
+
+        const matches = matchesCategory(service.title, category);
+        
+        if (matches) {
+          // Show with stagger
+          setTimeout(() => {
+            (item as HTMLElement).style.display = 'block';
+            requestAnimationFrame(() => {
+              item.classList.add('active');
+            });
+          }, index * 30);
+        } else {
+          // Hide
+          item.classList.remove('active');
+          setTimeout(() => {
+            (item as HTMLElement).style.display = 'none';
+          }, 300);
+        }
+      });
     });
-
-    // Update UI based on results
-    if (searchTerm === '') {
-      resultsCount.style.display = 'none';
-      emptyState.style.display = 'none';
-      clearBtn.style.display = 'none';
-    } else {
-      clearBtn.style.display = 'flex';
-      
-      if (visibleCount === 0) {
-        emptyState.style.display = 'block';
-        resultsCount.style.display = 'none';
-      } else {
-        emptyState.style.display = 'none';
-        resultsCount.style.display = 'block';
-        countText.textContent = `${visibleCount} servicio${visibleCount !== 1 ? 's' : ''} encontrado${visibleCount !== 1 ? 's' : ''}`;
-      }
-    }
-  }
-
-  // Search input event
-  searchInput?.addEventListener('input', (e) => {
-    const query = (e.target as HTMLInputElement).value;
-    performSearch(query);
   });
 
-  // Clear button event
-  function clearSearch() {
-    if (searchInput) {
-      searchInput.value = '';
-      performSearch('');
-      searchInput.focus();
-    }
-  }
-
-  clearBtn?.addEventListener('click', clearSearch);
-  clearBtnEmpty?.addEventListener('click', clearSearch);
-
-  // Keyboard shortcut: Ctrl/Cmd + K to focus search
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault();
-      searchInput?.focus();
-    }
-  });
-
-  // ============================================
   // Service card click handling
-  // ============================================
   const servicesGrid = document.getElementById('services-grid');
   
   servicesGrid?.addEventListener('click', (e) => {
@@ -842,7 +535,7 @@ import type { Service } from '../data/services';
     }
   });
 
-  // Keyboard navigation for service cards
+  // Keyboard navigation
   servicesGrid?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       const card = (e.target as HTMLElement).closest('[data-service-id]');
