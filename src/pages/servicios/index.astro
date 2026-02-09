@@ -1,0 +1,355 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceCardSmall from '../../components/ServiceCardSmall.astro';
+import ServiceModal from '../../components/ServiceModal.astro';
+import { services } from '../../data/services';
+import type { Service } from '../../data/services';
+---
+
+<Layout title="Todos Nuestros Servicios | Migrant Gestión">
+  <main class="services-page">
+    <!-- Hero Section -->
+    <section class="services-hero">
+      <div class="container">
+        <div class="hero-content reveal">
+          <span class="hero-badge">Servicios Migratorios</span>
+          <h1 class="hero-title">Todos Nuestros Servicios</h1>
+          <p class="hero-subtitle">
+            Más de 45 trámites y servicios migratorios para ayudarte en tu proceso. 
+            Haz clic en cualquier servicio para conocer todos los detalles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-grid-section">
+      <div class="container">
+        <div class="services-grid" id="services-grid">
+          {services.map((service: Service) => (
+            <div class="reveal">
+              <ServiceCardSmall service={service} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="services-cta reveal">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-content">
+            <h2 class="cta-title">¿No encuentras lo que buscas?</h2>
+            <p class="cta-description">
+              Contáctanos y te ayudaremos con tu caso particular. Nuestro equipo está listo para asesorarte.
+            </p>
+          </div>
+          <a href="#contacto" class="cta-button">
+            Consultar ahora
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Component -->
+  <ServiceModal />
+</Layout>
+
+<style>
+  .services-page {
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Hero Section */
+  .services-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f9fafb 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-accent, #2563eb) 50%,
+      transparent 100%
+    );
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 2rem;
+    color: var(--color-accent, #2563eb);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display, 'Montserrat', sans-serif);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-primary, #001b48);
+    margin: 0 0 1.5rem 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary, #001b48) 0%,
+      var(--color-accent, #2563eb) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #6b7280;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Services Grid Section */
+  .services-grid-section {
+    padding: 4rem 0 6rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .services-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  /* CTA Section */
+  .services-cta {
+    padding: 0 0 6rem;
+  }
+
+  .cta-card {
+    background: linear-gradient(135deg, var(--color-primary, #001b48) 0%, #0a2a5a 100%);
+    border-radius: var(--radius-2xl, 1.25rem);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 27, 72, 0.1), 0 8px 10px -6px rgba(0, 27, 72, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .cta-card {
+      flex-direction: row;
+      text-align: left;
+      padding: 3rem;
+    }
+  }
+
+  .cta-content {
+    flex: 1;
+  }
+
+  .cta-title {
+    font-family: var(--font-display, 'Montserrat', sans-serif);
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin: 0;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--color-primary, #001b48);
+    font-family: var(--font-display, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .cta-button:hover {
+    background: var(--color-accent, #2563eb);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-button svg {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Reveal animation (from global.css) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 640px) {
+    .services-hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .hero-badge {
+      font-size: 0.75rem;
+      padding: 0.375rem 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .services-grid-section {
+      padding: 3rem 0 4rem;
+    }
+
+    .services-grid {
+      gap: 1rem;
+    }
+
+    .services-cta {
+      padding: 0 0 4rem;
+    }
+
+    .cta-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .cta-title {
+      font-size: 1.5rem;
+    }
+
+    .cta-description {
+      font-size: 0.938rem;
+    }
+  }
+</style>
+
+<script>
+  import type { Service } from '../../data/services';
+  import { services } from '../../data/services';
+
+  // Intersection Observer for reveal animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // Service card click handling
+  const servicesGrid = document.getElementById('services-grid');
+  
+  servicesGrid?.addEventListener('click', (e) => {
+    const card = (e.target as HTMLElement).closest('[data-service-id]');
+    if (card) {
+      const serviceId = card.getAttribute('data-service-id');
+      const service = services.find((s: Service) => s.id === serviceId);
+      
+      if (service && (window as any).showServiceModal) {
+        (window as any).showServiceModal(service);
+      }
+    }
+  });
+
+  // Keyboard navigation for service cards
+  servicesGrid?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const card = (e.target as HTMLElement).closest('[data-service-id]');
+      if (card) {
+        e.preventDefault();
+        const serviceId = card.getAttribute('data-service-id');
+        const service = services.find((s: Service) => s.id === serviceId);
+        
+        if (service && (window as any).showServiceModal) {
+          (window as any).showServiceModal(service);
+        }
+      }
+    }
+  });
+</script>

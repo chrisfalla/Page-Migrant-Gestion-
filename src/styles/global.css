@@ -539,3 +539,68 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-gray-500);
 }
+
+/* ─── Modal Global Styles ─── */
+/* Prevent body scroll when modal is open */
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Polyfill para navegadores que no soportan :has() */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Base styles for native dialog element */
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  max-width: min(calc(100vw - 2rem), 680px);
+  max-height: calc(100vh - 2rem);
+}
+
+dialog::backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal-backdrop, 400);
+}
+
+dialog[open] {
+  display: flex;
+  z-index: var(--z-modal, 500);
+}
+
+/* Smooth animation for dialog */
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] {
+    animation: dialog-fade-in 0.3s var(--ease-out-expo);
+  }
+  
+  dialog[open]::backdrop {
+    animation: backdrop-fade-in 0.3s ease;
+  }
+}
+
+@keyframes dialog-fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes backdrop-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
