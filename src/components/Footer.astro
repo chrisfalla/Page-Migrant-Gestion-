@@ -5,7 +5,13 @@ interface Props {
 }
 
 const { isLegalPage = false } = Astro.props;
-const baseUrl = isLegalPage ? '/' : '';
+
+// Detectar automáticamente si estamos en la home
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/' || currentPath === '/index.html';
+
+// Si no estamos en home, agregar '/' antes de las anclas
+const baseUrl = isHome ? '' : '/';
 ---
 
 <footer id="contacto" class="footer reveal">
@@ -61,11 +67,11 @@ const baseUrl = isLegalPage ? '/' : '';
       <div class="footer__col">
         <h4 class="footer__col-title">Servicios</h4>
         <ul class="footer__links">
+          <li><a href="/servicios" class="footer__link">Ver todos los servicios</a></li>
           <li><a href={`${baseUrl}#servicios`} class="footer__link">Visas y PPT</a></li>
           <li><a href={`${baseUrl}#servicios`} class="footer__link">Registro SIRE</a></li>
           <li><a href={`${baseUrl}#servicios`} class="footer__link">Apostillas</a></li>
           <li><a href={`${baseUrl}#servicios`} class="footer__link">Convalidación de Títulos</a></li>
-          <li><a href={`${baseUrl}#servicios`} class="footer__link">Creación de Empresas</a></li>
         </ul>
       </div>
       

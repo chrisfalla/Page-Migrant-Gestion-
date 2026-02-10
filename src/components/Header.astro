@@ -7,7 +7,13 @@ interface Props {
 }
 
 const { isLegalPage = false } = Astro.props;
-const baseUrl = isLegalPage ? '/' : '';
+
+// Detectar automáticamente si estamos en la home
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/' || currentPath === '/index.html';
+
+// Si no estamos en home, agregar '/' antes de las anclas
+const baseUrl = isHome ? '' : '/';
 ---
 
 <header class="header">
@@ -30,7 +36,7 @@ const baseUrl = isLegalPage ? '/' : '';
     <nav class="header__nav" aria-label="Navegación principal">
       <a href={`${baseUrl}#nosotros`} class="header__link">Nosotros</a>
       <a href={`${baseUrl}#porque-nosotros`} class="header__link">Por qué elegirnos</a>
-      <a href={`${baseUrl}#servicios`} class="header__link">Servicios</a>
+      <a href="/servicios" class="header__link">Servicios</a>
       <a href={`${baseUrl}#casos`} class="header__link">Casos de éxito</a>
       <a href={`${baseUrl}#testimonios`} class="header__link">Testimonios</a>
       <a href={`${baseUrl}#contacto`} class="header__link header__link--cta">
@@ -55,7 +61,7 @@ const baseUrl = isLegalPage ? '/' : '';
   <nav class="header__mobile-nav" aria-label="Navegación móvil">
     <a href={`${baseUrl}#nosotros`} class="header__mobile-link">Nosotros</a>
     <a href={`${baseUrl}#porque-nosotros`} class="header__mobile-link">Por qué elegirnos</a>
-    <a href={`${baseUrl}#servicios`} class="header__mobile-link">Servicios</a>
+    <a href="/servicios" class="header__mobile-link">Servicios</a>
     <a href={`${baseUrl}#casos`} class="header__mobile-link">Casos de éxito</a>
     <a href={`${baseUrl}#testimonios`} class="header__mobile-link">Testimonios</a>
     <a href={`${baseUrl}#contacto`} class="header__mobile-link header__mobile-link--cta">
