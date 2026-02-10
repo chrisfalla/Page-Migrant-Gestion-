@@ -8,11 +8,9 @@ interface Props {
 const { service } = Astro.props;
 ---
 
-<article 
+<button 
   class="service-card-small"
   data-service-id={service.id}
-  role="button"
-  tabindex="0"
   aria-label={`Ver detalles de ${service.title}`}
 >
   <div class="card-icon">
@@ -25,10 +23,16 @@ const { service } = Astro.props;
       <polyline points="12 5 19 12 12 19"></polyline>
     </svg>
   </div>
-</article>
+</button>
 
 <style>
   .service-card-small {
+    /* Reset button styles */
+    font-family: inherit;
+    font-size: inherit;
+    width: 100%;
+    
+    /* Card styles */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -36,7 +40,7 @@ const { service } = Astro.props;
     justify-content: center;
     text-align: center;
     padding: 1.5rem 1rem;
-    min-height: 180px;
+    height: 180px;
     background: white;
     border: 1px solid #e5e7eb;
     border-radius: var(--radius-2xl, 1.25rem);
@@ -110,8 +114,8 @@ const { service } = Astro.props;
 
   .card-hover-indicator {
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
     width: 2rem;
     height: 2rem;
     display: flex;
@@ -146,7 +150,7 @@ const { service } = Astro.props;
   /* Responsive adjustments */
   @media (max-width: 640px) {
     .service-card-small {
-      min-height: 160px;
+      height: 160px;
       padding: 1.25rem 0.75rem;
     }
 
