@@ -22,6 +22,7 @@ const heroPreload = await getImage({
   quality: 55,
   format: 'webp',
   widths: [640, 960, 1280, 1600],
+  densities: [1, 2],
 });
 
 ---
@@ -40,6 +41,8 @@ const heroPreload = await getImage({
 			type="image/webp"
 			fetchpriority="high"
 		/>
+		<!-- Hint para recursos de CDN -->
+		<link rel="dns-prefetch" href="https://migrant-gestion.vercel.app" />
 	</Fragment>
 	<!-- Header y Hero -->
 	<Header />
