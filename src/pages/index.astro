@@ -12,12 +12,35 @@ import ValuesSection from '../components/ValuesSection.astro';
 import TeamSection from '../components/TeamSection.astro';
 import ValueSection from '../components/ValueSection.astro';
 import Footer from '../components/Footer.astro';
+import { getImage } from 'astro:assets';
+import heroBgImage from '../assets/img/1.jpg';
+
+const heroPreload = await getImage({
+  src: heroBgImage,
+  width: 1600,
+  height: 900,
+  quality: 55,
+  format: 'webp',
+  widths: [640, 960, 1280, 1600],
+});
+
 ---
 
 <Layout 
 	title="MIGRANT GESTIÓN SAS | Asesoría Migratoria en Colombia - Visas, PPT y más"
 	description="Consultoría especializada en gestión migratoria en Colombia. Visas, PPT, SIRE, apostillas, convalidación de títulos y más de 30 trámites. 05 años de experiencia desde Neiva, Huila."
 >
+	<Fragment slot="head">
+		<link
+			rel="preload"
+			as="image"
+			href={heroPreload.src}
+			imagesrcset={heroPreload.srcSet.attribute}
+			imagesizes="100vw"
+			type="image/webp"
+			fetchpriority="high"
+		/>
+	</Fragment>
 	<!-- Header y Hero -->
 	<Header />
 	<Hero />

@@ -1,5 +1,10 @@
 ---
 import '../styles/global.css';
+import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2';
+import inter600 from '@fontsource/inter/files/inter-latin-600-normal.woff2';
+import inter700 from '@fontsource/inter/files/inter-latin-700-normal.woff2';
+import montserrat700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2';
+import montserrat800 from '@fontsource/montserrat/files/montserrat-latin-800-normal.woff2';
 
 interface Props {
 	title?: string;
@@ -35,17 +40,14 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		
-		<!-- DNS Prefetch y Preconnect para recursos externos -->
-		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		
-		<!-- Fuentes Google - Inter + Montserrat (optimizadas) -->
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
-		</noscript>
+		<!-- Fuentes locales (preload) -->
+		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={inter700} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={montserrat700} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={montserrat800} as="font" type="font/woff2" crossorigin />
+
+		<slot name="head" />
 		
 		<!-- Smooth Scroll -->
 		<style is:global>
