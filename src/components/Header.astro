@@ -23,13 +23,14 @@ const baseUrl = isHome ? '' : '/';
         src={logoImage} 
         alt="Migrant Gestión Logo" 
         class="header__logo-img" 
-        width={360}
-        height={120}
+        width={250}
+        height={83}
         loading="eager"
         decoding="async"
         fetchpriority="auto"
         quality={90}
-        densities={[1, 2]}
+        widths={[200, 250, 320, 400, 500]}
+        sizes="(min-width: 640px) 250px, 197px"
       />
     </a>
 
