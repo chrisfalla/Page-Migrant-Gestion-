@@ -1,10 +1,7 @@
 ---
 import '../styles/global.css';
 import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2';
-import inter600 from '@fontsource/inter/files/inter-latin-600-normal.woff2';
-import inter700 from '@fontsource/inter/files/inter-latin-700-normal.woff2';
 import montserrat700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2';
-import montserrat800 from '@fontsource/montserrat/files/montserrat-latin-800-normal.woff2';
 
 interface Props {
 	title?: string;
@@ -42,10 +39,7 @@ const {
 		
 		<!-- Fuentes locales (preload) -->
 		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href={inter700} as="font" type="font/woff2" crossorigin />
 		<link rel="preload" href={montserrat700} as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href={montserrat800} as="font" type="font/woff2" crossorigin />
 
 		<slot name="head" />
 		

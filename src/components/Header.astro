@@ -27,7 +27,7 @@ const baseUrl = isHome ? '' : '/';
         height={120}
         loading="eager"
         decoding="async"
-        fetchpriority="high"
+        fetchpriority="auto"
         quality={90}
         densities={[1, 2]}
       />
@@ -80,6 +80,14 @@ const baseUrl = isHome ? '' : '/';
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     transition: box-shadow var(--transition-base);
+  }
+
+  @media (max-width: 767px) {
+    .header {
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
   }
 
   .header.scrolled {
