@@ -19,6 +19,9 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- Performance Hints -->
+		<meta name="theme-color" content="#001b48" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
@@ -37,9 +40,9 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		
-		<!-- Fuentes locales (preload) -->
-		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href={montserrat700} as="font" type="font/woff2" crossorigin />
+		<!-- Fuentes locales (preload con prioridad) -->
+		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin fetchpriority="high" />
+		<link rel="preload" href={montserrat700} as="font" type="font/woff2" crossorigin fetchpriority="high" />
 
 		<slot name="head" />
 		
@@ -59,7 +62,7 @@ const {
 	</head>
 	<body class="antialiased">
 		<slot />
-		<script>
+		<script type="module">
 			// Diferir animaciones para no bloquear render inicial
 			const revealElements = () => {
 				const elements = document.querySelectorAll('.reveal');

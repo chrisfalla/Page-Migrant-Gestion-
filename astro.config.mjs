@@ -38,9 +38,13 @@ export default defineConfig({
     }
   },
   build: {
-    // Inlinear assets pequeños
-    inlineStylesheets: 'auto',
+    // Inlinear assets pequeños y CSS crítico
+    inlineStylesheets: 'always',
     assets: '_assets'
   },
-  compressHTML: true
+  compressHTML: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport'
+  }
 });
