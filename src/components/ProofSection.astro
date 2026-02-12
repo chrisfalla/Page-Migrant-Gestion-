@@ -83,10 +83,9 @@ const cases = [
     </div>
 
     <!-- Grid de casos -->
-    <div class="cases-carousel-container">
-      <div class="cases-carousel-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth">
-        {cases.map((item) => (
-          <article class="case-card snap-start min-w-[85%] md:min-w-[48%] lg:min-w-[32%]">
+    <div class="cases-grid">
+      {cases.map((item) => (
+        <article class="case-card">
             <div class="case-image-wrapper">
               <Image 
                 src={item.image} 
@@ -124,7 +123,6 @@ const cases = [
             </div>
           </article>
         ))}
-      </div>
     </div>
 
     <!-- CTA -->
@@ -249,19 +247,23 @@ const cases = [
     margin-bottom: 3rem;
   }
 
-  .cases-carousel-container {
-    padding: 1.5rem 0;
-    margin: -1.5rem 0 3rem 0;
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
   }
 
-  .cases-carousel-track {
-    padding: 0.5rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  @media (min-width: 640px) {
+    .cases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .cases-carousel-track::-webkit-scrollbar {
-    display: none;
+  @media (min-width: 1024px) {
+    .cases-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .case-card {
@@ -403,42 +405,6 @@ const cases = [
     height: 20px;
   }
 
-  .carousel-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 8rem;
-    margin-top: 1rem;
-  }
-
-  .carousel-prev-btn,
-  .carousel-next-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: transparent;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  .carousel-prev-btn:hover,
-  .carousel-next-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: scale(1.05);
-  }
-
-  .carousel-prev-btn svg,
-  .carousel-next-btn svg {
-    width: 24px;
-    height: 24px;
-  }
-
   @media (max-width: 1024px) {
     .proof-stats {
       grid-template-columns: repeat(2, 1fr);
@@ -474,87 +440,3 @@ const cases = [
     }
   }
 </style>
-
-<script>
-  const initCasesCarousel = () => {
-    const section = document.getElementById('casos');
-    if (!section) return;
-    
-    const track = section.querySelector('.cases-carousel-track') as HTMLElement;
-    const prevBtn = section.querySelector('.carousel-prev-btn') as HTMLElement;
-    const nextBtn = section.querySelector('.carousel-next-btn') as HTMLElement;
-    
-    if (!track || !prevBtn || !nextBtn) return;
-
-    let autoplayInterval: number;
-    let isUserInteracting = false;
-
-    const scrollByCard = (direction: number) => {
-      const card = track.querySelector('article');
-      if (!card) return;
-      const cardWidth = card.getBoundingClientRect().width;
-      const gap = 24; // gap-6 = 1.5rem = 24px
-      const offset = cardWidth + gap;
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      
-      if (direction > 0 && track.scrollLeft >= maxScroll - 10) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        track.scrollBy({ left: direction * offset, behavior: 'smooth' });
-      }
-    };
-
-    const startAutoplay = () => {
-      autoplayInterval = window.setInterval(() => {
-        if (!isUserInteracting) {
-          scrollByCard(1);
-        }
-      }, 5000); // Cambia cada 5 segundos
-    };
-
-    const stopAutoplay = () => {
-      clearInterval(autoplayInterval);
-    };
-
-    const resetAutoplay = () => {
-      stopAutoplay();
-      startAutoplay();
-    };
-
-    nextBtn.addEventListener('click', () => {
-      scrollByCard(1);
-      resetAutoplay();
-    });
-
-    prevBtn.addEventListener('click', () => {
-      scrollByCard(-1);
-      resetAutoplay();
-    });
-
-    // Pausar autoplay al hacer hover
-    section.addEventListener('mouseenter', () => {
-      isUserInteracting = true;
-    });
-
-    section.addEventListener('mouseleave', () => {
-      isUserInteracting = false;
-    });
-
-    // Pausar autoplay al hacer scroll manual
-    track.addEventListener('scroll', () => {
-      isUserInteracting = true;
-      setTimeout(() => {
-        isUserInteracting = false;
-      }, 2000);
-    });
-
-    // Iniciar autoplay
-    startAutoplay();
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCasesCarousel);
-  } else {
-    initCasesCarousel();
-  }
-</script>

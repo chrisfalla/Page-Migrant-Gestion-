@@ -863,12 +863,10 @@ const sections = [
       const targetElement = document.getElementById(targetId || '');
       
       if (targetElement) {
-        const offset = 100;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
+        // Usar scrollIntoView nativo (sin reflows forzados)
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
         
         // Highlight activo

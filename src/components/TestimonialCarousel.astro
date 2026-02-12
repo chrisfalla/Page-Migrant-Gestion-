@@ -27,59 +27,61 @@ const testimonials = [
       </div>
     </div>
 
-    <div class="carousel-container">
-      <div class="carousel-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth">
-        {testimonials.map((item) => (
-          <article class="testimonial-card snap-start min-w-[85%] md:min-w-[48%] lg:min-w-[32%]">
-            <!-- Top decorative bar -->
-            <div class="card-top-bar"></div>
-            
-            <!-- Stars rating -->
-            <div class="stars-container mb-4">
-              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
+    <div class="testimonials-grid">
+      {testimonials.map((item) => (
+        <article class="testimonial-card">
+          <!-- Top decorative bar -->
+          <div class="card-top-bar"></div>
+          
+          <!-- Stars rating -->
+          <div class="stars-container mb-4">
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
 
-            <p class="testimonial-text text-lg leading-relaxed mb-6 text-white/90">"{item.quote}"</p>
-            
-            <!-- Author info -->
-            <div class="author-info">
-              <!-- Avatar circle -->
-              <div class="author-avatar">{item.name.charAt(0)}</div>
-              <div class="flex-1">
-                <div class="author-name text-white font-bold">{item.name}</div>
-                <div class="author-role text-blue-300 text-sm font-medium">{item.role}</div>
-              </div>
-              <!-- Check mark -->
-              <div class="verified-check">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                </svg>
-              </div>
+          <p class="testimonial-text text-lg leading-relaxed mb-6 text-white/90">"{item.quote}"</p>
+          
+          <!-- Author info -->
+          <div class="author-info">
+            <!-- Avatar circle -->
+            <div class="author-avatar">{item.name.charAt(0)}</div>
+            <div class="flex-1">
+              <div class="author-name text-white font-bold">{item.name}</div>
+              <div class="author-role text-blue-300 text-sm font-medium">{item.role}</div>
             </div>
-          </article>
-        ))}
-      </div>
+            <!-- Check mark -->
+            <div class="verified-check">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+              </svg>
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
   </div>
 
   <style>
-    .carousel-container {
-      padding: 1.5rem 0;
-      margin: -1.5rem 0;
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0.5rem 0;
     }
 
-    .carousel-track {
-      padding: 0.5rem;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+    @media (min-width: 640px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .carousel-track::-webkit-scrollbar {
-      display: none;
+    @media (min-width: 1024px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .testimonial-card {
@@ -222,74 +224,4 @@ const testimonials = [
       transform: translateY(-4px);
     }
   </style>
-
-  <script>
-    const initCarousel = () => {
-      const section = document.getElementById('testimonios');
-      if (!section) return;
-      const track = section.querySelector('.carousel-track') as HTMLElement;
-      if (!track) return;
-
-      let autoplayInterval: number;
-      let isUserInteracting = false;
-
-      const scrollByCard = (direction: number) => {
-        const card = track.querySelector('article');
-        if (!card) return;
-        const offset = card.getBoundingClientRect().width + 24;
-        const maxScroll = track.scrollWidth - track.clientWidth;
-        
-        // Si llegamos al final, volvemos al inicio
-        if (direction > 0 && track.scrollLeft >= maxScroll - 10) {
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          track.scrollBy({ left: direction * offset, behavior: 'smooth' });
-        }
-      };
-
-      const startAutoplay = () => {
-        autoplayInterval = window.setInterval(() => {
-          if (!isUserInteracting) {
-            scrollByCard(1);
-          }
-        }, 4000); // Cambia cada 4 segundos
-      };
-
-      const stopAutoplay = () => {
-        clearInterval(autoplayInterval);
-      };
-
-      const resetAutoplay = () => {
-        stopAutoplay();
-        startAutoplay();
-      };
-
-      // Pausar autoplay al hacer hover
-      section.addEventListener('mouseenter', () => {
-        isUserInteracting = true;
-      });
-
-      section.addEventListener('mouseleave', () => {
-        isUserInteracting = false;
-      });
-
-      // Pausar autoplay al hacer scroll manual
-      track.addEventListener('scroll', () => {
-        isUserInteracting = true;
-        setTimeout(() => {
-          isUserInteracting = false;
-        }, 2000);
-        resetAutoplay();
-      });
-
-      // Iniciar autoplay
-      startAutoplay();
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initCarousel);
-    } else {
-      initCarousel();
-    }
-  </script>
 </section>
