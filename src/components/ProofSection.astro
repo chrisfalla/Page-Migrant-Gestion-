@@ -93,10 +93,12 @@ const cases = [
                 class="case-image"
                 loading="lazy"
                 decoding="async"
-                width={450}
-                height={600}
-                quality={75}
+                width={360}
+                height={225}
+                quality={60}
                 format="webp"
+                widths={[280, 360]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               />
               <div class="case-badge case-badge--success">Exitoso</div>
             </div>
