@@ -14,88 +14,16 @@ const testimonials = [
     name: 'Daniela Sánchez',
     role: 'Visa de Trabajo (V)',
     quote: 'Conseguí mi visa de trabajo en tiempo récord. Su experiencia con migrantes venezolanos es invaluable.'
-  },
-  {
-    name: 'Jessica Montilla',
-    role: 'Convalidación de Título - Enfermería',
-    quote: 'Hoy trabajo como enfermera en un hospital de Bogotá gracias a que validaron mi título. Excelente asesoría.'
-  },
-  {
-    name: 'Miguel Flores',
-    role: 'Afiliación al Sistema de Salud',
-    quote: 'Me afiliaron al sistema de salud en la primera cita. Ahora tengo cobertura médica completa sin problemas.'
-  },
-  {
-    name: 'Alejandra Gutiérrez',
-    role: 'Salvoconducto SC-2',
-    quote: 'Necesitaba urgente mi salvoconducto para viajar y lo obtuve en dos semanas. Su gestión es impecable.'
-  },
-  {
-    name: 'Ronny Torres',
-    role: 'Renovación de PPT',
-    quote: 'Renovar mi PPT fue muy fácil con su ayuda. No tuve que hacer filas ni perder tiempo.'
-  },
-  {
-    name: 'Adriana Cabrera',
-    role: 'Inscripción Extemporánea de Hijo',
-    quote: 'Lograron inscribir a mi hijo en tiempo récord. Ahora tiene sus documentos en regla para estudiar.'
-  },
-  {
-    name: 'Ricardo Delgado',
-    role: 'Licencia Temporal - Contador Público',
-    quote: 'Validé mi licencia profesional y ahora trabajo en una empresa multinacional. Fue muy rápido.'
-  },
-  {
-    name: 'Valentina Martínez',
-    role: 'Antecedentes Penales y Apostilla',
-    quote: 'Obtuve mis antecedentes y apostilla para trabajar en el exterior. Todo en orden y sin complicaciones.'
-  },
-  {
-    name: 'Sergio Pacheco',
-    role: 'Cita de Pasaporte Venezolano',
-    quote: 'Me gestionaron mi cita para renovar el pasaporte sin hacer filas. Servicio impecable.'
-  },
-  {
-    name: 'Camila Ruiz',
-    role: 'Regularización Niño Venezolano (RUMV)',
-    quote: 'Mi hijo quedó registrado en RUMV y ahora puede acceder a servicios sin problemas en Colombia.'
-  },
-  {
-    name: 'Eduardo Castillo',
-    role: 'Asesoría de Visa Merconegro',
-    quote: 'Me explicaron todas las opciones de visas disponibles y elegimos la mejor para mi caso. Excelentes.'
-  },
-  {
-    name: 'Natalia Vázquez',
-    role: 'Diligenciamiento FUT',
-    quote: 'Completaron todo mi FUT para crear empresa sin errores. Ahora soy empresaria en Colombia.'
-  },
-  {
-    name: 'Andrés Morales',
-    role: 'Representación ante Migración',
-    quote: 'Me representaron ante Migración Colombia y resolvieron mi caso en la primera audiencia.'
   }
 ];
 ---
 
 <section id="testimonios" class="py-8 bg-[var(--color-primary)] text-white reveal">
   <div class="container mx-auto px-6">
-    <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-12">
+    <div class="mb-12">
       <div>
         <p class="text-sm uppercase tracking-widest text-white/70">Prueba Social</p>
         <h2 class="text-4xl md:text-5xl font-bold text-white">Historias de confianza</h2>
-      </div>
-      <div class="flex gap-3">
-        <button class="carousel-prev w-12 h-12 rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 ease-out" aria-label="Anterior">
-          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button class="carousel-next w-12 h-12 rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 ease-out" aria-label="Siguiente">
-          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
     </div>
 
@@ -300,9 +228,7 @@ const testimonials = [
       const section = document.getElementById('testimonios');
       if (!section) return;
       const track = section.querySelector('.carousel-track') as HTMLElement;
-      const next = section.querySelector('.carousel-next') as HTMLElement;
-      const prev = section.querySelector('.carousel-prev') as HTMLElement;
-      if (!track || !next || !prev) return;
+      if (!track) return;
 
       let autoplayInterval: number;
       let isUserInteracting = false;
@@ -338,17 +264,6 @@ const testimonials = [
         startAutoplay();
       };
 
-      // Navegación manual
-      next.addEventListener('click', () => {
-        scrollByCard(1);
-        resetAutoplay();
-      });
-
-      prev.addEventListener('click', () => {
-        scrollByCard(-1);
-        resetAutoplay();
-      });
-
       // Pausar autoplay al hacer hover
       section.addEventListener('mouseenter', () => {
         isUserInteracting = true;
@@ -364,6 +279,7 @@ const testimonials = [
         setTimeout(() => {
           isUserInteracting = false;
         }, 2000);
+        resetAutoplay();
       });
 
       // Iniciar autoplay
