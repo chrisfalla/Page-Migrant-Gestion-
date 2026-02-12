@@ -564,7 +564,19 @@ const baseUrl = isHome ? '' : '/';
     box-shadow: var(--shadow-xl);
     z-index: var(--z-fixed);
     transition: all var(--transition-base);
-    animation: pulse-fab 2.5s infinite;
+  }
+
+  .whatsapp-fab::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 2px solid rgba(37, 211, 102, 0.55);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.85);
+    animation: pulse-fab-ring 2.8s ease-out infinite;
+    will-change: transform, opacity;
   }
 
   .whatsapp-fab:hover {
@@ -597,8 +609,30 @@ const baseUrl = isHome ? '' : '/';
     opacity: 1;
   }
 
-  @keyframes pulse-fab {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-    50% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  @keyframes pulse-fab-ring {
+    0% {
+      opacity: 0.7;
+      transform: scale(0.85);
+    }
+    70% {
+      opacity: 0;
+      transform: scale(1.32);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.32);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-fab,
+    .whatsapp-fab::after {
+      animation: none;
+      transition: none;
+    }
+
+    .whatsapp-fab::after {
+      display: none;
+    }
   }
 </style>
