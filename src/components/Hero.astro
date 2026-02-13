@@ -14,9 +14,9 @@ import heroBgImage from "../assets/img/1.jpg";
       fetchpriority="high"
       width={1440}
       height={810}
-      quality={35}
+      quality={28}
       format="webp"
-      widths={[480, 640, 720, 960, 1280, 1440]}
+      widths={[480, 640, 768, 960, 1280, 1440]}
       sizes="100vw"
     />
     <div class="hero__overlay"></div>
@@ -136,6 +136,7 @@ import heroBgImage from "../assets/img/1.jpg";
     let targetScale = initialScale;
     let targetOpacity = 1;
     let targetOverlayOpacity = 0.65;
+    let lastScrollY = -1;
     let rafId = 0;
     let enabled = false;
 
@@ -151,8 +152,7 @@ import heroBgImage from "../assets/img/1.jpg";
       overlay.style.opacity = '';
     };
 
-    const calculateTargets = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
+    const calculateTargets = (scrollY: number) => {
       targetTranslateY = scrollY * 0.28;
       const scaleProgress = Math.min(scrollY / (window.innerHeight * 0.8), 1);
       targetScale = initialScale + scaleProgress * (finalScale - initialScale);
@@ -193,19 +193,23 @@ import heroBgImage from "../assets/img/1.jpg";
       rafId = requestAnimationFrame(tick);
     };
 
-    const updateTargets = () => {
+    const updateTargets = (force = false) => {
       if (!enabled) return;
-      calculateTargets();
+      const scrollY = window.scrollY || window.pageYOffset;
+      if (!force && scrollY === lastScrollY) return;
+      lastScrollY = scrollY;
+      calculateTargets(scrollY);
       requestTick();
     };
 
     const handleScroll = () => updateTargets();
-    const handleResize = () => updateTargets();
+    const handleResize = () => updateTargets(true);
 
     const enable = () => {
       if (enabled) return;
       enabled = true;
-      calculateTargets();
+      lastScrollY = window.scrollY || window.pageYOffset;
+      calculateTargets(lastScrollY);
       currentTranslateY = targetTranslateY;
       currentScale = targetScale;
       currentOpacity = targetOpacity;
@@ -322,6 +326,17 @@ import heroBgImage from "../assets/img/1.jpg";
       rgba(0, 18, 47, 0.8) 50%,
       rgba(0, 18, 47, 0.88) 100%
     );
+  }
+
+  @media (min-width: 1024px) {
+    .hero__bg-image {
+      will-change: transform;
+    }
+
+    .hero__media,
+    .hero__overlay {
+      will-change: opacity;
+    }
   }
 
   .hero__content {

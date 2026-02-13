@@ -1,32 +1,31 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import TrustBar from '../components/TrustBar.astro';
-import AboutSection from '../components/AboutSection.astro';
-import WhyUsSection from '../components/WhyUsSection.astro';
-import BentoServices from '../components/BentoServices.astro';
-import ProofSection from '../components/ProofSection.astro';
-import TestimonialCarousel from '../components/TestimonialCarousel.astro';
-import ValuesSection from '../components/ValuesSection.astro';
-import TeamSection from '../components/TeamSection.astro';
-import ValueSection from '../components/ValueSection.astro';
-import Footer from '../components/Footer.astro';
-import { getImage } from 'astro:assets';
-import heroBgImage from '../assets/img/1.jpg';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import TrustBar from "../components/TrustBar.astro";
+import AboutSection from "../components/AboutSection.astro";
+import WhyUsSection from "../components/WhyUsSection.astro";
+import BentoServices from "../components/BentoServices.astro";
+import ProofSection from "../components/ProofSection.astro";
+import TestimonialCarousel from "../components/TestimonialCarousel.astro";
+import ValuesSection from "../components/ValuesSection.astro";
+import TeamSection from "../components/TeamSection.astro";
+import ValueSection from "../components/ValueSection.astro";
+import Footer from "../components/Footer.astro";
+import { getImage } from "astro:assets";
+import heroBgImage from "../assets/img/1.jpg";
 
 const heroPreload = await getImage({
-  src: heroBgImage,
-  width: 720,
-  height: 405,
-  quality: 35,
-  format: 'webp',
-  widths: [480, 640, 720, 960, 1280, 1440],
+	src: heroBgImage,
+	width: 720,
+	height: 405,
+	quality: 28,
+	format: "webp",
+	widths: [480, 640, 768, 960, 1280, 1440],
 });
-
 ---
 
-<Layout 
+<Layout
 	title="MIGRANT GESTIÓN SAS | Asesoría Migratoria en Colombia - Visas, PPT y más"
 	description="Consultoría especializada en gestión migratoria en Colombia. Visas, PPT, SIRE, apostillas, convalidación de títulos y más de 30 trámites. 05 años de experiencia desde Neiva, Huila."
 >
@@ -40,13 +39,11 @@ const heroPreload = await getImage({
 			type="image/webp"
 			fetchpriority="high"
 		/>
-		<!-- Hint para recursos de CDN -->
-		<link rel="dns-prefetch" href="https://migrant-gestion.vercel.app" />
 	</Fragment>
 	<!-- Header y Hero -->
 	<Header />
 	<Hero />
-	
+
 	<!-- Credibilidad inmediata -->
 	<TrustBar />
 
@@ -70,10 +67,10 @@ const heroPreload = await getImage({
 
 	<!-- Nuestros valores -->
 	<ValuesSection />
-	
+
 	<!-- Propuesta de valor -->
 	<ValueSection />
-	
+
 	<!-- Footer con Contacto -->
 	<Footer />
 </Layout>
