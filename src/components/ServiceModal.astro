@@ -341,14 +341,7 @@
 
   // Close modal on backdrop click
   modal?.addEventListener('click', (e) => {
-    const rect = modal.getBoundingClientRect();
-    const isInDialog = (
-      rect.top <= e.clientY &&
-      e.clientY <= rect.top + rect.height &&
-      rect.left <= e.clientX &&
-      e.clientX <= rect.left + rect.width
-    );
-    if (!isInDialog) {
+    if (e.target === modal) {
       modal.close();
     }
   });

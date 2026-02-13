@@ -22,6 +22,8 @@ const {
 		
 		<!-- Performance Hints -->
 		<meta name="theme-color" content="#001b48" />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
@@ -40,9 +42,9 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		
-		<!-- Fuentes locales (preload con prioridad) -->
-		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin fetchpriority="high" />
-		<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin fetchpriority="low" />
+		<!-- Fuentes locales optimizadas -->
+		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
 
 		<slot name="head" />
 		
@@ -81,16 +83,16 @@ const {
 							}
 						});
 					},
-					{ threshold: 0.15 }
+					{ threshold: 0.15, rootMargin: '50px' }
 				);
 				elements.forEach((el) => observer.observe(el));
 			};
 
 			// Usar requestIdleCallback para no competir con LCP
 			if ('requestIdleCallback' in window) {
-				requestIdleCallback(revealElements);
+				requestIdleCallback(revealElements, { timeout: 2000 });
 			} else {
-				setTimeout(revealElements, 100);
+				setTimeout(revealElements, 200);
 			}
 		</script>
 	</body>

@@ -25,10 +25,10 @@ const baseUrl = isHome ? '' : '/';
         class="header__logo-img" 
         width={250}
         height={83}
-        loading="eager"
+        loading="lazy"
         decoding="async"
-        fetchpriority="low"
-        widths={[160, 200, 250, 320, 400]}
+        quality={70}
+        widths={[160, 200, 250]}
         sizes="(min-width: 640px) 250px, 197px"
       />
     </a>
