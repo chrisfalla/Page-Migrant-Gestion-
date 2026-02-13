@@ -137,6 +137,11 @@ import heroBgImage from "../assets/img/1.jpg";
     const initialScale = 1.0;
     const finalScale = 1.4;
 
+    // Cachear dimensiones del viewport para evitar forced reflow
+    let viewportHeight = window.innerHeight;
+    let scaleThreshold = viewportHeight * 0.8;
+    let fadeDistance = Math.max(viewportHeight * 1.1, 1);
+
     let currentTranslateY = 0;
     let currentScale = initialScale;
     let currentOpacity = 1;
@@ -159,13 +164,22 @@ import heroBgImage from "../assets/img/1.jpg";
       image.style.transform = '';
       media.style.opacity = '';
       overlay.style.opacity = '';
+      // Limpiar will-change para ahorrar memoria
+      image.style.willChange = '';
+      media.style.willChange = '';
+      overlay.style.willChange = '';
+    };
+
+    const setWillChange = () => {
+      image.style.willChange = 'transform';
+      media.style.willChange = 'opacity';
+      overlay.style.willChange = 'opacity';
     };
 
     const calculateTargets = (scrollY: number) => {
       targetTranslateY = scrollY * 0.28;
-      const scaleProgress = Math.min(scrollY / (window.innerHeight * 0.8), 1);
+      const scaleProgress = Math.min(scrollY / scaleThreshold, 1);
       targetScale = initialScale + scaleProgress * (finalScale - initialScale);
-      const fadeDistance = Math.max(window.innerHeight * 1.1, 1);
       targetOpacity = Math.max(0, 1 - scrollY / fadeDistance);
       targetOverlayOpacity = Math.max(0.5, targetOpacity * 0.9);
     };
@@ -212,11 +226,18 @@ import heroBgImage from "../assets/img/1.jpg";
     };
 
     const handleScroll = () => updateTargets();
-    const handleResize = () => updateTargets(true);
+    const handleResize = () => {
+      // Recachear dimensiones en resize
+      viewportHeight = window.innerHeight;
+      scaleThreshold = viewportHeight * 0.8;
+      fadeDistance = Math.max(viewportHeight * 1.1, 1);
+      updateTargets(true);
+    };
 
     const enable = () => {
       if (enabled) return;
       enabled = true;
+      setWillChange(); // Activar will-change solo cuando parallax está activo
       lastScrollY = window.scrollY || window.pageYOffset;
       calculateTargets(lastScrollY);
       currentTranslateY = targetTranslateY;
@@ -237,7 +258,7 @@ import heroBgImage from "../assets/img/1.jpg";
         cancelAnimationFrame(rafId);
         rafId = 0;
       }
-      clearStyles();
+      clearStyles(); // Esto ahora también limpia will-change
     };
 
     const evaluate = () => {
@@ -335,17 +356,6 @@ import heroBgImage from "../assets/img/1.jpg";
       rgba(0, 18, 47, 0.8) 50%,
       rgba(0, 18, 47, 0.88) 100%
     );
-  }
-
-  @media (min-width: 1024px) {
-    .hero__bg-image {
-      will-change: transform;
-    }
-
-    .hero__media,
-    .hero__overlay {
-      will-change: opacity;
-    }
   }
 
   .hero__content {

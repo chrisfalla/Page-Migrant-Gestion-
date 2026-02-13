@@ -25,9 +25,11 @@ const baseUrl = isHome ? '' : '/';
         class="header__logo-img" 
         width={250}
         height={83}
-        loading="lazy"
+        loading="eager"
         decoding="async"
-        quality={70}
+        fetchpriority="high"
+        format="webp"
+        quality={5}
         widths={[160, 200, 250]}
         sizes="(min-width: 640px) 250px, 197px"
       />
@@ -300,23 +302,26 @@ const baseUrl = isHome ? '' : '/';
   const mobileLinks = document.querySelectorAll('.header__mobile-link');
   let isScrolled = false;
   let scrollTicking = false;
+  let lastKnownScrollY = 0;
   
-  // Scroll effect
+  // Scroll effect - cachear scrollY para evitar reflows
   const updateScrollState = () => {
     scrollTicking = false;
-    const nextScrolled = window.scrollY > 10;
+    const nextScrolled = lastKnownScrollY > 10;
     if (nextScrolled === isScrolled) return;
     isScrolled = nextScrolled;
     header?.classList.toggle('scrolled', isScrolled);
   };
 
   const onScroll = () => {
+    lastKnownScrollY = window.scrollY;
     if (scrollTicking) return;
     scrollTicking = true;
     requestAnimationFrame(updateScrollState);
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  lastKnownScrollY = window.scrollY;
   updateScrollState();
 
   // Toggle menú móvil

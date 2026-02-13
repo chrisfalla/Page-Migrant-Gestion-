@@ -86,8 +86,6 @@ const testimonials = [
 
     .testimonial-card {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-2xl);
       padding: var(--space-6);
@@ -100,6 +98,14 @@ const testimonials = [
       display: flex;
       flex-direction: column;
       min-height: 300px;
+    }
+
+    /* Backdrop-filter solo en desktop y sin reduced-motion */
+    @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+      .testimonial-card {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
     }
 
     .card-top-bar {

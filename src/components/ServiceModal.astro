@@ -76,9 +76,15 @@
   }
 
   .service-modal::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.6);
     animation: backdrop-fade-in 0.25s ease;
+  }
+
+  /* Backdrop-filter solo sin reduced-motion */
+  @media (prefers-reduced-motion: no-preference) {
+    .service-modal::backdrop {
+      backdrop-filter: blur(4px);
+    }
   }
 
   @keyframes modal-fade-in {
