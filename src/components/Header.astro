@@ -27,9 +27,8 @@ const baseUrl = isHome ? '' : '/';
         height={83}
         loading="eager"
         decoding="async"
-        fetchpriority="auto"
-        quality={90}
-        widths={[200, 250, 320, 400, 500]}
+        fetchpriority="low"
+        widths={[160, 200, 250, 320, 400]}
         sizes="(min-width: 640px) 250px, 197px"
       />
     </a>
@@ -299,15 +298,26 @@ const baseUrl = isHome ? '' : '/';
   const mobileBtn = document.querySelector('.header__mobile-btn');
   const mobileNav = document.querySelector('.header__mobile-nav');
   const mobileLinks = document.querySelectorAll('.header__mobile-link');
+  let isScrolled = false;
+  let scrollTicking = false;
   
   // Scroll effect
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      header?.classList.add('scrolled');
-    } else {
-      header?.classList.remove('scrolled');
-    }
-  });
+  const updateScrollState = () => {
+    scrollTicking = false;
+    const nextScrolled = window.scrollY > 10;
+    if (nextScrolled === isScrolled) return;
+    isScrolled = nextScrolled;
+    header?.classList.toggle('scrolled', isScrolled);
+  };
+
+  const onScroll = () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(updateScrollState);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateScrollState();
 
   // Toggle menú móvil
   mobileBtn?.addEventListener('click', () => {

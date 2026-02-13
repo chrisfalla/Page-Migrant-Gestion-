@@ -43,8 +43,5 @@ export default defineConfig({
     assets: '_assets'
   },
   compressHTML: true,
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport'
-  }
+  prefetch: false
 });
