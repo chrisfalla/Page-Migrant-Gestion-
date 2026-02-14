@@ -27,7 +27,7 @@ const baseUrl = isHome ? '' : '/';
         height={83}
         loading="eager"
         decoding="async"
-        fetchpriority="high"
+        fetchpriority="auto"
         format="webp"
         quality={5}
         widths={[160, 200, 250]}
@@ -300,29 +300,7 @@ const baseUrl = isHome ? '' : '/';
   const mobileBtn = document.querySelector('.header__mobile-btn');
   const mobileNav = document.querySelector('.header__mobile-nav');
   const mobileLinks = document.querySelectorAll('.header__mobile-link');
-  let isScrolled = false;
-  let scrollTicking = false;
-  let lastKnownScrollY = 0;
-  
-  // Scroll effect - cachear scrollY para evitar reflows
-  const updateScrollState = () => {
-    scrollTicking = false;
-    const nextScrolled = lastKnownScrollY > 10;
-    if (nextScrolled === isScrolled) return;
-    isScrolled = nextScrolled;
-    header?.classList.toggle('scrolled', isScrolled);
-  };
-
-  const onScroll = () => {
-    lastKnownScrollY = window.scrollY;
-    if (scrollTicking) return;
-    scrollTicking = true;
-    requestAnimationFrame(updateScrollState);
-  };
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  lastKnownScrollY = window.scrollY;
-  updateScrollState();
+  header?.classList.remove('scrolled');
 
   // Toggle menú móvil
   mobileBtn?.addEventListener('click', () => {

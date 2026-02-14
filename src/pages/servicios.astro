@@ -439,115 +439,110 @@ import type { Service } from '../data/services';
 </style>
 
 <script>
-  import type { Service } from '../data/services';
-  import { services } from '../data/services';
-
-  // Intersection Observer for reveal animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px',
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
+  const initServiciosPage = () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
       }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
     });
-  }, observerOptions);
 
-  document.querySelectorAll('.reveal').forEach((el) => {
-    observer.observe(el);
-  });
+    const categoryPills = document.querySelectorAll('.pill');
+    const serviceItems = document.querySelectorAll('.service-item');
 
-  // Category filtering
-  const categoryPills = document.querySelectorAll('.pill');
-  const serviceItems = document.querySelectorAll('.service-item');
+    const categoryKeywords = {
+      visas: ['visa', 'migratoria', 'residencia', 'temporal', 'extranjeria'],
+      documentos: ['pasaporte', 'cedula', 'documento', 'apostilla', 'certificado', 'antecedentes'],
+      legalizacion: ['legalizacion', 'convalidacion', 'homologacion', 'reconocimiento', 'titulo'],
+    };
 
-  // Category mappings (simplificado - puedes ajustar según tus necesidades)
-  const categoryKeywords: Record<string, string[]> = {
-    visas: ['visa', 'migratoria', 'residencia', 'temporal', 'extranjería'],
-    documentos: ['pasaporte', 'cédula', 'documento', 'apostilla', 'certificado', 'antecedentes'],
-    legalizacion: ['legalización', 'convalidación', 'homologación', 'reconocimiento', 'título'],
-  };
+    const matchesCategory = (serviceTitle, category) => {
+      if (category === 'all') return true;
+      const keywords = categoryKeywords[category];
+      if (!keywords) return false;
+      const titleLower = serviceTitle
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+      return keywords.some((keyword) => titleLower.includes(keyword));
+    };
 
-  function matchesCategory(serviceTitle: string, category: string): boolean {
-    if (category === 'all') return true;
-    
-    const keywords = categoryKeywords[category];
-    if (!keywords) return false;
-    
-    const titleLower = serviceTitle.toLowerCase();
-    return keywords.some(keyword => titleLower.includes(keyword));
-  }
+    categoryPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        categoryPills.forEach((p) => p.classList.remove('pill-active'));
+        pill.classList.add('pill-active');
 
-  categoryPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      // Update active state
-      categoryPills.forEach(p => p.classList.remove('pill-active'));
-      pill.classList.add('pill-active');
+        const category = pill.getAttribute('data-category') || 'all';
 
-      // Get category
-      const category = pill.getAttribute('data-category') || 'all';
+        serviceItems.forEach((item, index) => {
+          const title = item.querySelector('.card-title')?.textContent?.trim() || '';
+          const matches = matchesCategory(title, category);
 
-      // Filter services with animation
-      serviceItems.forEach((item, index) => {
-        const card = item.querySelector('[data-service-id]');
-        const serviceId = card?.getAttribute('data-service-id');
-        const service = services.find((s: Service) => s.id === serviceId);
-        
-        if (!service) return;
+          if (matches) {
+            setTimeout(() => {
+              item.style.display = 'block';
+              requestAnimationFrame(() => item.classList.add('active'));
+            }, index * 30);
+            return;
+          }
 
-        const matches = matchesCategory(service.title, category);
-        
-        if (matches) {
-          // Show with stagger
-          setTimeout(() => {
-            (item as HTMLElement).style.display = 'block';
-            requestAnimationFrame(() => {
-              item.classList.add('active');
-            });
-          }, index * 30);
-        } else {
-          // Hide
           item.classList.remove('active');
           setTimeout(() => {
-            (item as HTMLElement).style.display = 'none';
+            item.style.display = 'none';
           }, 300);
-        }
+        });
       });
     });
-  });
 
-  // Service card click handling
-  const servicesGrid = document.getElementById('services-grid');
-  
-  servicesGrid?.addEventListener('click', (e) => {
-    const card = (e.target as HTMLElement).closest('[data-service-id]');
-    if (card) {
+    let servicesCache = null;
+    const loadServices = async () => {
+      if (servicesCache) return servicesCache;
+      const module = await import('../data/services');
+      servicesCache = module.services;
+      return servicesCache;
+    };
+
+    const servicesGrid = document.getElementById('services-grid');
+
+    const openModalFromCard = async (card) => {
+      if (!card) return;
       const serviceId = card.getAttribute('data-service-id');
-      const service = services.find((s: Service) => s.id === serviceId);
-      
-      if (service && (window as any).showServiceModal) {
-        (window as any).showServiceModal(service);
+      if (!serviceId) return;
+      const servicesData = await loadServices();
+      const service = servicesData.find((s) => s.id === serviceId);
+      if (service && window.showServiceModal) {
+        window.showServiceModal(service);
       }
-    }
-  });
+    };
 
-  // Keyboard navigation
-  servicesGrid?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const card = (e.target as HTMLElement).closest('[data-service-id]');
-      if (card) {
-        e.preventDefault();
-        const serviceId = card.getAttribute('data-service-id');
-        const service = services.find((s: Service) => s.id === serviceId);
-        
-        if (service && (window as any).showServiceModal) {
-          (window as any).showServiceModal(service);
-        }
-      }
-    }
-  });
+    servicesGrid?.addEventListener('click', async (e) => {
+      const card = e.target.closest('[data-service-id]');
+      await openModalFromCard(card);
+    });
+
+    servicesGrid?.addEventListener('keydown', async (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const card = e.target.closest('[data-service-id]');
+      if (!card) return;
+      e.preventDefault();
+      await openModalFromCard(card);
+    });
+  };
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(initServiciosPage, { timeout: 2500 });
+  } else {
+    setTimeout(initServiciosPage, 200);
+  }
 </script>

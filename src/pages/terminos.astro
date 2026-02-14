@@ -853,51 +853,53 @@ const sections = [
 </style>
 
 <script>
-  // Smooth scroll para los enlaces del TOC
-  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+  if (window.matchMedia('(min-width: 1025px)').matches) {
+    const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.toc-link'));
+    const linkByHash = new Map<string, HTMLAnchorElement>(
+      tocLinks.map((link) => [link.getAttribute('href') || '', link])
+    );
+    let activeLink: HTMLAnchorElement | null = null;
 
-  tocLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href')?.slice(1);
-      const targetElement = document.getElementById(targetId || '');
-      
-      if (targetElement) {
-        // Usar scrollIntoView nativo (sin reflows forzados)
+    const setActiveLink = (link: HTMLAnchorElement | null) => {
+      if (activeLink === link) return;
+      if (activeLink) activeLink.style.background = '';
+      if (link) link.style.background = '#f3f4f6';
+      activeLink = link;
+    };
+
+    tocLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href')?.slice(1);
+        const targetElement = document.getElementById(targetId || '');
+        if (!targetElement) return;
+
         targetElement.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
-        
-        // Highlight activo
-        tocLinks.forEach(l => l.style.background = '');
-        link.style.background = '#f3f4f6';
-      }
+        setActiveLink(link);
+      });
     });
-  });
-  
-  // Highlight del link activo al hacer scroll
-  const observerOptions = {
-    root: null,
-    rootMargin: '-100px 0px -66%',
-    threshold: 0
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        tocLinks.forEach(link => {
-          link.style.background = '';
-          if (link.getAttribute('href') === `#${id}`) {
-            link.style.background = '#f3f4f6';
-          }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.getAttribute('id');
+          if (!id) return;
+          setActiveLink(linkByHash.get(`#${id}`) || null);
         });
+      },
+      {
+        root: null,
+        rootMargin: '-100px 0px -66%',
+        threshold: 0
       }
+    );
+
+    document.querySelectorAll('.legal-section').forEach((section) => {
+      observer.observe(section);
     });
-  }, observerOptions);
-  
-  document.querySelectorAll('.legal-section').forEach(section => {
-    observer.observe(section);
-  });
+  }
 </script>

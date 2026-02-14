@@ -1,8 +1,7 @@
 ---
 import '../styles/global.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/montserrat/700.css';
+import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2';
+import montserrat700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2';
 
 interface Props {
 	title?: string;
@@ -24,6 +23,8 @@ const {
 		<!-- Performance Hints -->
 		<meta name="theme-color" content="#001b48" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={montserrat700} as="font" type="font/woff2" crossorigin />
 		
 		<!-- SEO Meta Tags -->
 		<title>{title}</title>
@@ -74,6 +75,9 @@ const {
 			const revealElements = () => {
 				const elements = document.querySelectorAll('.reveal');
 				if (!elements.length) return;
+
+				// En móvil evitamos animación para reducir trabajo de main thread.
+				if (window.matchMedia('(max-width: 767px)').matches) return;
 				
 				if (!('IntersectionObserver' in window)) {
 					elements.forEach((el) => el.classList.add('in-view'));
