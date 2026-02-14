@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
-import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2';
-import inter600 from '@fontsource/inter/files/inter-latin-600-normal.woff2';
-import montserrat700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/montserrat/700.css';
 
 interface Props {
 	title?: string;
@@ -23,9 +23,6 @@ const {
 		
 		<!-- Performance Hints -->
 		<meta name="theme-color" content="#001b48" />
-		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- SEO Meta Tags -->
@@ -43,11 +40,6 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		
-		<!-- Fuentes locales optimizadas - preload crítico -->
-		<link rel="preload" href={montserrat700} as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
-
 		<slot name="head" />
 		
 		<!-- Smooth Scroll con respeto a reduced-motion -->
@@ -66,6 +58,12 @@ const {
 				margin: 0;
 				padding: 0;
 				overflow-x: hidden;
+			}
+
+			/* Difiere layout/paint de bloques fuera de pantalla inicial */
+			.cv-auto {
+				content-visibility: auto;
+				contain-intrinsic-size: 900px;
 			}
 		</style>
 	</head>

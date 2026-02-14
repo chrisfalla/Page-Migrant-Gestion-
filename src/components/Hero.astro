@@ -295,13 +295,26 @@ import heroBgImage from "../assets/img/1.jpg";
 
   const initHero = () => {
     setupScrollIndicator();
-    setupParallax();
+
+    const startParallax = () => {
+      if (document.readyState === 'complete') {
+        setupParallax();
+        return;
+      }
+      window.addEventListener('load', () => setupParallax(), { once: true });
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(startParallax, { timeout: 2500 });
+    } else {
+      setTimeout(startParallax, 300);
+    }
   };
 
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(initHero);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHero, { once: true });
   } else {
-    setTimeout(initHero, 100);
+    initHero();
   }
 </script>
 
