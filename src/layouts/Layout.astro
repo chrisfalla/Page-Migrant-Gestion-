@@ -1,6 +1,10 @@
 ---
 import '../styles/global.css';
 
+/* Preload fuentes críticas para romper la cadena de solicitudes */
+import interFont from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+import montserrat800 from '@fontsource/montserrat/files/montserrat-latin-800-normal.woff2?url';
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -19,6 +23,8 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<!-- Performance Hints -->
+		<link rel="preload" href={interFont} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={montserrat800} as="font" type="font/woff2" crossorigin />
 		<meta name="theme-color" content="#001b48" />
 		<meta name="generator" content={Astro.generator} />
 		
