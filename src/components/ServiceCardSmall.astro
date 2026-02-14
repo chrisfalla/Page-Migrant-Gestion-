@@ -16,7 +16,7 @@ const { service } = Astro.props;
   <div class="card-icon">
     {service.icon}
   </div>
-  <h3 class="card-title">{service.title}</h3>
+  <p class="card-title">{service.title}</p>
   <div class="card-hover-indicator">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -85,7 +85,7 @@ const { service } = Astro.props;
   }
 
   .card-icon {
-    font-size: 3rem;
+    font-size: var(--text-5xl);
     line-height: 1;
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
@@ -97,9 +97,9 @@ const { service } = Astro.props;
   }
 
   .card-title {
-    font-family: var(--font-display, 'Montserrat', sans-serif);
-    font-size: 0.938rem;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
     line-height: 1.4;
     color: var(--color-primary, #001b48);
     margin: 0;
@@ -155,11 +155,11 @@ const { service } = Astro.props;
     }
 
     .card-icon {
-      font-size: 2.5rem;
+      font-size: var(--text-4xl);
     }
 
     .card-title {
-      font-size: 0.875rem;
+      font-size: var(--text-sm);
     }
   }
 </style>
