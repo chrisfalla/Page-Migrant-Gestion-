@@ -94,241 +94,38 @@ import heroBgImage from "../assets/img/1.jpg";
         </a>
       </div>
 
-      <!-- Indicador de scroll -->
-      <div class="hero__scroll-indicator" role="button" tabindex="0" aria-label="Desplazarse a la siguiente sección">
-        <span>Descubre más</span>
+            <!-- Indicador de scroll -->
+      <a href="#servicios" class="hero__scroll-indicator" aria-label="Desplazarse a la siguiente seccion">
+        <span>Descubre mas</span>
         <div class="hero__scroll-arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 5v14M19 12l-7 7-7-7"/>
           </svg>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
 
-<script>
-  // El indicador funciona siempre; el parallax solo en desktop.
-  const setupScrollIndicator = () => {
-    const scrollIndicator = document.querySelector('.hero__scroll-indicator') as HTMLElement | null;
-    const scrollToNext = () => {
-      const nextSection = document.querySelector('.hero')?.nextElementSibling;
-      nextSection?.scrollIntoView({ behavior: 'smooth' });
-    };
-    
-    scrollIndicator?.addEventListener('click', scrollToNext);
-    scrollIndicator?.addEventListener('keydown', (e: Event) => {
-      const keyEvent = e as KeyboardEvent;
-      if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
-        keyEvent.preventDefault();
-        scrollToNext();
-      }
-    });
-  };
 
-  const setupParallax = () => {
-    const media = document.querySelector('.hero__media') as HTMLElement | null;
-    const image = media?.querySelector('.hero__bg-image') as HTMLElement | null;
-    const overlay = media?.querySelector('.hero__overlay') as HTMLElement | null;
-    if (!media || !image || !overlay) return;
-
-    const desktopQuery = window.matchMedia('(min-width: 1024px)');
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const initialScale = 1.0;
-    const finalScale = 1.4;
-
-    // Cachear dimensiones del viewport para evitar forced reflow
-    let viewportHeight = window.innerHeight;
-    let scaleThreshold = viewportHeight * 0.8;
-    let fadeDistance = Math.max(viewportHeight * 1.1, 1);
-
-    let currentTranslateY = 0;
-    let currentScale = initialScale;
-    let currentOpacity = 1;
-    let currentOverlayOpacity = 0.65;
-    let targetTranslateY = 0;
-    let targetScale = initialScale;
-    let targetOpacity = 1;
-    let targetOverlayOpacity = 0.65;
-    let lastScrollY = -1;
-    let rafId = 0;
-    let enabled = false;
-
-    const ease = (current: number, target: number, factor: number): number =>
-      current + (target - current) * factor;
-
-    const shouldRun = () =>
-      desktopQuery.matches && !reducedMotionQuery.matches && !document.hidden;
-
-    const clearStyles = () => {
-      image.style.transform = '';
-      media.style.opacity = '';
-      overlay.style.opacity = '';
-      // Limpiar will-change para ahorrar memoria
-      image.style.willChange = '';
-      media.style.willChange = '';
-      overlay.style.willChange = '';
-    };
-
-    const setWillChange = () => {
-      image.style.willChange = 'transform';
-      media.style.willChange = 'opacity';
-      overlay.style.willChange = 'opacity';
-    };
-
-    const calculateTargets = (scrollY: number) => {
-      targetTranslateY = scrollY * 0.28;
-      const scaleProgress = Math.min(scrollY / scaleThreshold, 1);
-      targetScale = initialScale + scaleProgress * (finalScale - initialScale);
-      targetOpacity = Math.max(0, 1 - scrollY / fadeDistance);
-      targetOverlayOpacity = Math.max(0.5, targetOpacity * 0.9);
-    };
-
-    const paint = () => {
-      image.style.transform = `translate3d(0, ${currentTranslateY.toFixed(2)}px, 0) scale(${currentScale.toFixed(3)})`;
-      media.style.opacity = currentOpacity.toFixed(3);
-      overlay.style.opacity = currentOverlayOpacity.toFixed(3);
-    };
-
-    const tick = () => {
-      rafId = 0;
-      if (!enabled) return;
-
-      currentTranslateY = ease(currentTranslateY, targetTranslateY, 0.08);
-      currentScale = ease(currentScale, targetScale, 0.08);
-      currentOpacity = ease(currentOpacity, targetOpacity, 0.1);
-      currentOverlayOpacity = ease(currentOverlayOpacity, targetOverlayOpacity, 0.1);
-      paint();
-
-      const needsMoreFrames =
-        Math.abs(currentTranslateY - targetTranslateY) > 0.01 ||
-        Math.abs(currentScale - targetScale) > 0.001 ||
-        Math.abs(currentOpacity - targetOpacity) > 0.001 ||
-        Math.abs(currentOverlayOpacity - targetOverlayOpacity) > 0.001;
-
-      if (needsMoreFrames) {
-        rafId = requestAnimationFrame(tick);
-      }
-    };
-
-    const requestTick = () => {
-      if (!enabled || rafId) return;
-      rafId = requestAnimationFrame(tick);
-    };
-
-    const updateTargets = (force = false) => {
-      if (!enabled) return;
-      const scrollY = window.scrollY || window.pageYOffset;
-      if (!force && scrollY === lastScrollY) return;
-      lastScrollY = scrollY;
-      calculateTargets(scrollY);
-      requestTick();
-    };
-
-    const handleScroll = () => updateTargets();
-    const handleResize = () => {
-      // Recachear dimensiones en resize
-      viewportHeight = window.innerHeight;
-      scaleThreshold = viewportHeight * 0.8;
-      fadeDistance = Math.max(viewportHeight * 1.1, 1);
-      updateTargets(true);
-    };
-
-    const enable = () => {
-      if (enabled) return;
-      enabled = true;
-      setWillChange(); // Activar will-change solo cuando parallax está activo
-      lastScrollY = window.scrollY || window.pageYOffset;
-      calculateTargets(lastScrollY);
-      currentTranslateY = targetTranslateY;
-      currentScale = targetScale;
-      currentOpacity = targetOpacity;
-      currentOverlayOpacity = targetOverlayOpacity;
-      paint();
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      window.addEventListener('resize', handleResize, { passive: true });
-    };
-
-    const disable = () => {
-      if (!enabled) return;
-      enabled = false;
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = 0;
-      }
-      clearStyles(); // Esto ahora también limpia will-change
-    };
-
-    const evaluate = () => {
-      if (shouldRun()) {
-        enable();
-        requestTick();
-      } else {
-        disable();
-      }
-    };
-
-    const bindMediaChange = (query: MediaQueryList, handler: () => void) => {
-      if ('addEventListener' in query) {
-        query.addEventListener('change', handler);
-        return () => query.removeEventListener('change', handler);
-      }
-      (query as any).addListener(handler);
-      return () => (query as any).removeListener(handler);
-    };
-
-    const unbindDesktop = bindMediaChange(desktopQuery, evaluate);
-    const unbindReducedMotion = bindMediaChange(reducedMotionQuery, evaluate);
-    document.addEventListener('visibilitychange', evaluate);
-
-    evaluate();
-
-    return () => {
-      disable();
-      unbindDesktop();
-      unbindReducedMotion();
-      document.removeEventListener('visibilitychange', evaluate);
-    };
-  };
-
-  const initHero = () => {
-    setupScrollIndicator();
-
-    const startParallax = () => {
-      if (document.readyState === 'complete') {
-        setupParallax();
-        return;
-      }
-      window.addEventListener('load', () => setupParallax(), { once: true });
-    };
-
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(startParallax, { timeout: 2500 });
-    } else {
-      setTimeout(startParallax, 300);
-    }
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHero, { once: true });
-  } else {
-    initHero();
-  }
-</script>
 
 <style>
   .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100svh - 72px);
     display: grid;
     place-items: center;
     padding: clamp(var(--space-8), 5vw, var(--space-12)) var(--space-4);
-    padding-top: var(--space-4);
+    padding-top: 0;
     color: var(--color-white);
     background: var(--color-primary-dark);
     overflow: hidden;
+  }
+
+  @supports (height: 100dvh) {
+    .hero {
+      min-height: calc(100dvh - 72px);
+    }
   }
 
   @media (min-width: 640px) {
@@ -409,11 +206,12 @@ import heroBgImage from "../assets/img/1.jpg";
 
   .hero__title {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1.1;
+    line-height: 1.16;
     font-weight: var(--font-bold);
     color: var(--color-white);
     text-wrap: balance;
     letter-spacing: -0.03em;
+    padding-bottom: 0.06em;
   }
 
   .hero__title-line {
@@ -467,13 +265,14 @@ import heroBgImage from "../assets/img/1.jpg";
     align-items: center;
     justify-content: center;
     gap: var(--space-8);
+    width: min(100%, 760px);
     padding: var(--space-6) var(--space-8);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-2xl);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    margin-top: var(--space-2);
+    margin-top: var(--space-3);
   }
 
   .hero__stat-divider {
@@ -488,11 +287,12 @@ import heroBgImage from "../assets/img/1.jpg";
   }
 
   .hero__stat {
+    flex: 1 1 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-1);
-    min-width: 100px;
+    min-width: 0;
   }
 
   .hero__stat-number {
@@ -620,6 +420,7 @@ import heroBgImage from "../assets/img/1.jpg";
   /* Móvil pequeño */
   @media (max-width: 480px) {
     .hero {
+      min-height: calc(100svh - 60px);
       padding-top: var(--space-16);
       padding-bottom: var(--space-8);
     }
@@ -678,6 +479,10 @@ import heroBgImage from "../assets/img/1.jpg";
 
   /* Tablets */
   @media (min-width: 481px) and (max-width: 767px) {
+    .hero {
+      min-height: calc(100svh - 60px);
+    }
+
     .hero__stats {
       gap: var(--space-4);
       padding: var(--space-5) var(--space-6);
@@ -694,9 +499,10 @@ import heroBgImage from "../assets/img/1.jpg";
 
   @media (max-width: 767px) {
     .hero__stats {
-      background: rgba(0, 18, 47, 0.38);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
+      /* Keep glass effect on mobile with a lighter blur cost */
+      background: rgba(0, 18, 47, 0.42);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
   }
 
