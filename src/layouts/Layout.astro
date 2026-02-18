@@ -37,7 +37,9 @@ const robotsContent = noindex
   ? 'noindex,nofollow'
   : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
 
-const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const googleSiteVerification =
+  import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ??
+  'sm6BLxLxh4U8H8yPd-ri7ANaPappU4gqFm1SDxCOzhM';
 const bingSiteVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
 
 const organizationSchema = {
