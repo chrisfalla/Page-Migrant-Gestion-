@@ -1,110 +1,208 @@
 ---
 import '../styles/global.css';
+import {
+  BUSINESS_DATA,
+  DEFAULT_LOCALE,
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+} from '../config/seo';
 
-/* Preload fuentes críticas para romper la cadena de solicitudes */
+/* Preload fuentes criticas para romper la cadena de solicitudes */
 import interFont from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 import montserrat800 from '@fontsource/montserrat/files/montserrat-latin-800-normal.woff2?url';
 
 interface Props {
-	title?: string;
-	description?: string;
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
-const { 
-	title = 'MIGRANT GESTIÓN SAS | Asesoría Migratoria en Colombia',
-	description = 'Consultoría especializada en gestión migratoria, visas, PPT, apostillas y más de 30 trámites para migrantes en Colombia. 05 años de experiencia desde Neiva.'
+const {
+  title = 'MIGRANT GESTIÓN SAS | Asesoría Migratoria en Colombia',
+  description =
+    'Consultoría especializada en gestión migratoria, visas, PPT, apostillas y más de 30 trámites para migrantes en Colombia. 05 años de experiencia desde Neiva.',
+  canonical,
+  ogImage = DEFAULT_OG_IMAGE,
+  noindex = false,
 } = Astro.props;
+
+const canonicalUrl = canonical
+  ? new URL(canonical, SITE_URL).toString()
+  : new URL(Astro.url.pathname, SITE_URL).toString();
+const ogImageUrl = new URL(ogImage, SITE_URL).toString();
+const robotsContent = noindex
+  ? 'noindex,nofollow'
+  : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
+
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingSiteVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE_URL}#organization`,
+  name: BUSINESS_DATA.legalName,
+  legalName: BUSINESS_DATA.legalName,
+  url: SITE_URL,
+  email: BUSINESS_DATA.email,
+  telephone: BUSINESS_DATA.phoneDisplay,
+  sameAs: [...BUSINESS_DATA.sameAs],
+  foundingDate: BUSINESS_DATA.foundingDate,
+};
+
+const professionalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}#professional-service`,
+  name: BUSINESS_DATA.legalName,
+  description: BUSINESS_DATA.description,
+  url: SITE_URL,
+  image: ogImageUrl,
+  email: BUSINESS_DATA.email,
+  telephone: BUSINESS_DATA.phoneDisplay,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: BUSINESS_DATA.addressLocality,
+    addressRegion: BUSINESS_DATA.addressRegion,
+    addressCountry: BUSINESS_DATA.addressCountry,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Colombia',
+  },
+  sameAs: [...BUSINESS_DATA.sameAs],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}#website`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  inLanguage: DEFAULT_LOCALE,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/servicios?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const schemaGraphJson = JSON.stringify([
+  organizationSchema,
+  professionalServiceSchema,
+  websiteSchema,
+]);
 ---
 
 <!doctype html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-		<!-- Performance Hints -->
-		<link rel="preload" href={interFont} as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href={montserrat800} as="font" type="font/woff2" crossorigin />
-		<meta name="theme-color" content="#001b48" />
-		<meta name="generator" content={Astro.generator} />
-		
-		<!-- SEO Meta Tags -->
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<meta name="keywords" content="visa colombia, ppt, migración colombia, gestión migratoria, apostillas, sire, neiva, consultoria migratoria, permiso protección temporal, ppt," />
-		
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		
-		<slot name="head" />
-		
-		<!-- Smooth Scroll con respeto a reduced-motion -->
-		<style is:global>
-			@media (prefers-reduced-motion: no-preference) {
-				html {
-					scroll-behavior: smooth;
-				}
-			}
-			
-			html {
-				font-family: var(--font-sans);
-			}
-			
-			body {
-				margin: 0;
-				padding: 0;
-				overflow-x: hidden;
-			}
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-			/* Difiere layout/paint de bloques fuera de pantalla inicial */
-			.cv-auto {
-				content-visibility: auto;
-				contain-intrinsic-size: 900px;
-			}
-		</style>
-	</head>
-	<body class="antialiased">
-		<slot />
-		<script type="module">
-			// Diferir animaciones para no bloquear render inicial
-			const revealElements = () => {
-				const elements = document.querySelectorAll('.reveal');
-				if (!elements.length) return;
+    <!-- Performance Hints -->
+    <link rel="preload" href={interFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={montserrat800} as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#001b48" />
+    <meta name="generator" content={Astro.generator} />
 
-				// En móvil evitamos animación para reducir trabajo de main thread.
-				if (window.matchMedia('(max-width: 767px)').matches) return;
-				
-				if (!('IntersectionObserver' in window)) {
-					elements.forEach((el) => el.classList.add('in-view'));
-					return;
-				}
-				const observer = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add('in-view');
-								observer.unobserve(entry.target);
-							}
-						});
-					},
-					{ threshold: 0.15, rootMargin: '50px' }
-				);
-				elements.forEach((el) => observer.observe(el));
-			};
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="visa colombia, ppt, migracion colombia, gestion migratoria, apostillas, sire, neiva, consultoria migratoria, permiso proteccion temporal, ppt"
+    />
+    <meta name="robots" content={robotsContent} />
+    <link rel="canonical" href={canonicalUrl} />
 
-			// Usar requestIdleCallback para no competir con LCP
-			if ('requestIdleCallback' in window) {
-				requestIdleCallback(revealElements, { timeout: 2000 });
-			} else {
-				setTimeout(revealElements, 200);
-			}
-		</script>
-	</body>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content={DEFAULT_LOCALE} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {googleSiteVerification && (
+      <meta name="google-site-verification" content={googleSiteVerification} />
+    )}
+    {bingSiteVerification && <meta name="msvalidate.01" content={bingSiteVerification} />}
+
+    <script type="application/ld+json" set:html={schemaGraphJson}></script>
+
+    <slot name="head" />
+
+    <!-- Smooth Scroll con respeto a reduced-motion -->
+    <style is:global>
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+
+      html {
+        font-family: var(--font-sans);
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      /* Difiere layout/paint de bloques fuera de pantalla inicial */
+      .cv-auto {
+        content-visibility: auto;
+        contain-intrinsic-size: 900px;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <slot />
+    <script type="module">
+      // Diferir animaciones para no bloquear render inicial
+      const revealElements = () => {
+        const elements = document.querySelectorAll('.reveal');
+        if (!elements.length) return;
+
+        // En movil evitamos animacion para reducir trabajo de main thread.
+        if (window.matchMedia('(max-width: 767px)').matches) return;
+
+        if (!('IntersectionObserver' in window)) {
+          elements.forEach((el) => el.classList.add('in-view'));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '50px' }
+        );
+        elements.forEach((el) => observer.observe(el));
+      };
+
+      // Usar requestIdleCallback para no competir con LCP
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(revealElements, { timeout: 2000 });
+      } else {
+        setTimeout(revealElements, 200);
+      }
+    </script>
+  </body>
 </html>
