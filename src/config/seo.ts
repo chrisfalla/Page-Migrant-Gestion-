@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://migrant-gestion.vercel.app';
+export const SITE_URL = 'https://migrantgestion.com';
 export const SITE_NAME = 'MIGRANT GESTIÓN SAS';
 export const DEFAULT_LOCALE = 'es-CO';
 export const DEFAULT_OG_IMAGE = '/og/migrant-gestion-og.jpg';

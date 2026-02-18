@@ -1,4 +1,22 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "migrant-gestion.vercel.app" }
+      ],
+      "destination": "https://migrantgestion.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "www.migrantgestion.com" }
+      ],
+      "destination": "https://migrantgestion.com/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/_assets/(.*)",

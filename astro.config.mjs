@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://migrant-gestion.vercel.app',
+  site: 'https://migrantgestion.com',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
