@@ -4,11 +4,46 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ServiceCardSmall from '../components/ServiceCardSmall.astro';
 import ServiceModal from '../components/ServiceModal.astro';
+import { SITE_NAME, SITE_URL } from '../config/seo';
 import { services } from '../data/services';
 import type { Service } from '../data/services';
+
+const servicesItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Catalogo de servicios migratorios',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: services.length,
+  url: `${SITE_URL}/servicios`,
+  itemListElement: services.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Service',
+      name: service.title,
+      description: service.description,
+      provider: {
+        '@type': 'ProfessionalService',
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'Colombia',
+      },
+      url: `${SITE_URL}/servicios#${service.id}`,
+    },
+  })),
+};
+
+const servicesItemListSchemaJson = JSON.stringify(servicesItemListSchema);
 ---
 
-<Layout title="Todos Nuestros Servicios | Migrant Gestión">
+<Layout
+  title="Todos Nuestros Servicios | Migrant Gestión"
+  description="Catálogo completo de servicios migratorios de MIGRANT GESTIÓN SAS: visas, PPT, SIRE, apostillas, convalidaciones, trámites empresariales y asesoría especializada en Colombia."
+>
+  <script slot="head" type="application/ld+json" set:html={servicesItemListSchemaJson}></script>
   <Header />
   <main class="services-page">
     <!-- Simple Header -->
