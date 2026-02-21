@@ -474,6 +474,14 @@ const servicesItemListSchemaJson = JSON.stringify(servicesItemListSchema);
 </style>
 
 <script>
+  import type { Service } from '../data/services';
+
+  declare global {
+    interface Window {
+      showServiceModal: (service: Service) => void;
+    }
+  }
+
   const initServiciosPage = () => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -496,13 +504,13 @@ const servicesItemListSchemaJson = JSON.stringify(servicesItemListSchema);
     const categoryPills = document.querySelectorAll('.pill');
     const serviceItems = document.querySelectorAll('.service-item');
 
-    const categoryKeywords = {
+    const categoryKeywords: Record<string, string[]> = {
       visas: ['visa', 'migratoria', 'residencia', 'temporal', 'extranjeria'],
       documentos: ['pasaporte', 'cedula', 'documento', 'apostilla', 'certificado', 'antecedentes'],
       legalizacion: ['legalizacion', 'convalidacion', 'homologacion', 'reconocimiento', 'titulo'],
     };
 
-    const matchesCategory = (serviceTitle, category) => {
+    const matchesCategory = (serviceTitle: string, category: string): boolean => {
       if (category === 'all') return true;
       const keywords = categoryKeywords[category];
       if (!keywords) return false;
@@ -510,7 +518,7 @@ const servicesItemListSchemaJson = JSON.stringify(servicesItemListSchema);
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
-      return keywords.some((keyword) => titleLower.includes(keyword));
+      return keywords.some((keyword: string) => titleLower.includes(keyword));
     };
 
     categoryPills.forEach((pill) => {
@@ -521,27 +529,28 @@ const servicesItemListSchemaJson = JSON.stringify(servicesItemListSchema);
         const category = pill.getAttribute('data-category') || 'all';
 
         serviceItems.forEach((item, index) => {
-          const title = item.querySelector('.card-title')?.textContent?.trim() || '';
+          const htmlItem = item as HTMLElement;
+          const title = htmlItem.querySelector('.card-title')?.textContent?.trim() || '';
           const matches = matchesCategory(title, category);
 
           if (matches) {
             setTimeout(() => {
-              item.style.display = 'block';
-              requestAnimationFrame(() => item.classList.add('active'));
+              htmlItem.style.display = 'block';
+              requestAnimationFrame(() => htmlItem.classList.add('active'));
             }, index * 30);
             return;
           }
 
-          item.classList.remove('active');
+          htmlItem.classList.remove('active');
           setTimeout(() => {
-            item.style.display = 'none';
+            htmlItem.style.display = 'none';
           }, 300);
         });
       });
     });
 
-    let servicesCache = null;
-    const loadServices = async () => {
+    let servicesCache: Service[] | null = null;
+    const loadServices = async (): Promise<Service[]> => {
       if (servicesCache) return servicesCache;
       const module = await import('../data/services');
       servicesCache = module.services;
@@ -550,25 +559,27 @@ const servicesItemListSchemaJson = JSON.stringify(servicesItemListSchema);
 
     const servicesGrid = document.getElementById('services-grid');
 
-    const openModalFromCard = async (card) => {
+    const openModalFromCard = async (card: HTMLElement | null): Promise<void> => {
       if (!card) return;
       const serviceId = card.getAttribute('data-service-id');
       if (!serviceId) return;
       const servicesData = await loadServices();
-      const service = servicesData.find((s) => s.id === serviceId);
+      const service = servicesData.find((s: Service) => s.id === serviceId);
       if (service && window.showServiceModal) {
         window.showServiceModal(service);
       }
     };
 
     servicesGrid?.addEventListener('click', async (e) => {
-      const card = e.target.closest('[data-service-id]');
+      const target = e.target as HTMLElement | null;
+      const card = target?.closest<HTMLElement>('[data-service-id]') ?? null;
       await openModalFromCard(card);
     });
 
     servicesGrid?.addEventListener('keydown', async (e) => {
       if (e.key !== 'Enter' && e.key !== ' ') return;
-      const card = e.target.closest('[data-service-id]');
+      const target = e.target as HTMLElement | null;
+      const card = target?.closest<HTMLElement>('[data-service-id]') ?? null;
       if (!card) return;
       e.preventDefault();
       await openModalFromCard(card);
