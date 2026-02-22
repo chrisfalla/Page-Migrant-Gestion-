@@ -42,7 +42,7 @@
     </div>
 
     <div class="modal-footer">
-      <a href="#contacto" class="modal-cta">
+      <a href="#contacto" class="modal-cta" id="modal-cta">
         Consultar ahora
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -319,10 +319,28 @@
       border-radius: 0;
     }
 
+    .modal-content {
+      max-height: 100dvh;
+      height: 100dvh;
+    }
+
     .modal-header,
     .modal-body,
     .modal-footer {
       padding: 1.5rem;
+    }
+
+    .modal-body {
+      padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .modal-footer {
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+      background: #f9fafb;
+      box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.14);
+      padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
     }
 
     .modal-title {
@@ -339,6 +357,7 @@
   // Modal functionality
   const modal = document.getElementById('service-modal') as HTMLDialogElement;
   const closeBtn = document.getElementById('modal-close');
+  const ctaBtn = document.getElementById('modal-cta');
 
   // Close modal on button click
   closeBtn?.addEventListener('click', () => {
@@ -355,6 +374,23 @@
   // Close modal on ESC key (native behavior, but we can add custom handling if needed)
   modal?.addEventListener('cancel', (e) => {
     // Allow native ESC behavior
+  });
+
+  // Close modal and scroll to footer when CTA is clicked
+  ctaBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const footer = document.getElementById('contacto');
+    modal?.close();
+
+    requestAnimationFrame(() => {
+      if (footer) {
+        footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#contacto');
+        return;
+      }
+      window.location.hash = 'contacto';
+    });
   });
 
   // Prevent body scroll when modal is open
