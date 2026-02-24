@@ -22,4 +22,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://migrantgestion.com/sitemap-index.xml
+Sitemap: https://www.migrantgestion.com/sitemap-index.xml

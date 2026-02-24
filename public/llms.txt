@@ -12,10 +12,10 @@ We provide practical support for immigration and legal-document procedures in Co
 - Business setup and related formal procedures
 
 ## Priority URLs
-- https://migrantgestion.com/
-- https://migrantgestion.com/servicios
-- https://migrantgestion.com/privacidad
-- https://migrantgestion.com/terminos
+- https://www.migrantgestion.com/
+- https://www.migrantgestion.com/servicios
+- https://www.migrantgestion.com/privacidad
+- https://www.migrantgestion.com/terminos
 
 ## Official contact
 - Email: migrantgestion@gmail.com
